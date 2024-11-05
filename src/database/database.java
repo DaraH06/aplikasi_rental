@@ -1,7 +1,7 @@
 package database;
 
 import java.sql.*;
-
+//refangga
 public class database {
    public static Connection com;
     public static Statement stm; 
