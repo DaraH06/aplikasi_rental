@@ -32,6 +32,10 @@ public class MenuUtama extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pn_kanan = new javax.swing.JPanel();
+        jPanelGradient1 = new Palette.JPanelGradient();
+        pn_dasar = new javax.swing.JPanel();
+        pn_utama = new javax.swing.JPanel();
         pn_kiri = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -74,10 +78,6 @@ public class MenuUtama extends javax.swing.JFrame {
         pn_line8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         btn_dashboard8 = new javax.swing.JLabel();
-        pn_kanan = new javax.swing.JPanel();
-        jPanelGradient1 = new Palette.JPanelGradient();
-        pn_dasar = new javax.swing.JPanel();
-        pn_utama = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -90,6 +90,31 @@ public class MenuUtama extends javax.swing.JFrame {
                 formMousePressed(evt);
             }
         });
+
+        pn_kanan.setBackground(new java.awt.Color(255, 255, 255));
+        pn_kanan.setLayout(new java.awt.BorderLayout());
+
+        jPanelGradient1.setColorend(new java.awt.Color(0, 255, 255));
+        jPanelGradient1.setColorstart(new java.awt.Color(204, 204, 240));
+
+        javax.swing.GroupLayout jPanelGradient1Layout = new javax.swing.GroupLayout(jPanelGradient1);
+        jPanelGradient1.setLayout(jPanelGradient1Layout);
+        jPanelGradient1Layout.setHorizontalGroup(
+            jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1379, Short.MAX_VALUE)
+        );
+        jPanelGradient1Layout.setVerticalGroup(
+            jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        pn_kanan.add(jPanelGradient1, java.awt.BorderLayout.PAGE_START);
+
+        pn_dasar.setBackground(new java.awt.Color(250, 250, 250));
+
+        pn_utama.setBackground(new java.awt.Color(255, 255, 255));
+        pn_utama.setPreferredSize(new java.awt.Dimension(1103, 508));
+        pn_utama.setLayout(new java.awt.BorderLayout());
 
         pn_kiri.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -684,32 +709,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(pn_kiri, java.awt.BorderLayout.LINE_START);
-
-        pn_kanan.setBackground(new java.awt.Color(255, 255, 255));
-        pn_kanan.setLayout(new java.awt.BorderLayout());
-
-        jPanelGradient1.setColorend(new java.awt.Color(0, 255, 255));
-        jPanelGradient1.setColorstart(new java.awt.Color(204, 204, 240));
-
-        javax.swing.GroupLayout jPanelGradient1Layout = new javax.swing.GroupLayout(jPanelGradient1);
-        jPanelGradient1.setLayout(jPanelGradient1Layout);
-        jPanelGradient1Layout.setHorizontalGroup(
-            jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1066, Short.MAX_VALUE)
-        );
-        jPanelGradient1Layout.setVerticalGroup(
-            jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
-        pn_kanan.add(jPanelGradient1, java.awt.BorderLayout.PAGE_START);
-
-        pn_dasar.setBackground(new java.awt.Color(250, 250, 250));
-
-        pn_utama.setBackground(new java.awt.Color(255, 255, 255));
-        pn_utama.setPreferredSize(new java.awt.Dimension(1103, 508));
-        pn_utama.setLayout(new java.awt.BorderLayout());
+        pn_utama.add(pn_kiri, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout pn_dasarLayout = new javax.swing.GroupLayout(pn_dasar);
         pn_dasar.setLayout(pn_dasarLayout);
@@ -717,14 +717,14 @@ public class MenuUtama extends javax.swing.JFrame {
             pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_dasarLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(pn_utama, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
+                .addComponent(pn_utama, javax.swing.GroupLayout.DEFAULT_SIZE, 1339, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
         );
         pn_dasarLayout.setVerticalGroup(
             pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_dasarLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(pn_utama, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(pn_utama, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
