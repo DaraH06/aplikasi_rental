@@ -8,10 +8,7 @@ package Main;
 import View.MenuDashboard;
 import java.awt.Color;
 
-/**
- *
- * @author mahar
- */
+
 public class MenuUtama extends javax.swing.JFrame {
 
     int xx , xy;
@@ -78,6 +75,12 @@ public class MenuUtama extends javax.swing.JFrame {
         pn_line8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         btn_dashboard8 = new javax.swing.JLabel();
+<<<<<<< Upstream, based on origin/refangga
+=======
+        pn_kanan = new javax.swing.JPanel();
+        pn_dasar = new javax.swing.JPanel();
+        pn_utama = new javax.swing.JPanel();
+>>>>>>> d594dcf dhemas commit
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -709,7 +712,20 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+<<<<<<< Upstream, based on origin/refangga
         pn_utama.add(pn_kiri, java.awt.BorderLayout.PAGE_START);
+=======
+        getContentPane().add(pn_kiri, java.awt.BorderLayout.LINE_START);
+
+        pn_kanan.setBackground(new java.awt.Color(255, 255, 255));
+        pn_kanan.setLayout(new java.awt.BorderLayout());
+
+        pn_dasar.setBackground(new java.awt.Color(250, 250, 250));
+
+        pn_utama.setBackground(new java.awt.Color(255, 255, 255));
+        pn_utama.setPreferredSize(new java.awt.Dimension(1103, 508));
+        pn_utama.setLayout(new java.awt.BorderLayout());
+>>>>>>> d594dcf dhemas commit
 
         javax.swing.GroupLayout pn_dasarLayout = new javax.swing.GroupLayout(pn_dasar);
         pn_dasar.setLayout(pn_dasarLayout);
@@ -724,7 +740,11 @@ public class MenuUtama extends javax.swing.JFrame {
             pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_dasarLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
+<<<<<<< Upstream, based on origin/refangga
                 .addComponent(pn_utama, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+=======
+                .addComponent(pn_utama, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+>>>>>>> d594dcf dhemas commit
                 .addContainerGap())
         );
 
@@ -922,7 +942,6 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private Palette.JPanelGradient jPanelGradient1;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_kiri;

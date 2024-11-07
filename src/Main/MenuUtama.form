@@ -41,6 +41,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
+<<<<<<< Upstream, based on origin/refangga
         <Container class="Palette.JPanelGradient" name="jPanelGradient1">
           <Properties>
             <Property name="colorend" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -69,6 +70,8 @@
             </DimensionLayout>
           </Layout>
         </Container>
+=======
+>>>>>>> d594dcf dhemas commit
         <Container class="javax.swing.JPanel" name="pn_dasar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -95,7 +98,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+<<<<<<< Upstream, based on origin/refangga
                       <Component id="pn_utama" pref="637" max="32767" attributes="0"/>
+=======
+                      <Component id="pn_utama" pref="618" max="32767" attributes="0"/>
+>>>>>>> d594dcf dhemas commit
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
