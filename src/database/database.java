@@ -8,7 +8,7 @@ public class database {
 
     public static Connection configDB() throws SQLException{
         try {
-            String url = "jdbc:mysql://localhost:3306/app_rental (1)";
+            String url = "jdbc:mysql://localhost:3306/app_rental";
             String user = "root";
             String pass = "";
             Class.forName("com.mysql.cj.jdbc.Driver");
