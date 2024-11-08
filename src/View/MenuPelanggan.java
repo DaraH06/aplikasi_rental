@@ -28,22 +28,6 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private void initComponents() {
 
         panelMain = new javax.swing.JPanel();
-        panelView = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_Custom1 = new Palette.JTable_Custom();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        custom_ButtonRounded2 = new Palette.Custom_ButtonRounded();
-        btn_tambah = new Palette.Custom_ButtonRounded();
-        jTextfieldRounded1 = new Palette.JTextfieldRounded();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        custom_ButtonRounded5 = new Palette.Custom_ButtonRounded();
         panelAdd = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -63,11 +47,118 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         rb_laki = new javax.swing.JRadioButton();
         rb_perempuan = new javax.swing.JRadioButton();
+        panelView = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_Custom1 = new Palette.JTable_Custom();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        custom_ButtonRounded2 = new Palette.Custom_ButtonRounded();
+        btn_tambah = new Palette.Custom_ButtonRounded();
+        jTextfieldRounded1 = new Palette.JTextfieldRounded();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        custom_ButtonRounded5 = new Palette.Custom_ButtonRounded();
 
         setLayout(new java.awt.CardLayout());
 
         panelMain.setBackground(new java.awt.Color(255, 255, 255));
         panelMain.setLayout(new java.awt.CardLayout());
+
+        panelAdd.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon1.png"))); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
+        jLabel6.setText("> Pelanggan");
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("Tambah Data Pelanggan");
+
+        custom_ButtonRounded6.setText("Simpan");
+        custom_ButtonRounded6.setFillClick(new java.awt.Color(0, 51, 102));
+        custom_ButtonRounded6.setFillOver(new java.awt.Color(41, 128, 185));
+
+        btn_batal_add.setText("Batal");
+        btn_batal_add.setFillClick(new java.awt.Color(153, 51, 0));
+        btn_batal_add.setFillOriginal(new java.awt.Color(255, 102, 0));
+        btn_batal_add.setFillOver(new java.awt.Color(204, 102, 0));
+        btn_batal_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_batal_addActionPerformed(evt);
+            }
+        });
+
+        txt_id.setForeground(new java.awt.Color(102, 102, 102));
+        txt_id.setText("ID_Pelanggan");
+        txt_id.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel8.setText("ID_Pelanggan");
+
+        txt_nama.setForeground(new java.awt.Color(102, 102, 102));
+        txt_nama.setText("Nama_Pelanggan");
+        txt_nama.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_namaActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel9.setText("Nama_Pelanggan");
+
+        txt_email.setForeground(new java.awt.Color(102, 102, 102));
+        txt_email.setText("Email");
+        txt_email.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText("Email");
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel11.setText("Jenis Kelamin");
+
+        txt_telepon.setForeground(new java.awt.Color(102, 102, 102));
+        txt_telepon.setText("Telepon");
+        txt_telepon.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel12.setText("Telepon");
+
+        jTextfieldRounded7.setForeground(new java.awt.Color(102, 102, 102));
+        jTextfieldRounded7.setText("Tanggal Bergabung");
+        jTextfieldRounded7.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel13.setText("Tanggal Bergabung");
+
+        rb_laki.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        rb_laki.setForeground(new java.awt.Color(51, 51, 51));
+        rb_laki.setText("Laki - Laki");
+
+        rb_perempuan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        rb_perempuan.setForeground(new java.awt.Color(51, 51, 51));
+        rb_perempuan.setText("Perempuan");
+        rb_perempuan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_perempuanActionPerformed(evt);
+            }
+        });
 
         panelView.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -233,99 +324,6 @@ public class MenuPelanggan extends javax.swing.JPanel {
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        panelMain.add(panelView, "card2");
-
-        panelAdd.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon1.png"))); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
-        jLabel6.setText("> Pelanggan");
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Tambah Data Pelanggan");
-
-        custom_ButtonRounded6.setText("Simpan");
-        custom_ButtonRounded6.setFillClick(new java.awt.Color(0, 51, 102));
-        custom_ButtonRounded6.setFillOver(new java.awt.Color(41, 128, 185));
-
-        btn_batal_add.setText("Batal");
-        btn_batal_add.setFillClick(new java.awt.Color(153, 51, 0));
-        btn_batal_add.setFillOriginal(new java.awt.Color(255, 102, 0));
-        btn_batal_add.setFillOver(new java.awt.Color(204, 102, 0));
-        btn_batal_add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_batal_addActionPerformed(evt);
-            }
-        });
-
-        txt_id.setForeground(new java.awt.Color(102, 102, 102));
-        txt_id.setText("ID_Pelanggan");
-        txt_id.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("ID_Pelanggan");
-
-        txt_nama.setForeground(new java.awt.Color(102, 102, 102));
-        txt_nama.setText("Nama_Pelanggan");
-        txt_nama.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-        txt_nama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_namaActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Nama_Pelanggan");
-
-        txt_email.setForeground(new java.awt.Color(102, 102, 102));
-        txt_email.setText("Email");
-        txt_email.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("Email");
-
-        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Jenis Kelamin");
-
-        txt_telepon.setForeground(new java.awt.Color(102, 102, 102));
-        txt_telepon.setText("Telepon");
-        txt_telepon.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        jLabel12.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("Telepon");
-
-        jTextfieldRounded7.setForeground(new java.awt.Color(102, 102, 102));
-        jTextfieldRounded7.setText("Tanggal Bergabung");
-        jTextfieldRounded7.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Tanggal Bergabung");
-
-        rb_laki.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        rb_laki.setForeground(new java.awt.Color(51, 51, 51));
-        rb_laki.setText("Laki - Laki");
-
-        rb_perempuan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        rb_perempuan.setForeground(new java.awt.Color(51, 51, 51));
-        rb_perempuan.setText("Perempuan");
-        rb_perempuan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_perempuanActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(panelAdd);
         panelAdd.setLayout(panelAddLayout);
         panelAddLayout.setHorizontalGroup(
@@ -333,6 +331,12 @@ public class MenuPelanggan extends javax.swing.JPanel {
             .addGroup(panelAddLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAddLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6))
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,16 +346,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                             .addComponent(jLabel11)
                             .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txt_nama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jTextfieldRounded7, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                            .addComponent(txt_telepon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(271, Short.MAX_VALUE))
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(panelAddLayout.createSequentialGroup()
                                 .addComponent(rb_laki)
                                 .addGap(18, 18, 18)
@@ -360,24 +355,29 @@ public class MenuPelanggan extends javax.swing.JPanel {
                                 .addComponent(custom_ButtonRounded6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(20, 20, 20))))
+                        .addGap(992, 992, 992)
+                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jTextfieldRounded7, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(txt_telepon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 12, Short.MAX_VALUE)))
+                .addGap(20, 20, 20))
+            .addGroup(panelAddLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelAddLayout.setVerticalGroup(
             panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAddLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(panelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(custom_ButtonRounded6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -411,7 +411,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rb_laki)
                     .addComponent(rb_perempuan))
-                .addGap(78, 78, 78))
+                .addGap(528, 528, 528))
         );
 
         panelMain.add(panelAdd, "card2");
