@@ -98,7 +98,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         CardPelanggan2.setBackground(new java.awt.Color(0, 255, 255));
@@ -142,7 +142,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan2)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         CardPelanggan4.setBackground(new java.awt.Color(0, 255, 255));
@@ -186,7 +186,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan4)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         CardPelanggan5.setBackground(new java.awt.Color(0, 255, 255));
@@ -230,7 +230,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan5)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         CardPelanggan6.setBackground(new java.awt.Color(0, 255, 255));
@@ -329,11 +329,11 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CardPelanggan6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(CardPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CardPelanggan2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CardPelanggan4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CardPelanggan5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CardPelanggan6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CardPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CardPelanggan2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CardPelanggan4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CardPelanggan5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)

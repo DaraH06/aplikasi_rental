@@ -62,11 +62,11 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="CardPelanggan6" pref="0" max="32767" attributes="0"/>
-                      <Component id="CardPelanggan" min="-2" pref="103" max="-2" attributes="0"/>
-                      <Component id="CardPelanggan2" min="-2" pref="103" max="-2" attributes="0"/>
-                      <Component id="CardPelanggan4" min="-2" pref="103" max="-2" attributes="0"/>
-                      <Component id="CardPelanggan5" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="CardPelanggan6" max="32767" attributes="0"/>
+                      <Component id="CardPelanggan" min="-2" max="-2" attributes="0"/>
+                      <Component id="CardPelanggan2" min="-2" max="-2" attributes="0"/>
+                      <Component id="CardPelanggan4" min="-2" max="-2" attributes="0"/>
+                      <Component id="CardPelanggan5" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
                               <Component id="lb_jumlah" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -197,7 +197,7 @@
                               <Component id="lb_jumlah2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -278,7 +278,7 @@
                               <Component id="lb_jumlah4" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -359,7 +359,7 @@
                               <Component id="lb_jumlah5" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
