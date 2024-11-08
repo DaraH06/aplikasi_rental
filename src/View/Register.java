@@ -152,7 +152,7 @@ public class Register extends javax.swing.JFrame {
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
         // TODO add your handling code here:
         try {
- refangga
+
            String sql = "insert into tbl_user (Nama_User, Email, Password, Level) values ('"
                     + txt_Nama_User.getText() + "', '"
                     + txt_email.getText() + "', '"
