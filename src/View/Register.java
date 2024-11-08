@@ -152,8 +152,12 @@ public class Register extends javax.swing.JFrame {
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
         // TODO add your handling code here:
         try {
-            String sql = "insert into akun values ('" + txt_Nama_User.getText ()
-                    + "','" + txt_password.getText() + "')";
+           String sql = "insert into tbl_user (Nama_User, Email, Password, Level) values ('"
+                    + txt_Nama_User.getText() + "', '"
+                    + txt_email.getText() + "', '"
+                    + txt_password.getText() + "', '"
+                    + txt_level.getText() + "')";
+
             java.sql.Connection con = (Connection)database.configDB();
             java.sql.PreparedStatement pst=con.prepareStatement(sql);
             pst.execute();
