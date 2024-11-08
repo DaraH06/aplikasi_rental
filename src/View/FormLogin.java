@@ -5,15 +5,19 @@
  */
 package View;
 
+import Main.MenuUtama;
+import database.database;
 import java.awt.Color;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 public class FormLogin extends javax.swing.JFrame {
 
     int xx, xy;
-    
+
     public FormLogin() {
         initComponents();
-        
+
         setBackground(new Color(0, 0, 0, 0));
     }
 
@@ -30,11 +34,11 @@ public class FormLogin extends javax.swing.JFrame {
         panelcustom1 = new Palette.Panelcustom();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextfieldRounded1 = new Palette.JTextfieldRounded();
+        txt_username = new Palette.JTextfieldRounded();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        custom_JPasswordFieldRounded1 = new Palette.Custom_JPasswordFieldRounded();
+        txt_password = new Palette.Custom_JPasswordFieldRounded();
         jLabel5 = new javax.swing.JLabel();
         custom_ButtonRounded1 = new Palette.Custom_ButtonRounded();
 
@@ -92,7 +96,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTextfieldRounded1.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        txt_username.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
@@ -105,10 +109,10 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         jLabel4.setText("RENTAL PLAYSTATION ");
 
-        custom_JPasswordFieldRounded1.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        custom_JPasswordFieldRounded1.addActionListener(new java.awt.event.ActionListener() {
+        txt_password.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        txt_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custom_JPasswordFieldRounded1ActionPerformed(evt);
+                txt_passwordActionPerformed(evt);
             }
         });
 
@@ -135,9 +139,9 @@ public class FormLogin extends javax.swing.JFrame {
                         .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(custom_JPasswordFieldRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(custom_ButtonRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextfieldRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(90, 90, 90))
                     .addGroup(panelcustom2Layout.createSequentialGroup()
@@ -162,11 +166,11 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextfieldRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(custom_JPasswordFieldRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(custom_ButtonRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -201,12 +205,32 @@ public class FormLogin extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_formMouseDragged
 
-    private void custom_JPasswordFieldRounded1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_JPasswordFieldRounded1ActionPerformed
+    private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_custom_JPasswordFieldRounded1ActionPerformed
+    }//GEN-LAST:event_txt_passwordActionPerformed
 
     private void custom_ButtonRounded1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_ButtonRounded1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            String sql = "SELECT * FROM tbl_user where Nama_User = '" + txt_username.getText()
+                    + "'AND Password ='" + txt_password.getText() + "'";
+            java.sql.Connection con = (Connection) database.configDB();
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                if (txt_username.getText().equals(rs.getString("Nama_User")) 
+                    && txt_password.getText().equals(rs.getString("Password"))){
+                    JOptionPane.showMessageDialog(null, "Berhasil  Login");
+                    this.setVisible(false);
+                    new MenuUtama().setVisible(true);
+                }
+            }else {
+                JOptionPane.showMessageDialog(null, "Username atau Password salah");
+            }
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+//        new MenuUtama().show();
+//        this.dispose();
     }//GEN-LAST:event_custom_ButtonRounded1ActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -251,15 +275,15 @@ public class FormLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Palette.Custom_ButtonRounded custom_ButtonRounded1;
-    private Palette.Custom_JPasswordFieldRounded custom_JPasswordFieldRounded1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private Palette.JTextfieldRounded jTextfieldRounded1;
     private Palette.Panelcustom panelcustom1;
     private Palette.Panelcustom panelcustom2;
+    private Palette.Custom_JPasswordFieldRounded txt_password;
+    private Palette.JTextfieldRounded txt_username;
     // End of variables declaration//GEN-END:variables
 }
