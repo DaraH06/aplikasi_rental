@@ -98,11 +98,11 @@ public class MenuUtama extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Gaming Hand.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Natus G");
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("MASTER DATA");
 
@@ -123,7 +123,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/iMac.png"))); // NOI18N
 
-        btn_dashboard.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_dashboard.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_dashboard.setForeground(new java.awt.Color(102, 102, 102));
         btn_dashboard.setText("Dashboard");
         btn_dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -179,7 +179,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon1.png"))); // NOI18N
 
-        btn_pelanggan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_pelanggan.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_pelanggan.setForeground(new java.awt.Color(102, 102, 102));
         btn_pelanggan.setText("Pelanggan");
         btn_pelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,7 +235,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon2.png"))); // NOI18N
 
-        btn_konsol.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_konsol.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_konsol.setForeground(new java.awt.Color(102, 102, 102));
         btn_konsol.setText("Konsol");
         btn_konsol.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -291,7 +291,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon6.png"))); // NOI18N
 
-        btn_users.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_users.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_users.setForeground(new java.awt.Color(102, 102, 102));
         btn_users.setText("Users");
         btn_users.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,7 +330,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addGap(5, 5, 5))
         );
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setText("TRANSAKSI");
 
@@ -351,7 +351,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon3.png"))); // NOI18N
 
-        btn_trs_sewa.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_trs_sewa.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_trs_sewa.setForeground(new java.awt.Color(102, 102, 102));
         btn_trs_sewa.setText("Sewa");
         btn_trs_sewa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -407,7 +407,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon4.png"))); // NOI18N
 
-        btn_trs_pengembalian.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_trs_pengembalian.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_trs_pengembalian.setForeground(new java.awt.Color(102, 102, 102));
         btn_trs_pengembalian.setText("Pengembalian");
         btn_trs_pengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -463,7 +463,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon5.png"))); // NOI18N
 
-        btn_trs_rental.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_trs_rental.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_trs_rental.setForeground(new java.awt.Color(102, 102, 102));
         btn_trs_rental.setText("Rental");
         btn_trs_rental.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -502,7 +502,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addGap(5, 5, 5))
         );
 
-        jLabel12.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("LAPORAN");
 
@@ -523,7 +523,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon7.png"))); // NOI18N
 
-        btn_lpr_sewa.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_lpr_sewa.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_lpr_sewa.setForeground(new java.awt.Color(102, 102, 102));
         btn_lpr_sewa.setText("Sewa");
         btn_lpr_sewa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -579,7 +579,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon7.png"))); // NOI18N
 
-        btn_lpr_rental.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btn_lpr_rental.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_lpr_rental.setForeground(new java.awt.Color(102, 102, 102));
         btn_lpr_rental.setText("Rental");
         btn_lpr_rental.addMouseListener(new java.awt.event.MouseAdapter() {

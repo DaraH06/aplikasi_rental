@@ -63,11 +63,11 @@ public class MenuDashboard extends javax.swing.JPanel {
         CardPelanggan.setRoundTopLeft(30);
         CardPelanggan.setRoundTopRight(30);
 
-        lb_pelanggan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lb_pelanggan.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan.setForeground(new java.awt.Color(153, 153, 153));
         lb_pelanggan.setText("PELANGGAN");
 
-        lb_jumlah.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
+        lb_jumlah.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         lb_jumlah.setForeground(new java.awt.Color(204, 204, 240));
         lb_jumlah.setText("100");
 
@@ -98,7 +98,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         CardPelanggan2.setBackground(new java.awt.Color(0, 255, 255));
@@ -107,11 +107,11 @@ public class MenuDashboard extends javax.swing.JPanel {
         CardPelanggan2.setRoundTopLeft(30);
         CardPelanggan2.setRoundTopRight(30);
 
-        lb_pelanggan2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lb_pelanggan2.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan2.setForeground(new java.awt.Color(153, 153, 153));
         lb_pelanggan2.setText("KONSOL");
 
-        lb_jumlah2.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
+        lb_jumlah2.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         lb_jumlah2.setForeground(new java.awt.Color(204, 204, 240));
         lb_jumlah2.setText("100");
 
@@ -142,7 +142,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan2)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah2)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         CardPelanggan4.setBackground(new java.awt.Color(0, 255, 255));
@@ -151,11 +151,11 @@ public class MenuDashboard extends javax.swing.JPanel {
         CardPelanggan4.setRoundTopLeft(30);
         CardPelanggan4.setRoundTopRight(30);
 
-        lb_pelanggan4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lb_pelanggan4.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan4.setForeground(new java.awt.Color(102, 102, 102));
         lb_pelanggan4.setText("SEWA");
 
-        lb_jumlah4.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
+        lb_jumlah4.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         lb_jumlah4.setForeground(new java.awt.Color(204, 204, 240));
         lb_jumlah4.setText("100");
 
@@ -186,7 +186,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan4)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah4)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         CardPelanggan5.setBackground(new java.awt.Color(0, 255, 255));
@@ -195,11 +195,11 @@ public class MenuDashboard extends javax.swing.JPanel {
         CardPelanggan5.setRoundTopLeft(30);
         CardPelanggan5.setRoundTopRight(30);
 
-        lb_pelanggan5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lb_pelanggan5.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan5.setForeground(new java.awt.Color(153, 153, 153));
         lb_pelanggan5.setText("PENGEMBALIAN");
 
-        lb_jumlah5.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
+        lb_jumlah5.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         lb_jumlah5.setForeground(new java.awt.Color(204, 204, 240));
         lb_jumlah5.setText("100");
 
@@ -212,11 +212,15 @@ public class MenuDashboard extends javax.swing.JPanel {
         CardPelanggan5Layout.setHorizontalGroup(
             CardPelanggan5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CardPelanggan5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CardPelanggan5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_pelanggan5)
-                    .addComponent(lb_jumlah5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(CardPelanggan5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb_pelanggan5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(CardPelanggan5Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(lb_jumlah5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(lb_IconPelanggan5)
                 .addContainerGap())
         );
@@ -230,7 +234,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                         .addComponent(lb_pelanggan5)
                         .addGap(20, 20, 20)
                         .addComponent(lb_jumlah5)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         CardPelanggan6.setBackground(new java.awt.Color(0, 255, 255));
@@ -239,11 +243,11 @@ public class MenuDashboard extends javax.swing.JPanel {
         CardPelanggan6.setRoundTopLeft(30);
         CardPelanggan6.setRoundTopRight(30);
 
-        lb_pelanggan6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lb_pelanggan6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan6.setForeground(new java.awt.Color(153, 153, 153));
         lb_pelanggan6.setText("RENTAL");
 
-        lb_jumlah6.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
+        lb_jumlah6.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         lb_jumlah6.setForeground(new java.awt.Color(204, 204, 240));
         lb_jumlah6.setText("100");
 
@@ -290,11 +294,11 @@ public class MenuDashboard extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable_Custom1);
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Riwayat Sewa PlayStation");
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
         jLabel2.setText("> Dashboard");

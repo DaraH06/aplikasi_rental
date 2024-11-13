@@ -1,9 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
+
+import com.mysql.cj.protocol.Resultset;
+import database.database_two;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,8 +23,19 @@ public class MenuPelanggan extends javax.swing.JPanel {
     /**
      * Creates new form MenuDashboard
      */
+    private int HalamanSaatIni = 1;
+    private int DataperHalaman = 14;
+    private int totalpages;
+
+    private final Connection con;
+
     public MenuPelanggan() {
+        con = database_two.con();
         initComponents();
+        loadData();
+        setTabelModel();
+        resetForm();
+//        insertData();
     }
 
     /**
@@ -27,28 +47,29 @@ public class MenuPelanggan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rbJenisKelamin = new javax.swing.ButtonGroup();
         panelMain = new javax.swing.JPanel();
         panelView = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_Custom1 = new Palette.JTable_Custom();
+        tbl_data = new Palette.JTable_Custom();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        custom_ButtonRounded2 = new Palette.Custom_ButtonRounded();
+        btn_hapus = new Palette.Custom_ButtonRounded();
         btn_tambah = new Palette.Custom_ButtonRounded();
-        jTextfieldRounded1 = new Palette.JTextfieldRounded();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txt_search = new Palette.JTextfieldRounded();
+        btn_first = new javax.swing.JButton();
+        btn_before = new javax.swing.JButton();
+        cbx_data = new javax.swing.JComboBox<>();
+        btn_next = new javax.swing.JButton();
+        btn_last = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        custom_ButtonRounded5 = new Palette.Custom_ButtonRounded();
+        btn_cancel = new Palette.Custom_ButtonRounded();
         panelAdd = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        custom_ButtonRounded6 = new Palette.Custom_ButtonRounded();
+        btn_simpan = new Palette.Custom_ButtonRounded();
         btn_batal_add = new Palette.Custom_ButtonRounded();
         txt_id = new Palette.JTextfieldRounded();
         jLabel8 = new javax.swing.JLabel();
@@ -59,10 +80,10 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         txt_telepon = new Palette.JTextfieldRounded();
         jLabel12 = new javax.swing.JLabel();
-        jTextfieldRounded7 = new Palette.JTextfieldRounded();
-        jLabel13 = new javax.swing.JLabel();
         rb_laki = new javax.swing.JRadioButton();
         rb_perempuan = new javax.swing.JRadioButton();
+        jLabel14 = new javax.swing.JLabel();
+        txt_alamat = new Palette.JTextfieldRounded();
 
         setLayout(new java.awt.CardLayout());
 
@@ -71,18 +92,29 @@ public class MenuPelanggan extends javax.swing.JPanel {
 
         panelView.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable_Custom1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_data.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        jScrollPane1.setViewportView(jTable_Custom1);
+        tbl_data.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        tbl_data.setSelectionForeground(new java.awt.Color(204, 255, 51));
+        tbl_data.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_dataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_data);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
@@ -97,13 +129,13 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Data Pelanggan");
 
-        custom_ButtonRounded2.setText("Hapus");
-        custom_ButtonRounded2.setFillClick(new java.awt.Color(153, 0, 51));
-        custom_ButtonRounded2.setFillOriginal(new java.awt.Color(255, 0, 51));
-        custom_ButtonRounded2.setFillOver(new java.awt.Color(204, 0, 51));
-        custom_ButtonRounded2.addActionListener(new java.awt.event.ActionListener() {
+        btn_hapus.setText("Hapus");
+        btn_hapus.setFillClick(new java.awt.Color(153, 0, 51));
+        btn_hapus.setFillOriginal(new java.awt.Color(255, 0, 51));
+        btn_hapus.setFillOver(new java.awt.Color(204, 0, 51));
+        btn_hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custom_ButtonRounded2ActionPerformed(evt);
+                btn_hapusActionPerformed(evt);
             }
         });
 
@@ -116,37 +148,47 @@ public class MenuPelanggan extends javax.swing.JPanel {
             }
         });
 
-        jTextfieldRounded1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextfieldRounded1.setText("Search");
-        jTextfieldRounded1.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        jButton1.setText("First Page");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        txt_search.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search.setText("Search");
+        txt_search.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_searchKeyTyped(evt);
             }
         });
 
-        jButton2.setText("<");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_first.setText("First Page");
+        btn_first.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_firstActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "16", "32", "64" }));
-
-        jButton3.setText(">");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_before.setText("<");
+        btn_before.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_beforeActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Last Page");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        cbx_data.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "16", "32", "64" }));
+        cbx_data.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                cbx_dataActionPerformed(evt);
+            }
+        });
+
+        btn_next.setText(">");
+        btn_next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nextActionPerformed(evt);
+            }
+        });
+
+        btn_last.setText("Last Page");
+        btn_last.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_lastActionPerformed(evt);
             }
         });
 
@@ -154,13 +196,13 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Halaman of Total Halaman");
 
-        custom_ButtonRounded5.setText("Batal");
-        custom_ButtonRounded5.setFillClick(new java.awt.Color(153, 51, 0));
-        custom_ButtonRounded5.setFillOriginal(new java.awt.Color(255, 102, 0));
-        custom_ButtonRounded5.setFillOver(new java.awt.Color(204, 102, 0));
-        custom_ButtonRounded5.addActionListener(new java.awt.event.ActionListener() {
+        btn_cancel.setText("Batal");
+        btn_cancel.setFillClick(new java.awt.Color(153, 51, 0));
+        btn_cancel.setFillOriginal(new java.awt.Color(255, 102, 0));
+        btn_cancel.setFillOver(new java.awt.Color(204, 102, 0));
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custom_ButtonRounded5ActionPerformed(evt);
+                btn_cancelActionPerformed(evt);
             }
         });
 
@@ -168,22 +210,6 @@ public class MenuPelanggan extends javax.swing.JPanel {
         panelView.setLayout(panelViewLayout);
         panelViewLayout.setHorizontalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelViewLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
-                .addContainerGap(414, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(366, 366, 366))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -193,18 +219,36 @@ public class MenuPelanggan extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
                                 .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(custom_ButtonRounded2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(custom_ButtonRounded5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
                         .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextfieldRounded1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_search, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(19, 19, 19))
+            .addGroup(panelViewLayout.createSequentialGroup()
+                .addGap(345, 345, 345)
+                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelViewLayout.createSequentialGroup()
+                        .addComponent(btn_first)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_before)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_next)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_last))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addGap(27, 27, 27)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelViewLayout.setVerticalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,20 +261,21 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(custom_ButtonRounded2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(custom_ButtonRounded5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextfieldRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_first, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_before, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_next, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_last, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         panelMain.add(panelView, "card2");
@@ -250,9 +295,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Tambah Data Pelanggan");
 
-        custom_ButtonRounded6.setText("Simpan");
-        custom_ButtonRounded6.setFillClick(new java.awt.Color(0, 51, 102));
-        custom_ButtonRounded6.setFillOver(new java.awt.Color(41, 128, 185));
+        btn_simpan.setText("Simpan");
+        btn_simpan.setFillClick(new java.awt.Color(0, 51, 102));
+        btn_simpan.setFillOver(new java.awt.Color(41, 128, 185));
+        btn_simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_simpanActionPerformed(evt);
+            }
+        });
 
         btn_batal_add.setText("Batal");
         btn_batal_add.setFillClick(new java.awt.Color(153, 51, 0));
@@ -267,6 +317,11 @@ public class MenuPelanggan extends javax.swing.JPanel {
         txt_id.setForeground(new java.awt.Color(102, 102, 102));
         txt_id.setText("ID_Pelanggan");
         txt_id.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
@@ -305,18 +360,12 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("Telepon");
 
-        jTextfieldRounded7.setForeground(new java.awt.Color(102, 102, 102));
-        jTextfieldRounded7.setText("Tanggal Bergabung");
-        jTextfieldRounded7.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Tanggal Bergabung");
-
+        rbJenisKelamin.add(rb_laki);
         rb_laki.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         rb_laki.setForeground(new java.awt.Color(51, 51, 51));
         rb_laki.setText("Laki - Laki");
 
+        rbJenisKelamin.add(rb_perempuan);
         rb_perempuan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         rb_perempuan.setForeground(new java.awt.Color(51, 51, 51));
         rb_perempuan.setText("Perempuan");
@@ -326,6 +375,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel14.setText("Alamat");
+
+        txt_alamat.setForeground(new java.awt.Color(102, 102, 102));
+        txt_alamat.setText("Alamat");
+        txt_alamat.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
         javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(panelAdd);
         panelAdd.setLayout(panelAddLayout);
         panelAddLayout.setHorizontalGroup(
@@ -334,22 +391,21 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAddLayout.createSequentialGroup()
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
-                            .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txt_nama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txt_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_nama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jTextfieldRounded7, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                            .addComponent(txt_telepon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(271, Short.MAX_VALUE))
+                            .addComponent(jLabel14)
+                            .addComponent(txt_alamat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_telepon, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelAddLayout.createSequentialGroup()
@@ -357,15 +413,15 @@ public class MenuPelanggan extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(rb_perempuan))
                             .addGroup(panelAddLayout.createSequentialGroup()
-                                .addComponent(custom_ButtonRounded6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 739, Short.MAX_VALUE))
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 598, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(20, 20, 20))))
         );
@@ -379,7 +435,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(custom_ButtonRounded6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -398,9 +454,9 @@ public class MenuPelanggan extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelAddLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                        .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextfieldRounded7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -420,35 +476,40 @@ public class MenuPelanggan extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_batal_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batal_addActionPerformed
-        panelMain.removeAll();
-        panelMain.add(panelView);
-        panelMain.repaint();
-        panelMain.revalidate();
+        showPanel();
+        loadData();
     }//GEN-LAST:event_btn_batal_addActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btn_lastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lastActionPerformed
+        HalamanSaatIni = totalpages;
+    }//GEN-LAST:event_btn_lastActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
+        if (HalamanSaatIni < totalpages) {
+            HalamanSaatIni++;
+//            loadData();
+        }
+    }//GEN-LAST:event_btn_nextActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btn_beforeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_beforeActionPerformed
+        if (HalamanSaatIni > 1) {
+            HalamanSaatIni--;
+//            loadData();
+        }
+    }//GEN-LAST:event_btn_beforeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_firstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_firstActionPerformed
+        HalamanSaatIni = 1;
+    }//GEN-LAST:event_btn_firstActionPerformed
 
-    private void custom_ButtonRounded2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_ButtonRounded2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_custom_ButtonRounded2ActionPerformed
+    private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
+        hapusData();
+    }//GEN-LAST:event_btn_hapusActionPerformed
 
-    private void custom_ButtonRounded5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_ButtonRounded5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_custom_ButtonRounded5ActionPerformed
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        showPanel();
+        loadData();
+    }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void txt_namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_namaActionPerformed
         // TODO add your handling code here:
@@ -463,25 +524,66 @@ public class MenuPelanggan extends javax.swing.JPanel {
         panelMain.add(panelAdd);
         panelMain.repaint();
         panelMain.revalidate();
+
+        try {
+            // Memanggil setIDPelanggan dan menangani SQLException
+            txt_id.setText(setIDPelanggan());
+            if (btn_tambah.getText().equals("UBAH")) {
+                dataTabel();
+                btn_simpan.setText("PERBARUI");
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_btn_tambahActionPerformed
+
+    private void cbx_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_dataActionPerformed
+        DataperHalaman = Integer.parseInt(cbx_data.getSelectedItem().toString());
+        HalamanSaatIni = 1;
+//        loadData();
+    }//GEN-LAST:event_cbx_dataActionPerformed
+
+    private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
+        if (btn_simpan.getText().equals("TAMBAH")) {
+            btn_simpan.setText("SIMPAN");
+        } else if (btn_simpan.getText().equals("SIMPAN")) {
+            insertData();
+        } else if (btn_simpan.getText().equals("PERBARUI")) {
+            updateData();
+        }
+    }//GEN-LAST:event_btn_simpanActionPerformed
+
+    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
+
+    }//GEN-LAST:event_txt_idActionPerformed
+
+    private void tbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_dataMouseClicked
+        btn_tambah.setText("UBAH");  // Ubah tombol tambah menjadi ubah saat data di tabel dipilih
+        btn_simpan.setText("PERBARUI");  // Ubah tombol simpan menjadi perbarui saat data dipilih
+        btn_cancel.setVisible(true);  // Tampilkan tombol batal
+    }//GEN-LAST:event_tbl_dataMouseClicked
+
+    private void txt_searchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyTyped
+        searchData();
+    }//GEN-LAST:event_txt_searchKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Palette.Custom_ButtonRounded btn_batal_add;
+    private javax.swing.JButton btn_before;
+    private Palette.Custom_ButtonRounded btn_cancel;
+    private javax.swing.JButton btn_first;
+    private Palette.Custom_ButtonRounded btn_hapus;
+    private javax.swing.JButton btn_last;
+    private javax.swing.JButton btn_next;
+    private Palette.Custom_ButtonRounded btn_simpan;
     private Palette.Custom_ButtonRounded btn_tambah;
-    private Palette.Custom_ButtonRounded custom_ButtonRounded2;
-    private Palette.Custom_ButtonRounded custom_ButtonRounded5;
-    private Palette.Custom_ButtonRounded custom_ButtonRounded6;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbx_data;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -491,17 +593,269 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private Palette.JTable_Custom jTable_Custom1;
-    private Palette.JTextfieldRounded jTextfieldRounded1;
-    private Palette.JTextfieldRounded jTextfieldRounded7;
     private javax.swing.JPanel panelAdd;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelView;
+    private javax.swing.ButtonGroup rbJenisKelamin;
     private javax.swing.JRadioButton rb_laki;
     private javax.swing.JRadioButton rb_perempuan;
+    private Palette.JTable_Custom tbl_data;
+    private Palette.JTextfieldRounded txt_alamat;
     private Palette.JTextfieldRounded txt_email;
     private Palette.JTextfieldRounded txt_id;
     private Palette.JTextfieldRounded txt_nama;
+    private Palette.JTextfieldRounded txt_search;
     private Palette.JTextfieldRounded txt_telepon;
     // End of variables declaration//GEN-END:variables
+
+    private void loadData() {
+        getData((DefaultTableModel) tbl_data.getModel());
+        btn_hapus.setVisible(false);
+        btn_cancel.setVisible(false);
+    }
+
+    private void showPanel() {
+        panelMain.removeAll();
+        panelMain.add(new MenuPelanggan());
+        panelMain.repaint();
+        panelMain.revalidate();
+    }
+
+    private void resetForm() {
+        txt_id.setText("");
+        txt_nama.setText("");
+        txt_email.setText("");
+        txt_telepon.setText("");
+        rbJenisKelamin.clearSelection();
+        txt_alamat.setText("");
+    }
+
+    private void setTabelModel() {
+        String[] columnNames = {
+            "ID",
+            "Nama",
+            "Email",
+            "Telepon",
+            "Jenis Kelamin",
+            "Alamat"
+        };
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        tbl_data.setModel(model);
+        getData(model);
+    }
+
+    private void getData(DefaultTableModel model) {
+        model.setRowCount(0);
+
+        try {
+            String sql = "SELECT * FROM tbl_pelanggan";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                ResultSet rs = st.executeQuery();
+
+                while (rs.next()) {
+                    String IdPelanggan = rs.getString("ID_Pelanggan");
+                    String NamaPelanggan = rs.getString("Nama");
+                    String EmailPelanggan = rs.getString("Email");
+                    String TeleponPelanggan = rs.getString("Telepon");
+                    String JkPelanggan = rs.getString("Jenis_Kelamin");
+                    String AlamatPelanggan = rs.getString("Alamat");
+
+                    Object[] rowData = {IdPelanggan, NamaPelanggan, EmailPelanggan, TeleponPelanggan, JkPelanggan, AlamatPelanggan};
+                    model.addRow(rowData);
+                }
+            }
+        } catch (Exception e) {
+            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+    }
+
+    private String setIDPelanggan() throws SQLException {
+        String urutan = null;
+        Date now = new Date();
+        SimpleDateFormat noFormat = new SimpleDateFormat("yyMM");
+        String no = noFormat.format(now);
+
+        String sql = "SELECT RIGHT(ID_Pelanggan, 3) AS Nomor "
+                + "FROM tbl_pelanggan "
+                + "WHERE ID_Pelanggan LIKE 'PLGN" + no + "%' "
+                + "ORDER BY ID_Pelanggan DESC "
+                + "LIMIT 1";
+
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                int nomor = Integer.parseInt(rs.getString("nomor")) + 1;
+                urutan = "PLGN" + no + String.format("%03d", nomor);
+            } else {
+                urutan = "PLGN" + no + "001";
+            }
+        } catch (SQLException e) {
+            java.util.logging.Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return urutan;
+    }
+
+    private void insertData() {
+        String IdPelanggan = txt_id.getText();
+        String NamaPelanggan = txt_nama.getText();
+        String EmailPelanggan = txt_email.getText();
+        String TeleponPelanggan = txt_telepon.getText();
+        String JkPelanggan = rb_laki.isSelected() ? rb_laki.getText() : rb_perempuan.isSelected() ? rb_perempuan.getText() : "";
+        String AlamatPelanggan = txt_alamat.getText();
+
+        // Validasi input data
+        if (IdPelanggan.isEmpty() || NamaPelanggan.isEmpty() || EmailPelanggan.isEmpty() || TeleponPelanggan.isEmpty()
+                || JkPelanggan.isEmpty() || AlamatPelanggan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Insert data ke database
+        try {
+            String sql = "INSERT INTO tbl_pelanggan (ID_Pelanggan, Nama, Email, Telepon, Jenis_Kelamin, Alamat) VALUES (?,?,?,?,?,?)";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, IdPelanggan);
+                st.setString(2, NamaPelanggan);
+                st.setString(3, EmailPelanggan);
+                st.setString(4, TeleponPelanggan);
+                st.setString(5, JkPelanggan);
+                st.setString(6, AlamatPelanggan);
+
+                int rowInserted = st.executeUpdate();
+                if (rowInserted > 0) {
+                    JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan");
+                    resetForm(); // Kosongkan text field setelah data berhasil ditambahkan
+                    loadData();  // Memuat data ke tampilan JTable atau komponen lainnya
+                    showPanel();
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    private void dataTabel() {
+        panelView.setVisible(false);
+        panelAdd.setVisible(true);
+
+        int row = tbl_data.getSelectedRow();
+        jLabel7.setText("PERBARUI DATA PELANGGAN");
+
+        txt_id.setEnabled(false);
+
+        txt_id.setText(tbl_data.getValueAt(row, 0).toString());
+        txt_nama.setText(tbl_data.getValueAt(row, 1).toString());
+        txt_email.setText(tbl_data.getValueAt(row, 2).toString());
+        txt_telepon.setText(tbl_data.getValueAt(row, 3).toString());
+
+        String jenisKelamin = tbl_data.getValueAt(row, 4).toString();
+        if (jenisKelamin.equals("Laki - Laki")) {
+            rb_laki.setSelected(true);
+        } else if (jenisKelamin.equals("Perempuan")) {
+            rb_perempuan.setSelected(true);
+        }
+
+        txt_alamat.setText(tbl_data.getValueAt(row, 5).toString());
+    }
+
+    private void updateData() {
+        String IdPelanggan = txt_id.getText();
+        String NamaPelanggan = txt_nama.getText();
+        String EmailPelanggan = txt_email.getText();
+        String TeleponPelanggan = txt_telepon.getText();
+        String JkPelanggan = rb_laki.isSelected() ? rb_laki.getText() : rb_perempuan.isSelected() ? rb_perempuan.getText() : "";
+        String AlamatPelanggan = txt_alamat.getText();
+
+        // Validasi input data
+        if (IdPelanggan.isEmpty() || NamaPelanggan.isEmpty() || EmailPelanggan.isEmpty() || TeleponPelanggan.isEmpty()
+                || JkPelanggan.isEmpty() || AlamatPelanggan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Insert data ke database
+        try {
+            String sql = "UPDATE tbl_pelanggan SET Nama=?, Email=?,Telepon=?, Jenis_Kelamin=?, Alamat=? WHERE ID_Pelanggan=?";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, NamaPelanggan);
+                st.setString(2, EmailPelanggan);
+                st.setString(3, TeleponPelanggan);
+                st.setString(4, JkPelanggan);
+                st.setString(5, AlamatPelanggan);
+                st.setString(6, IdPelanggan);
+
+                int rowUpdated = st.executeUpdate();
+                if (rowUpdated > 0) {
+                    JOptionPane.showMessageDialog(this, "Data Berhasil Diperbarui");
+                    resetForm(); // Kosongkan text field setelah data berhasil ditambahkan
+                    loadData();  // Memuat data ke tampilan JTable atau komponen lainnya
+                    showPanel();
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    private void hapusData() {
+        int selectedRow = tbl_data.getSelectedRow();
+        int confirm = JOptionPane.showConfirmDialog(this, "Apakah yakin ingin menghapus data ini?", "Konfirmasi Hapus Data", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            String id = tbl_data.getValueAt(selectedRow, 0).toString();
+            try {
+                String sql = "DELETE FROM tbl_pelanggan WHERE ID_Pelanggan=?";
+                try (PreparedStatement st = con.prepareStatement(sql)) {
+                    st.setString(1, id);
+
+                    int rowDeleted = st.executeUpdate();
+                    if (rowDeleted > 0) {
+                        JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Data Gagal Dihapus");
+                    }
+                }
+            } catch (Exception e) {
+                Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+            }
+            resetForm();
+            loadData();
+            showPanel();
+        }
+    }
+
+    private void searchData() {
+        String kataKunci = txt_search.getText();
+
+        DefaultTableModel model = (DefaultTableModel) tbl_data.getModel();
+        model.setRowCount(0);
+
+        try {
+            String sql = "SELECT * FROM tbl_pelanggan WHERE Nama LIKE ? OR Alamat LIKE ?";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, "%" + kataKunci + "%");
+                st.setString(2, "%" + kataKunci + "%");
+
+                ResultSet rs = st.executeQuery();
+
+                while (rs.next()) {
+                    String IdPelanggan = rs.getString("ID_Pelanggan");
+                    String NamaPelanggan = rs.getString("Nama");
+                    String EmailPelanggan = rs.getString("Email");
+                    String TeleponPelanggan = rs.getString("Telepon");
+                    String JkPelanggan = rs.getString("Jenis_Kelamin");
+                    String AlamatPelanggan = rs.getString("Alamat");
+
+                    Object[] rowData = {IdPelanggan, NamaPelanggan, EmailPelanggan, TeleponPelanggan, JkPelanggan, AlamatPelanggan};
+                    model.addRow(rowData);
+                }
+            }
+        } catch (Exception e) {
+            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+    }
+
 }
