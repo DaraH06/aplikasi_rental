@@ -5,6 +5,7 @@
 package View;
 
 import database.database;
+import database.database_two;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -159,7 +160,9 @@ public class Register extends javax.swing.JFrame {
                     + txt_password.getText() + "', '"
                     + txt_level.getText() + "')";
 
-            java.sql.Connection con = (Connection)database.configDB();
+            java.sql.Connection con = (Connection)database_two.con();
+
+
             java.sql.PreparedStatement pst=con.prepareStatement(sql);
 
             pst.execute();
