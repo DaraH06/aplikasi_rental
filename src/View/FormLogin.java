@@ -82,7 +82,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login (1).png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login.png"))); // NOI18N
 
         txt_username.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         txt_username.addActionListener(new java.awt.event.ActionListener() {
