@@ -631,6 +631,46 @@ public class MenuKategori extends javax.swing.JPanel {
         return urutan;
     }
 
+    // validasiNama() - diperlukan untuk memastikan bahwa setiap nama kategori yang dimasukkan pengguna unik
+    //Menggunakan tipe data boolean untuk fungsi validasiNama bertujuan
+    //agar fungsi ini dapat memberikan hasil berupa status validasi dengan dua kemungkinan:true dan false
+    public boolean validasiNama() {
+        // Variabel untuk menyimpan status validasi, default-nya adalah false
+        boolean valid = false;
+
+        // Mengambil data dari form
+        String IdKategori = txt_id.getText(); // ID kategori yang diinput pengguna
+        String NamaKategori = txt_nama.getText(); // Nama kategori yang diinput pengguna
+
+        // Query SQL untuk memeriksa apakah nama kategori sudah ada di database,
+        // kecuali untuk kategori dengan ID yang sedang diupdate (ID_Kategori != IdKategori)
+        // Menggunakan LIKE BINARY agar pencarian bersifat case-sensitive
+        String sql = "SELECT Nama_Kategori FROM tbl_kategori WHERE ID_Kategori!='" + IdKategori + "' AND Nama_Kategori LIKE BINARY '" + NamaKategori + "'";
+
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            // Eksekusi query
+            ResultSet rs = st.executeQuery();
+
+            // Mengecek apakah hasil query mengembalikan data
+            if (rs.next()) {
+                // Jika ada data, berarti nama kategori sudah ada
+                JOptionPane.showMessageDialog(this,
+                        "Nama Kategori sudah ada\nSilahkan input nama kategori yang berbeda",
+                        "Peringatan",
+                        JOptionPane.WARNING_MESSAGE);
+            } else {
+                // Jika tidak ada data, berarti nama kategori valid
+                valid = true;
+            }
+        } catch (SQLException e) {
+            // Menangkap dan mencatat error jika terjadi kesalahan SQL
+            Logger.getLogger(MenuKategori.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        // Mengembalikan status validasi (true jika valid, false jika tidak valid)
+        return valid;
+    }
+
     // insertData() - Menambahkan data Kategori ke database
     private void insertData() {
         String IdKategori = txt_id.getText();
@@ -640,6 +680,10 @@ public class MenuKategori extends javax.swing.JPanel {
         // Validasi input data
         if (IdKategori.isEmpty() || NamaKategori.isEmpty() || deskripsiKategori.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!validasiNama()) {
             return;
         }
 
