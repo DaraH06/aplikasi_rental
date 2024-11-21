@@ -8,6 +8,7 @@ package Main;
 import View.MenuDashboard;
 import View.MenuKategori;
 import View.MenuKonsol;
+import View.MenuLaporan;
 import View.MenuPelanggan;
 import View.MenuUser;
 import java.awt.Color;
@@ -706,8 +707,16 @@ public class MenuUtama extends javax.swing.JFrame {
                             .addGroup(pn_kiriLayout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addComponent(jLabel12))
-                            .addComponent(pn_btnKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pn_btnKategori2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pn_btnKategori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pn_btn_trsRental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(pn_kiriLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pn_kiriLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(pn_btnKategori2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
         pn_kiriLayout.setVerticalGroup(
@@ -926,15 +935,23 @@ public class MenuUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_trs_rentalMouseExited
 
     private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
-        // TODO add your handling code here:
+        pn_btnKategori.setBackground(new Color(240, 240, 240));
+        pn_line9.setBackground(new Color(0, 102, 153));
+
+        pn_utama.removeAll();
+        pn_utama.add(new MenuLaporan());
+        pn_utama.repaint();
+        pn_utama.revalidate();
     }//GEN-LAST:event_btn_laporanMouseClicked
 
     private void btn_laporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseEntered
-        // TODO add your handling code here:
+        pn_btn_laporan.setBackground(new Color(250, 250, 250));
+        pn_line7.setBackground(new Color(0, 102, 153));
     }//GEN-LAST:event_btn_laporanMouseEntered
 
     private void btn_laporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseExited
-        // TODO add your handling code here:
+        pn_btnKategori.setBackground(new Color(255, 255, 255));
+        pn_line9.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btn_laporanMouseExited
 
     private void btn_kategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_kategoriMouseClicked
