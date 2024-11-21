@@ -136,7 +136,7 @@ public class MenuKategori extends javax.swing.JPanel {
             }
         });
 
-        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add Male User Group.png"))); // NOI18N
+        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add.png"))); // NOI18N
         btn_tambah.setText("Tambah");
         btn_tambah.setFillClick(new java.awt.Color(0, 51, 102));
         btn_tambah.setFillOver(new java.awt.Color(41, 128, 185));
@@ -614,16 +614,16 @@ public class MenuKategori extends javax.swing.JPanel {
         SimpleDateFormat noFormat = new SimpleDateFormat("yyMM"); // Format tanggal sebagai bagian dari ID
         String no = noFormat.format(now);
 
-        String sql = "SELECT RIGHT(ID_Kategori, 3) AS Nomor FROM tbl_kategori WHERE ID_Kategori LIKE 'KTG" + no + "%' ORDER BY ID_Kategori DESC LIMIT 1";
+        String sql = "SELECT RIGHT(ID_Kategori, 3) AS Nomor FROM tbl_kategori WHERE ID_Kategori LIKE '" + no + "%' ORDER BY ID_Kategori DESC LIMIT 1";
 
         try (PreparedStatement st = con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery(); // Eksekusi query
 
             if (rs.next()) {
                 int nomor = Integer.parseInt(rs.getString("nomor")) + 1; // Menambah nomor urut
-                urutan = "KTG" + no + String.format("%03d", nomor); // Format ID baru
+                urutan = no + String.format("%03d", nomor); // Format ID baru
             } else {
-                urutan = "KTG" + no + "001"; // ID awal jika tidak ada data
+                urutan = no + "001"; // ID awal jika tidak ada data
             }
         } catch (SQLException e) {
             java.util.logging.Logger.getLogger(MenuKategori.class.getName()).log(Level.SEVERE, null, e);
@@ -710,10 +710,15 @@ public class MenuKategori extends javax.swing.JPanel {
 
     // dataTabel() - Menampilkan data Kategori dari JTable ke dalam form untuk diperbarui
     private void dataTabel() {
+        int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
+        if (row == -1) { // Jika tidak ada baris yang dipilih
+            JOptionPane.showMessageDialog(this, "Pilih baris terlebih dahulu!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return; // Keluar dari metode
+        }
+
         panelView.setVisible(false); // Menyembunyikan panel view
         panelAdd.setVisible(true); // Menampilkan panel tambah/edit
 
-        int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
         jLabel7.setText("PERBARUI DATA Kategori"); // Mengubah teks label menjadi "PERBARUI DATA Kategori"
         txt_id.setEnabled(false); // Menonaktifkan field ID Kategori agar tidak bisa diedit
 
@@ -759,8 +764,13 @@ public class MenuKategori extends javax.swing.JPanel {
 
     // hapusData() - Menghapus data Kategori dari database
     private void hapusData() {
-        int row = tbl_data.getSelectedRow();// Mendapatkan baris yang dipilih
-        String IdKategori = tbl_data.getValueAt(row, 0).toString();// Mendapatkan ID Kategori dari baris yang dipilih
+        int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih
+        if (row == -1) { // Jika tidak ada baris yang dipilih
+            JOptionPane.showMessageDialog(this, "Pilih baris yang akan dihapus!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return; // Keluar dari metode
+        }
+
+        String IdKategori = tbl_data.getValueAt(row, 0).toString(); // Mendapatkan ID Kategori dari baris yang dipilih
 
         // Konfirmasi penghapusan
         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Menghapus Data Ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -770,10 +780,10 @@ public class MenuKategori extends javax.swing.JPanel {
                 try (PreparedStatement st = con.prepareStatement(sql)) {
                     st.setString(1, IdKategori);
 
-                    int rowDeleted = st.executeUpdate();// Eksekusi penghapusan
+                    int rowDeleted = st.executeUpdate(); // Eksekusi penghapusan
                     if (rowDeleted > 0) {
                         JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
-                        loadData();// Refresh data di JTable
+                        loadData(); // Refresh data di JTable
                     }
                 }
             } catch (SQLException e) {
