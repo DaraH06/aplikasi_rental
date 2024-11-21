@@ -57,7 +57,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_data = new Palette.JTable_Custom();
         jLabel1 = new javax.swing.JLabel();
-        pn_utama = new javax.swing.JLabel();
+        back_dashboard = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txt_search = new Palette.JTextfieldRounded();
         btn_first = new javax.swing.JButton();
@@ -66,6 +66,8 @@ public class MenuLaporan extends javax.swing.JPanel {
         btn_next = new javax.swing.JButton();
         btn_last = new javax.swing.JButton();
         lb_halaman = new javax.swing.JLabel();
+        border_pendapatan = new javax.swing.JPanel();
+        Pendapatan = new javax.swing.JLabel();
         panelAdd = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -114,13 +116,13 @@ public class MenuLaporan extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Diversity.png"))); // NOI18N
 
-        pn_utama.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        pn_utama.setForeground(new java.awt.Color(102, 102, 102));
-        pn_utama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
-        pn_utama.setText("> Kategori");
-        pn_utama.addMouseListener(new java.awt.event.MouseAdapter() {
+        back_dashboard.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        back_dashboard.setForeground(new java.awt.Color(102, 102, 102));
+        back_dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
+        back_dashboard.setText("> kembali");
+        back_dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pn_utamaMouseClicked(evt);
+                back_dashboardMouseClicked(evt);
             }
         });
 
@@ -157,66 +159,93 @@ public class MenuLaporan extends javax.swing.JPanel {
         lb_halaman.setForeground(new java.awt.Color(153, 153, 153));
         lb_halaman.setText("Halaman of Total Halaman");
 
+        border_pendapatan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        border_pendapatan.setPreferredSize(new java.awt.Dimension(21, 36));
+
+        Pendapatan.setText("TOTAL PENDAPATAN : ");
+
+        javax.swing.GroupLayout border_pendapatanLayout = new javax.swing.GroupLayout(border_pendapatan);
+        border_pendapatan.setLayout(border_pendapatanLayout);
+        border_pendapatanLayout.setHorizontalGroup(
+            border_pendapatanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(border_pendapatanLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(Pendapatan)
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
+        border_pendapatanLayout.setVerticalGroup(
+            border_pendapatanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(border_pendapatanLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(Pendapatan)
+                .addGap(10, 10, 10))
+        );
+
         javax.swing.GroupLayout panelViewLayout = new javax.swing.GroupLayout(panelView);
         panelView.setLayout(panelViewLayout);
         panelViewLayout.setHorizontalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 661, Short.MAX_VALUE)
-                        .addComponent(pn_utama)))
-                .addGap(19, 19, 19))
             .addGroup(panelViewLayout.createSequentialGroup()
+                .addGap(345, 345, 345)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelViewLayout.createSequentialGroup()
-                                .addComponent(btn_first)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_before)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_next)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_last))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lb_halaman)
-                                .addGap(27, 27, 27))))
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_first)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_before)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_next)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_last))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lb_halaman)
+                        .addGap(27, 27, 27)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
+                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
+                        .addComponent(border_pendapatan, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelViewLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(panelViewLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(back_dashboard)))))
+                .addGap(19, 19, 19))
         );
         panelViewLayout.setVerticalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelViewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pn_utama)
+                    .addComponent(back_dashboard)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_halaman)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_first, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_before, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_next, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_last, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelViewLayout.createSequentialGroup()
+                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_halaman)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_first, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_before, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_next, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_last, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(border_pendapatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -312,7 +341,7 @@ public class MenuLaporan extends javax.swing.JPanel {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 622, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 631, Short.MAX_VALUE)
                                 .addComponent(jLabel6))
                             .addComponent(txt_Deskripsi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelAddLayout.createSequentialGroup()
@@ -384,15 +413,18 @@ public class MenuLaporan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_searchActionPerformed
 
-    private void pn_utamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_utamaMouseClicked
-        pn_utama.removeAll();
-        pn_utama.add(new MenuUtama());
-        pn_utama.repaint();
-        pn_utama.revalidate();
-    }//GEN-LAST:event_pn_utamaMouseClicked
+    private void back_dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_dashboardMouseClicked
+        back_dashboard.removeAll();
+        back_dashboard.add(new MenuUtama());
+        back_dashboard.repaint();
+        back_dashboard.revalidate();
+    }//GEN-LAST:event_back_dashboardMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Pendapatan;
+    private javax.swing.JLabel back_dashboard;
+    private javax.swing.JPanel border_pendapatan;
     private Palette.Custom_ButtonRounded btn_batal_add;
     private javax.swing.JButton btn_before;
     private javax.swing.JButton btn_first;
@@ -413,7 +445,6 @@ public class MenuLaporan extends javax.swing.JPanel {
     private javax.swing.JPanel panelAdd;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelView;
-    private javax.swing.JLabel pn_utama;
     private javax.swing.ButtonGroup rbJenisKelamin;
     private Palette.JTable_Custom tbl_data;
     private Palette.JTextfieldRounded txt_Deskripsi;
@@ -511,9 +542,10 @@ public class MenuLaporan extends javax.swing.JPanel {
     // setTabelModel() - Mengatur model tabel dengan kolom-kolom yang sesuai
     private void setTabelModel() {
         String[] columnNames = {
-            "ID",
-            "Nama",
-            "Deskripsi"
+            "ID_Transaksi",
+            "Nama PS",
+            "Durasi",
+            "Tanggal","Bayar"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data.setModel(model); // Mengatur model tabel untuk JTable
@@ -525,18 +557,20 @@ public class MenuLaporan extends javax.swing.JPanel {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            String sql = "SELECT * FROM tbl_kategori LIMIT ?,?"; // Query dengan limit berdasarkan halaman
+            String sql = "SELECT * FROM tbl_Transaksi,tbl_konsol LIMIT ?,?"; // Query dengan limit berdasarkan halaman
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setInt(1, startIndex); // Indeks awal
                 st.setInt(2, entriesPage); // Jumlah data per halaman
                 ResultSet rs = st.executeQuery(); // Eksekusi query
 
                 while (rs.next()) {
-                    String IdKategori = rs.getString("ID_Kategori");
-                    String NamaKategori = rs.getString("Nama_Kategori");
-                    String deskripsiKategori = rs.getString("Deskripsi");
+                    String IdTransaksi = rs.getString("ID_Transaksi");
+                    String NamaKonsol = rs.getString("Nama_Konsol");
+                    String durasi = rs.getString("Durasi");
+                    String tanggal = rs.getString("tgl_transaksi");
+                    String hargatotal = rs.getString("total");
 
-                    Object[] rowData = {IdKategori, NamaKategori, deskripsiKategori}; // Data Kategori
+                    Object[] rowData = {IdTransaksi, NamaKonsol, durasi,tanggal,hargatotal}; // Data Kategori
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
@@ -553,7 +587,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         SimpleDateFormat noFormat = new SimpleDateFormat("yyMM"); // Format tanggal sebagai bagian dari ID
         String no = noFormat.format(now);
 
-        String sql = "SELECT RIGHT(ID_Kategori, 3) AS Nomor FROM tbl_kategori WHERE ID_Kategori LIKE '" + no + "%' ORDER BY ID_Kategori DESC LIMIT 1";
+        String sql = "SELECT RIGHT(ID_Transaksi, 3) AS Nomor FROM tbl_transaksi WHERE ID_Transaksi LIKE '" + no + "%' ORDER BY ID_Transaksi DESC LIMIT 1";
 
         try (PreparedStatement st = con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery(); // Eksekusi query
@@ -648,7 +682,7 @@ public class MenuLaporan extends javax.swing.JPanel {
     }
 
     // dataTabel() - Menampilkan data Kategori dari JTable ke dalam form untuk diperbarui
-    private void dataTabel() {
+  /*  private void dataTabel() {
         int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
         if (row == -1) { // Jika tidak ada baris yang dipilih
             JOptionPane.showMessageDialog(this, "Pilih baris terlebih dahulu!", "Peringatan", JOptionPane.WARNING_MESSAGE);
@@ -666,7 +700,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         txt_nama.setText(tbl_data.getValueAt(row, 1).toString());
         txt_Deskripsi.setText(tbl_data.getValueAt(row, 2).toString());
     }
-
+*/
     // updateData() - Memperbarui data Kategori di database
     private void updateData() {
         // Mengambil data dari form
@@ -700,7 +734,7 @@ public class MenuLaporan extends javax.swing.JPanel {
             Logger.getLogger(MenuLaporan.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
+/*
     // hapusData() - Menghapus data Kategori dari database
     private void hapusData() {
         int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih
@@ -730,7 +764,7 @@ public class MenuLaporan extends javax.swing.JPanel {
             }
         }
     }
-
+*/
     // searchData() - Mencari data Kategori berdasarkan nama atau alamat
     private void searchData() {
         String kataKunci = txt_search.getText(); // Mengambil kata kunci dari text field pencarian
