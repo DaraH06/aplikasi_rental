@@ -268,7 +268,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         back_dashboard.repaint();
         back_dashboard.revalidate();
     }//GEN-LAST:event_back_dashboardMouseClicked
-
+//untuk sum total bayar
     public void updateTotalPendapatan(Connection con) {
     String sql = "SELECT SUM(total) AS Total_Pendapatan FROM tbl_transaksi";
 
