@@ -1,5 +1,6 @@
 package View;
 
+import Main.MenuUtama;
 import com.mysql.cj.protocol.Resultset;
 import database.database_two;
 import java.awt.event.ActionEvent;
@@ -56,7 +57,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_data = new Palette.JTable_Custom();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        pn_utama = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txt_search = new Palette.JTextfieldRounded();
         btn_first = new javax.swing.JButton();
@@ -113,10 +114,15 @@ public class MenuLaporan extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Diversity.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
-        jLabel2.setText("> Kategori");
+        pn_utama.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        pn_utama.setForeground(new java.awt.Color(102, 102, 102));
+        pn_utama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
+        pn_utama.setText("> Kategori");
+        pn_utama.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pn_utamaMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
@@ -164,7 +170,7 @@ public class MenuLaporan extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 661, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
+                        .addComponent(pn_utama)))
                 .addGap(19, 19, 19))
             .addGroup(panelViewLayout.createSequentialGroup()
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +201,7 @@ public class MenuLaporan extends javax.swing.JPanel {
             .addGroup(panelViewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(pn_utama)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
@@ -378,6 +384,13 @@ public class MenuLaporan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_searchActionPerformed
 
+    private void pn_utamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_utamaMouseClicked
+        pn_utama.removeAll();
+        pn_utama.add(new MenuUtama());
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_pn_utamaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Palette.Custom_ButtonRounded btn_batal_add;
@@ -389,7 +402,6 @@ public class MenuLaporan extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbx_data;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -401,6 +413,7 @@ public class MenuLaporan extends javax.swing.JPanel {
     private javax.swing.JPanel panelAdd;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelView;
+    private javax.swing.JLabel pn_utama;
     private javax.swing.ButtonGroup rbJenisKelamin;
     private Palette.JTable_Custom tbl_data;
     private Palette.JTextfieldRounded txt_Deskripsi;
