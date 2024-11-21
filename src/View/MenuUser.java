@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author mahar
  */
-public class MenuPelanggan extends javax.swing.JPanel {
+public class MenuUser extends javax.swing.JPanel {
 
     /**
      * Creates new form MenuDashboard
@@ -28,12 +28,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private int HalamanSaatIni = 1;
     private int DataperHalaman = 14;
     private int totalpages;
-    
+
     private final Connection con;// Koneksi database
+    private FormLogin formlogin;
 
     // Konstruktor kelas MenuPelanggan
-    public MenuPelanggan() {
+    public MenuUser() {
         con = database_two.con(); // Membuat koneksi ke database
+        formlogin = new FormLogin();
         initComponents(); // Inisialisasi komponen GUI
         loadData(); // Memuat data pelanggan ke dalam JTable
         setTabelModel(); // Mengatur model tabel (misalnya, kolom-kolomnya)
@@ -50,7 +52,6 @@ public class MenuPelanggan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rbJenisKelamin = new javax.swing.ButtonGroup();
         panelMain = new javax.swing.JPanel();
         panelView = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -78,15 +79,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txt_nama = new Palette.JTextfieldRounded();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txt_telepon = new Palette.JTextfieldRounded();
+        txt_email = new Palette.JTextfieldRounded();
         jLabel12 = new javax.swing.JLabel();
-        rb_laki = new javax.swing.JRadioButton();
-        rb_perempuan = new javax.swing.JRadioButton();
         jLabel14 = new javax.swing.JLabel();
-        txt_alamat = new Palette.JTextfieldRounded();
-        txt_identitas = new Palette.JTextfieldRounded();
+        txt_username = new Palette.JTextfieldRounded();
         jLabel13 = new javax.swing.JLabel();
+        txt_password = new Palette.Custom_JPasswordFieldRounded();
+        jLabel15 = new javax.swing.JLabel();
+        cbx_level = new javax.swing.JComboBox<>();
 
         setLayout(new java.awt.CardLayout());
 
@@ -121,16 +121,16 @@ public class MenuPelanggan extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon6.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
-        jLabel2.setText("> Pelanggan");
+        jLabel2.setText("> User");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Data Pelanggan");
+        jLabel3.setText("Data User");
 
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Delete.png"))); // NOI18N
         btn_hapus.setText("Hapus");
@@ -265,16 +265,16 @@ public class MenuPelanggan extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon1.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon6.png"))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
-        jLabel6.setText("> Pelanggan");
+        jLabel6.setText("> User");
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Tambah Data Pelanggan");
+        jLabel7.setText("Tambah Data User");
 
         btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Save.png"))); // NOI18N
         btn_simpan.setText("Simpan");
@@ -298,7 +298,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
         });
 
         txt_id.setForeground(new java.awt.Color(102, 102, 102));
-        txt_id.setText("ID Pelanggan");
+        txt_id.setText("ID User");
         txt_id.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         txt_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,10 +308,10 @@ public class MenuPelanggan extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("ID Pelanggan");
+        jLabel8.setText("ID User");
 
         txt_nama.setForeground(new java.awt.Color(102, 102, 102));
-        txt_nama.setText("Nama Pelanggan");
+        txt_nama.setText("Nama User");
         txt_nama.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         txt_nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,50 +321,49 @@ public class MenuPelanggan extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Nama Pelanggan");
+        jLabel9.setText("Nama User");
 
-        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Jenis Kelamin");
-
-        txt_telepon.setForeground(new java.awt.Color(102, 102, 102));
-        txt_telepon.setText("Telepon");
-        txt_telepon.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_email.setForeground(new java.awt.Color(102, 102, 102));
+        txt_email.setText("Email");
+        txt_email.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("Telepon");
-
-        rbJenisKelamin.add(rb_laki);
-        rb_laki.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        rb_laki.setForeground(new java.awt.Color(51, 51, 51));
-        rb_laki.setText("Laki - Laki");
-
-        rbJenisKelamin.add(rb_perempuan);
-        rb_perempuan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        rb_perempuan.setForeground(new java.awt.Color(51, 51, 51));
-        rb_perempuan.setText("Perempuan");
-        rb_perempuan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_perempuanActionPerformed(evt);
-            }
-        });
+        jLabel12.setText("Email");
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Alamat");
+        jLabel14.setText("Password");
 
-        txt_alamat.setForeground(new java.awt.Color(102, 102, 102));
-        txt_alamat.setText("Alamat");
-        txt_alamat.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        txt_identitas.setForeground(new java.awt.Color(102, 102, 102));
-        txt_identitas.setText("Tipe Identitas");
-        txt_identitas.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_username.setForeground(new java.awt.Color(102, 102, 102));
+        txt_username.setText("Username");
+        txt_username.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usernameActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Tipe Identitas");
+        jLabel13.setText("Username");
+
+        txt_password.setForeground(new java.awt.Color(102, 102, 102));
+        txt_password.setText("password");
+        txt_password.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel15.setText("Level");
+
+        cbx_level.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        cbx_level.setForeground(new java.awt.Color(102, 102, 102));
+        cbx_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Level", "Admin", "User" }));
+        cbx_level.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_levelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(panelAdd);
         panelAdd.setLayout(panelAddLayout);
@@ -374,40 +373,35 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAddLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 682, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(20, 20, 20))
+                    .addGroup(panelAddLayout.createSequentialGroup()
+                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 730, Short.MAX_VALUE))
+                    .addGroup(panelAddLayout.createSequentialGroup()
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel8)
                                 .addComponent(jLabel9)
                                 .addComponent(txt_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txt_nama, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))
-                            .addGroup(panelAddLayout.createSequentialGroup()
-                                .addComponent(rb_laki)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_perempuan))
-                            .addComponent(jLabel11))
+                            .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
                         .addGap(18, 18, 18)
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel15)
                             .addComponent(jLabel12)
                             .addComponent(jLabel14)
-                            .addComponent(txt_alamat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_telepon, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
-                        .addContainerGap(59, Short.MAX_VALUE))
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 589, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(20, 20, 20))
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(txt_identitas, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelAddLayout.createSequentialGroup()
-                                .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                            .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbx_level, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelAddLayout.setVerticalGroup(
             panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,7 +411,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -430,7 +424,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_telepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelAddLayout.createSequentialGroup()
@@ -439,19 +433,17 @@ public class MenuPelanggan extends javax.swing.JPanel {
                         .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addGap(27, 27, 27)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rb_laki)
-                    .addComponent(rb_perempuan))
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel15))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_identitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_level, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         panelMain.add(panelAdd, "card2");
@@ -477,18 +469,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_namaActionPerformed
 
-    private void rb_perempuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_perempuanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_perempuanActionPerformed
-
     private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
         panelMain.removeAll();
         panelMain.add(panelAdd);// Beralih ke panel tambah/edit
         panelMain.repaint();
         panelMain.revalidate();
-        
+
         try {
-            txt_id.setText(setIDPelanggan()); // Menyiapkan ID pelanggan baru secara otomatis
+            txt_id.setText(SetIDUser()); // Menyiapkan ID pelanggan baru secara otomatis
             if (btn_tambah.getText().equals("UBAH")) { // Jika tombol menunjukkan "UBAH"
                 dataTabel(); // Memuat data pelanggan yang dipilih ke form
                 btn_simpan.setText("PERBARUI"); // Ubah teks tombol simpan menjadi perbarui
@@ -496,7 +484,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 btn_simpan.setText("SIMPAN"); // Jika menambah data, tombol tetap "SIMPAN"
             }
         } catch (SQLException e) {
-            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_btn_tambahActionPerformed
 
@@ -523,6 +511,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
         searchData(); // Memanggil fungsi searchData() untuk mencari data berdasarkan kata kunci
     }//GEN-LAST:event_txt_searchKeyTyped
 
+    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usernameActionPerformed
+
+    private void cbx_levelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_levelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_levelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Palette.Custom_ButtonRounded btn_batal_add;
@@ -535,11 +531,12 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private Palette.Custom_ButtonRounded btn_simpan;
     private Palette.Custom_ButtonRounded btn_tambah;
     private javax.swing.JComboBox<String> cbx_data;
+    private javax.swing.JComboBox<String> cbx_level;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -552,16 +549,13 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private javax.swing.JPanel panelAdd;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelView;
-    private javax.swing.ButtonGroup rbJenisKelamin;
-    private javax.swing.JRadioButton rb_laki;
-    private javax.swing.JRadioButton rb_perempuan;
     private Palette.JTable_Custom tbl_data;
-    private Palette.JTextfieldRounded txt_alamat;
+    private Palette.JTextfieldRounded txt_email;
     private Palette.JTextfieldRounded txt_id;
-    private Palette.JTextfieldRounded txt_identitas;
     private Palette.JTextfieldRounded txt_nama;
+    private Palette.Custom_JPasswordFieldRounded txt_password;
     private Palette.JTextfieldRounded txt_search;
-    private Palette.JTextfieldRounded txt_telepon;
+    private Palette.JTextfieldRounded txt_username;
     // End of variables declaration//GEN-END:variables
 
     // paginationPelanggan() - Mengatur fungsi pagination untuk pelanggan
@@ -612,7 +606,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private int getTotalData() {
         int totalData = 0;
         try {
-            String sql = "SELECT COUNT(*) AS total FROM tbl_pelanggan";// Query menghitung total data pelanggan
+            String sql = "SELECT COUNT(*) AS total FROM tbl_user";// Query menghitung total data pelanggan
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 ResultSet rs = st.executeQuery(); // Eksekusi query
                 if (rs.next()) {
@@ -620,7 +614,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
         }
         return totalData;// Mengembalikan jumlah data
     }
@@ -640,7 +634,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
     // showPanel() - Mengatur tampilan panel utama
     private void showPanel() {
         panelMain.removeAll();// Menghapus semua komponen di panel utama
-        panelMain.add(new MenuPelanggan());// Menambahkan panel MenuPelanggan ke panel utama
+        panelMain.add(new MenuUser());// Menambahkan panel MenuPelanggan ke panel utama
         panelMain.repaint();// Menggambar ulang panel utama
         panelMain.revalidate();// Memastikan perubahan diterapkan
     }
@@ -649,21 +643,21 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private void resetForm() {
         txt_id.setText("");
         txt_nama.setText("");
-        txt_identitas.setText("");
-        rbJenisKelamin.clearSelection(); // Mengosongkan pilihan jenis kelamin pada radio button
-        txt_telepon.setText("");
-        txt_alamat.setText("");
+        txt_username.setText("");
+        txt_email.setText("");
+        txt_password.setText("");
+        cbx_level.setSelectedItem("Pilih Level");
     }
 
     // setTabelModel() - Mengatur model tabel dengan kolom-kolom yang sesuai
     private void setTabelModel() {
         String[] columnNames = {
             "ID",
-            "Nama",
-            "Tipe Identitas",
-            "Jenis Kelamin",
-            "Telepon",
-            "Alamat"
+            "Nama User",
+            "Username",
+            "Email",
+            "Password",
+            "Level"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data.setModel(model); // Mengatur model tabel untuk JTable
@@ -675,81 +669,81 @@ public class MenuPelanggan extends javax.swing.JPanel {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            String sql = "SELECT * FROM tbl_pelanggan LIMIT ?,?"; // Query dengan limit berdasarkan halaman
+            String sql = "SELECT * FROM tbl_user LIMIT ?,?"; // Query dengan limit berdasarkan halaman
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setInt(1, startIndex); // Indeks awal
                 st.setInt(2, entriesPage); // Jumlah data per halaman
                 ResultSet rs = st.executeQuery(); // Eksekusi query
 
                 while (rs.next()) {
-                    String IdPelanggan = rs.getString("ID_Pelanggan");
-                    String NamaPelanggan = rs.getString("Nama");
-                    String TipeIdentitas = rs.getString("Tipe_Identitas");
-                    String JkPelanggan = rs.getString("Jenis_Kelamin");
-                    String TeleponPelanggan = rs.getString("Telepon");
-                    String AlamatPelanggan = rs.getString("Alamat");
-                    
-                    Object[] rowData = {IdPelanggan, NamaPelanggan, TipeIdentitas, JkPelanggan, TeleponPelanggan, AlamatPelanggan}; // Data pelanggan
+                    String IdUser = rs.getString("ID_User");
+                    String NamaUser = rs.getString("Nama_User");
+                    String UserName = rs.getString("Username");
+                    String Email = rs.getString("Email");
+                    String Level = rs.getString("Level");
+
+                    Object[] rowData = {IdUser, NamaUser, UserName, Email, Level}; // Data pelanggan
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
-            
+            Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
+
         }
     }
 
-    // setIDPelanggan() - Mengatur ID pelanggan secara otomatis
-    private String setIDPelanggan() throws SQLException {
+    // SetIDUser() - Mengatur ID pelanggan secara otomatis
+    private String SetIDUser() throws SQLException {
         String urutan = null;
         Date now = new Date();
         SimpleDateFormat noFormat = new SimpleDateFormat("yyMM"); // Format tanggal sebagai bagian dari ID
         String no = noFormat.format(now);
-        
-        String sql = "SELECT RIGHT(ID_Pelanggan, 3) AS Nomor FROM tbl_pelanggan WHERE ID_Pelanggan LIKE 'PLGN" + no + "%' ORDER BY ID_Pelanggan DESC LIMIT 1";
-        
+
+        String sql = "SELECT RIGHT(ID_User, 3) AS Nomor FROM tbl_user WHERE ID_User LIKE '" + no + "%' ORDER BY ID_User DESC LIMIT 1";
+
         try (PreparedStatement st = con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery(); // Eksekusi query
 
             if (rs.next()) {
                 int nomor = Integer.parseInt(rs.getString("nomor")) + 1; // Menambah nomor urut
-                urutan = "PLGN" + no + String.format("%03d", nomor); // Format ID baru
+                urutan = no + String.format("%03d", nomor); // Format ID baru
             } else {
-                urutan = "PLGN" + no + "001"; // ID awal jika tidak ada data
+                urutan = no + "001"; // ID awal jika tidak ada data
             }
         } catch (SQLException e) {
-            java.util.logging.Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
         }
         return urutan;
     }
 
     // insertData() - Menambahkan data pelanggan ke database
     private void insertData() {
-        String IdPelanggan = txt_id.getText();
-        String NamaPelanggan = txt_nama.getText();
-        String TipeIdentitas = txt_identitas.getText();
-        String JkPelanggan = rb_laki.isSelected() ? rb_laki.getText() : rb_perempuan.isSelected() ? rb_perempuan.getText() : "";
-        String TeleponPelanggan = txt_telepon.getText();
-        String AlamatPelanggan = txt_alamat.getText();
+        // Mengambil data dari form
+        String IdUser = txt_id.getText();
+        String NamaUser = txt_nama.getText();
+        String UserName = txt_username.getText();
+        String Email = txt_email.getText();
+        String Password = formlogin.getMd5java(txt_password.getText());
+        String LevelUser = cbx_level.getSelectedItem().toString();
 
         // Validasi input data
-        if (IdPelanggan.isEmpty() || NamaPelanggan.isEmpty() || TipeIdentitas.isEmpty() || JkPelanggan.isEmpty() || TeleponPelanggan.isEmpty()
-                || AlamatPelanggan.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+        if (IdUser.isEmpty() || NamaUser.isEmpty() || UserName.isEmpty() || Email.isEmpty()
+                || Password.isEmpty() || cbx_level.getSelectedItem().toString().equals("Pilih Level")) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi dan Dipilih!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_pelanggan (ID_Pelanggan, Nama, Tipe_Identitas, Jenis_Kelamin, Telepon, Alamat) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO tbl_user (ID_User, Nama_User, Username, Email, Password, Level) VALUES (?,?,?,?,?,?)";
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, IdPelanggan);
-                st.setString(2, NamaPelanggan);
-                st.setString(3, TipeIdentitas);
-                st.setString(4, JkPelanggan);
-                st.setString(5, TeleponPelanggan);
-                st.setString(6, AlamatPelanggan);
-                
+                st.setString(1, IdUser);
+                st.setString(2, NamaUser);
+                st.setString(3, UserName);
+                st.setString(4, Email);
+                st.setString(5, Password);
+                st.setString(6, LevelUser);
+
                 int rowInserted = st.executeUpdate();// Menjalankan perintah insert
                 if (rowInserted > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan");
@@ -759,7 +753,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 }
             }
         } catch (SQLException e) {
-            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -769,54 +763,43 @@ public class MenuPelanggan extends javax.swing.JPanel {
         panelAdd.setVisible(true); // Menampilkan panel tambah/edit
 
         int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
-        jLabel7.setText("PERBARUI DATA PELANGGAN"); // Mengubah teks label menjadi "PERBARUI DATA PELANGGAN"
+        jLabel7.setText("PERBARUI DATA USER"); // Mengubah teks label menjadi "PERBARUI DATA PELANGGAN"
         txt_id.setEnabled(false); // Menonaktifkan field ID pelanggan agar tidak bisa diedit
 
         // Mengisi field form dengan data dari baris yang dipilih
         txt_id.setText(tbl_data.getValueAt(row, 0).toString());
         txt_nama.setText(tbl_data.getValueAt(row, 1).toString());
-        txt_identitas.setText(tbl_data.getValueAt(row, 2).toString());
-
-        // Menentukan jenis kelamin dari data di tabel
-        String jenisKelamin = tbl_data.getValueAt(row, 3).toString();
-        if (jenisKelamin.equals("Laki - Laki")) {
-            rb_laki.setSelected(true);// Memilih radio button Laki - Laki jika data di tabel sama
-        } else if (jenisKelamin.equals("Perempuan")) {
-            rb_perempuan.setSelected(true);// Memilih radio button Perempuan jika data di tabel sama
-        }
-        
-        txt_telepon.setText(tbl_data.getValueAt(row, 4).toString());
-        txt_alamat.setText(tbl_data.getValueAt(row, 5).toString());// Mengisi field alamat dengan data dari tabel
+        txt_username.setText(tbl_data.getValueAt(row, 2).toString());
+        txt_email.setText(tbl_data.getValueAt(row, 3).toString());
+        cbx_level.setSelectedItem(tbl_data.getValueAt(row, 4).toString());// Mengisi field Level dengan data dari tabel
     }
 
     // updateData() - Memperbarui data pelanggan di database
     private void updateData() {
         // Mengambil data dari form
-        String IdPelanggan = txt_id.getText();
-        String NamaPelanggan = txt_nama.getText();
-        String TipeIdentitas = txt_identitas.getText();
-        String JkPelanggan = rb_laki.isSelected() ? rb_laki.getText() : rb_perempuan.isSelected() ? rb_perempuan.getText() : "";
-        String TeleponPelanggan = txt_telepon.getText();
-        String AlamatPelanggan = txt_alamat.getText();
+        String IdUser = txt_id.getText();
+        String NamaUser = txt_nama.getText();
+        String UserName = txt_username.getText();
+        String Email = txt_email.getText();
+        String LevelUser = cbx_level.getSelectedItem().toString();
 
         // Validasi input data
-        if (IdPelanggan.isEmpty() || NamaPelanggan.isEmpty() || TipeIdentitas.isEmpty() || JkPelanggan.isEmpty() || TeleponPelanggan.isEmpty()
-                || AlamatPelanggan.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+        if (IdUser.isEmpty() || NamaUser.isEmpty() || UserName.isEmpty() || Email.isEmpty()
+                || cbx_level.getSelectedItem().toString().equals("Pilih Level")) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi dan Dipilih!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // Insert data ke database
         try {
-            String sql = "UPDATE tbl_pelanggan SET Nama=?, Tipe_Identitas=?, Jenis_Kelamin=?, Telepon=?, Alamat=? WHERE ID_Pelanggan=?";
+            String sql = "UPDATE tbl_user SET Nama_User=?, Username=?, Email=?, Level=? WHERE ID_User=?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, NamaPelanggan);
-                st.setString(2, TipeIdentitas);
-                st.setString(3, JkPelanggan);
-                st.setString(4, TeleponPelanggan);
-                st.setString(5, AlamatPelanggan);
-                st.setString(6, IdPelanggan);
-                
+                st.setString(1, NamaUser);
+                st.setString(2, UserName);
+                st.setString(3, Email);
+                st.setString(4, LevelUser);
+                st.setString(5, IdUser);
+
                 int rowUpdated = st.executeUpdate();
                 if (rowUpdated > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Diperbarui");
@@ -826,23 +809,23 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 }
             }
         } catch (SQLException e) {
-            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     // hapusData() - Menghapus data pelanggan dari database
     private void hapusData() {
         int row = tbl_data.getSelectedRow();// Mendapatkan baris yang dipilih
-        String IdPelanggan = tbl_data.getValueAt(row, 0).toString();// Mendapatkan ID pelanggan dari baris yang dipilih
+        String IdUser = tbl_data.getValueAt(row, 0).toString();// Mendapatkan ID pelanggan dari baris yang dipilih
 
         // Konfirmasi penghapusan
         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Menghapus Data Ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             try {
-                String sql = "DELETE FROM tbl_pelanggan WHERE ID_Pelanggan=?";
+                String sql = "DELETE FROM tbl_user WHERE ID_User=?";
                 try (PreparedStatement st = con.prepareStatement(sql)) {
-                    st.setString(1, IdPelanggan);
-                    
+                    st.setString(1, IdUser);
+
                     int rowDeleted = st.executeUpdate();// Eksekusi penghapusan
                     if (rowDeleted > 0) {
                         JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
@@ -850,12 +833,12 @@ public class MenuPelanggan extends javax.swing.JPanel {
                     }
                 }
             } catch (SQLException e) {
-                Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }
 
-    // searchData() - Mencari data pelanggan berdasarkan nama atau alamat
+    // searchData() - Mencari data pelanggan berdasarkan nama atau Level
     private void searchData() {
         String kataKunci = txt_search.getText(); // Mengambil kata kunci dari text field pencarian
 
@@ -863,28 +846,27 @@ public class MenuPelanggan extends javax.swing.JPanel {
         model.setRowCount(0);// Mengosongkan data di tabel sebelum memuat hasil pencarian
 
         try {
-            String sql = "SELECT * FROM tbl_pelanggan WHERE Nama LIKE ? OR Alamat LIKE ?";
+            String sql = "SELECT * FROM tbl_user WHERE Nama_User LIKE ? OR Email LIKE ?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, "%" + kataKunci + "%"); // Parameter pencarian pada kolom Nama
-                st.setString(2, "%" + kataKunci + "%");// Parameter pencarian pada kolom Alamat
+                st.setString(2, "%" + kataKunci + "%");// Parameter pencarian pada kolom Level
 
                 ResultSet rs = st.executeQuery();
-                
+
                 while (rs.next()) {
-                    String IdPelanggan = rs.getString("ID_Pelanggan");
-                    String NamaPelanggan = rs.getString("Nama");
-                    String TipeIdentitas = rs.getString("Tipe_Identitas");
-                    String JkPelanggan = rs.getString("Jenis_Kelamin");
-                    String TeleponPelanggan = rs.getString("Telepon");
-                    String AlamatPelanggan = rs.getString("Alamat");
-                    
-                    Object[] rowData = {IdPelanggan, NamaPelanggan, TipeIdentitas, JkPelanggan, TeleponPelanggan, AlamatPelanggan};
+                    String IdUser = rs.getString("ID_User");
+                    String NamaUser = rs.getString("Nama");
+                    String UserName = rs.getString("Username");
+                    String Email = rs.getString("Email");
+                    String LevelUser = rs.getString("Level");
+
+                    Object[] rowData = {IdUser, NamaUser, UserName, Email, LevelUser};
                     model.addRow(rowData);// Tambahkan hasil pencarian ke dalam JTable
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
-            
+            Logger.getLogger(MenuUser.class.getName()).log(Level.SEVERE, null, e);
+
         }
     }
 }
