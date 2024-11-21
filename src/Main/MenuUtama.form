@@ -78,26 +78,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pn_btnPelanggan" min="-2" max="-2" attributes="0"/>
-                              <Component id="pn_btnDashboard" min="-2" max="-2" attributes="0"/>
-                              <Component id="pn_btnKonsol" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="pn_btnUsers" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="pn_btn_trsSewa" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="pn_btn_trsPengembalian" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="pn_btn_trsRental" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="pn_btn_laporan" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="pn_btnKategori" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="pn_btnKategori2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="pn_btnKategori2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
