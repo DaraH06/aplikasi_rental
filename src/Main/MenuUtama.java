@@ -9,6 +9,7 @@ import View.MenuDashboard;
 import View.MenuKategori;
 import View.MenuKonsol;
 import View.MenuPelanggan;
+import View.MenuSewa;
 import View.MenuUser;
 import java.awt.Color;
 
@@ -19,12 +20,18 @@ import java.awt.Color;
 public class MenuUtama extends javax.swing.JFrame {
 
     int xx, xy;
+    private String userID;
 
     /**
      * Creates new form MenuUtama
      */
-    public MenuUtama() {
+    public MenuUtama(String userID) {
         initComponents();
+        this.userID = userID;
+    }
+
+    public String getUserID() {
+        return userID;
     }
 
     /**
@@ -832,7 +839,13 @@ public class MenuUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_usersMouseExited
 
     private void btn_trs_sewaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_trs_sewaMouseClicked
-        // TODO add your handling code here:
+        pn_btn_trsSewa.setBackground(new Color(240, 240, 240));
+        pn_line.setBackground(new Color(0, 102, 153));
+
+        pn_utama.removeAll();
+        pn_utama.add(new MenuSewa(getUserID()));
+        pn_utama.repaint();
+        pn_utama.revalidate();
     }//GEN-LAST:event_btn_trs_sewaMouseClicked
 
     private void btn_trs_sewaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_trs_sewaMouseEntered
@@ -930,7 +943,8 @@ public class MenuUtama extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuUtama().setVisible(true);
+                String userID = "defaultUserID";
+                new MenuUtama(userID).setVisible(true);
             }
         });
     }

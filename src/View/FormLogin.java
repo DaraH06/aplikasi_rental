@@ -1,4 +1,4 @@
-                                                /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -257,7 +257,7 @@ public class FormLogin extends javax.swing.JFrame {
         UIManager.put("Button.background", new java.awt.Color(70, 130, 180)); // Warna latar belakang tombol
         UIManager.put("Button.foreground", java.awt.Color.WHITE); // Warna teks tombol
         UIManager.put("Button.hoverBackground", new java.awt.Color(100, 150, 200)); // Warna tombol saat dihover
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -353,23 +353,23 @@ public class FormLogin extends javax.swing.JFrame {
         return valid;
     }
 
-    private boolean checkLogin(String username, String password) {
+    private String checkLogin(String username, String password) {
         if (con != null) {
             try {
-                String sql = "SELECT * FROM tbl_user WHERE Nama_User=? AND Password=?";
+                String sql = "SELECT ID_User FROM tbl_user WHERE Nama_User=? AND Password=?";
                 PreparedStatement st = con.prepareStatement(sql);
                 st.setString(1, username);
                 st.setString(2, password);
 
                 ResultSet rs = st.executeQuery();
                 if (rs.next()) {
-                    return true;
+                    return rs.getString("ID_User"); // Mengembalikan ID_User jika cocok
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return false;
+        return null; // Mengembalikan null jika tidak ditemukan
     }
 
     private void prosesLogin() {
@@ -378,8 +378,10 @@ public class FormLogin extends javax.swing.JFrame {
             String password = new String(txt_password.getPassword());
             String hashedPassword = getMd5java(password);
 
-            if (checkLogin(username, hashedPassword)) {
-                MenuUtama mn = new MenuUtama();
+            String userID = checkLogin(username, hashedPassword); // Deklarasi UserID di sini
+
+            if (userID != null) {
+                MenuUtama mn = new MenuUtama(userID); // Gunakan UserID yang valid
                 mn.setVisible(true);
                 mn.revalidate();
 
