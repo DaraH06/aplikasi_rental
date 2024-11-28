@@ -49,7 +49,6 @@ public class MenuSewa extends javax.swing.JPanel {
         loadDataSementara();
         setTabelModel(); // Mengatur model tabel (misalnya, kolom-kolomnya)
         setTabelModelSementara();
-        setTabelModelDetail();
         resetForm(); // Mereset form input menjadi kosong
         resetFormKonsol();
         paginationKonsol(); // Mengatur paginasi untuk tampilan data
@@ -72,6 +71,7 @@ public class MenuSewa extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_data = new Palette.JTable_Custom();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_tambah = new Palette.Custom_ButtonRounded();
         txt_search = new Palette.JTextfieldRounded();
@@ -81,12 +81,7 @@ public class MenuSewa extends javax.swing.JPanel {
         btn_next = new javax.swing.JButton();
         btn_last = new javax.swing.JButton();
         lb_halaman = new javax.swing.JLabel();
-        pn_detail = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbl_data_detail = new Palette.JTable_Custom();
-        jLabel6 = new javax.swing.JLabel();
+        btn_cancel = new Palette.Custom_ButtonRounded();
         panelAdd = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -125,8 +120,7 @@ public class MenuSewa extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_data_sementara = new Palette.JTable_Custom();
         btn_hapus = new Palette.Custom_ButtonRounded();
-        btn_ubah = new Palette.Custom_ButtonRounded();
-        btn_cancel_sementara = new Palette.Custom_ButtonRounded();
+        btn_tambah1 = new Palette.Custom_ButtonRounded();
 
         dateChooser1.setTextRefernce(txt_tgl_sewa);
 
@@ -160,7 +154,12 @@ public class MenuSewa extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Transaksi.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon2.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home.png"))); // NOI18N
+        jLabel2.setText("> Sewa");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
@@ -189,133 +188,79 @@ public class MenuSewa extends javax.swing.JPanel {
         lb_halaman.setForeground(new java.awt.Color(153, 153, 153));
         lb_halaman.setText("Halaman of Total Halaman");
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Data Detail Sewa");
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Transaksi.png"))); // NOI18N
-
-        tbl_data_detail.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
-            }
-        ));
-        tbl_data_detail.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        tbl_data_detail.setSelectionForeground(new java.awt.Color(204, 255, 51));
-        jScrollPane3.setViewportView(tbl_data_detail);
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Multiply.png"))); // NOI18N
-
-        javax.swing.GroupLayout pn_detailLayout = new javax.swing.GroupLayout(pn_detail);
-        pn_detail.setLayout(pn_detailLayout);
-        pn_detailLayout.setHorizontalGroup(
-            pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_detailLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pn_detailLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addContainerGap())))
-        );
-        pn_detailLayout.setVerticalGroup(
-            pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_detailLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cancel.png"))); // NOI18N
+        btn_cancel.setText("Batal");
+        btn_cancel.setFillClick(new java.awt.Color(153, 51, 0));
+        btn_cancel.setFillOriginal(new java.awt.Color(255, 102, 0));
+        btn_cancel.setFillOver(new java.awt.Color(204, 102, 0));
 
         javax.swing.GroupLayout panelViewLayout = new javax.swing.GroupLayout(panelView);
         panelView.setLayout(panelViewLayout);
         panelViewLayout.setHorizontalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(panelViewLayout.createSequentialGroup()
+                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
+                                .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 469, Short.MAX_VALUE)
+                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_search, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(19, 19, 19))
             .addGroup(panelViewLayout.createSequentialGroup()
+                .addGap(345, 345, 345)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelViewLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pn_detail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelViewLayout.createSequentialGroup()
-                                .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_search, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel3))))))
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGap(311, 311, 311)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelViewLayout.createSequentialGroup()
-                                .addComponent(btn_first)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_before)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_next)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_last))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(lb_halaman)
-                                .addGap(51, 51, 51)))))
+                        .addComponent(btn_first)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_before)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_next)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_last))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lb_halaman)
+                        .addGap(27, 27, 27)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelViewLayout.setVerticalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelViewLayout.createSequentialGroup()
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_halaman)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(lb_halaman, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_next, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_first)
-                        .addComponent(btn_before)
-                        .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_last))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(pn_detail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_first, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_before, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_next, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_last, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         panelMain.add(panelView, "card2");
@@ -324,7 +269,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Transaksi.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon2.png"))); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
@@ -382,28 +327,34 @@ public class MenuSewa extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txt_tgl_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
         panelcustom1Layout.setVerticalGroup(
             panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom1Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
+                    .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_tgl_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)))
+                .addContainerGap())
             .addGroup(panelcustom1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(txt_tgl_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -617,12 +568,13 @@ public class MenuSewa extends javax.swing.JPanel {
                     .addGroup(panelcustom5Layout.createSequentialGroup()
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(panelcustom5Layout.createSequentialGroup()
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lb_totalSewa)))
-                .addContainerGap())
+                        .addComponent(lb_totalSewa)
+                        .addGap(17, 17, 17))))
         );
         panelcustom5Layout.setVerticalGroup(
             panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,40 +624,32 @@ public class MenuSewa extends javax.swing.JPanel {
             }
         });
 
-        btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add.png"))); // NOI18N
-        btn_ubah.setText("UBAH");
-        btn_ubah.setFillClick(new java.awt.Color(0, 51, 102));
-        btn_ubah.setFillOver(new java.awt.Color(41, 128, 185));
-
-        btn_cancel_sementara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cancel.png"))); // NOI18N
-        btn_cancel_sementara.setText("Batal");
-        btn_cancel_sementara.setFillClick(new java.awt.Color(153, 51, 0));
-        btn_cancel_sementara.setFillOriginal(new java.awt.Color(255, 102, 0));
-        btn_cancel_sementara.setFillOver(new java.awt.Color(204, 102, 0));
+        btn_tambah1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add.png"))); // NOI18N
+        btn_tambah1.setText("UBAH");
+        btn_tambah1.setFillClick(new java.awt.Color(0, 51, 102));
+        btn_tambah1.setFillOver(new java.awt.Color(41, 128, 185));
 
         javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(panelAdd);
         panelAdd.setLayout(panelAddLayout);
         panelAddLayout.setHorizontalGroup(
             panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(panelcustom2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelcustom4, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
+                            .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, 371, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
                             .addGroup(panelAddLayout.createSequentialGroup()
-                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panelAddLayout.createSequentialGroup()
-                                        .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(panelcustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2)))
+                                .addComponent(btn_tambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(panelcustom5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(panelcustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -713,9 +657,8 @@ public class MenuSewa extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7))
-                    .addComponent(panelcustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(9, 9, 9))
+                        .addComponent(jLabel7)))
+                .addGap(20, 20, 20))
         );
         panelAddLayout.setVerticalGroup(
             panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -733,20 +676,17 @@ public class MenuSewa extends javax.swing.JPanel {
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAddLayout.createSequentialGroup()
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelAddLayout.createSequentialGroup()
-                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btn_tambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(panelcustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
                         .addComponent(panelcustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         panelMain.add(panelAdd, "card2");
@@ -778,7 +718,7 @@ public class MenuSewa extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Palette.Custom_ButtonRounded btn_batal_add;
     private javax.swing.JButton btn_before;
-    private Palette.Custom_ButtonRounded btn_cancel_sementara;
+    private Palette.Custom_ButtonRounded btn_cancel;
     private javax.swing.JButton btn_first;
     private Palette.Custom_ButtonRounded btn_hapus;
     private javax.swing.JButton btn_last;
@@ -787,7 +727,7 @@ public class MenuSewa extends javax.swing.JPanel {
     private Palette.Custom_ButtonRounded btn_set_pelanggan;
     private Palette.Custom_ButtonRounded btn_simpan;
     private Palette.Custom_ButtonRounded btn_tambah;
-    private Palette.Custom_ButtonRounded btn_ubah;
+    private Palette.Custom_ButtonRounded btn_tambah1;
     private javax.swing.JComboBox<String> cbx_data;
     private com.raven.datechooser.DateChooser dateChooser1;
     private com.raven.datechooser.DateChooser dateChooser2;
@@ -804,15 +744,12 @@ public class MenuSewa extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lb_halaman;
     private javax.swing.JLabel lb_totalSewa;
     private javax.swing.JPanel panelAdd;
@@ -822,9 +759,7 @@ public class MenuSewa extends javax.swing.JPanel {
     private Palette.Panelcustom panelcustom2;
     private Palette.Panelcustom panelcustom4;
     private Palette.Panelcustom panelcustom5;
-    private javax.swing.JPanel pn_detail;
     private Palette.JTable_Custom tbl_data;
-    private Palette.JTable_Custom tbl_data_detail;
     private Palette.JTable_Custom tbl_data_sementara;
     private Palette.JTextfieldRounded txt_alamat;
     private Palette.JTextfieldRounded txt_harga_perhari;
@@ -892,9 +827,12 @@ public class MenuSewa extends javax.swing.JPanel {
 
                 try {
                     txt_id.setText(setIDSewa());
-                    btn_ubah.setText("TAMBAH");
-                    btn_simpan.setText("SIMPAN");
-
+                    if (btn_tambah.getText().equals("UBAH")) {
+                        dataTabel();
+                        btn_simpan.setText("PERBARUI");
+                    } else {
+                        btn_simpan.setText("SIMPAN");
+                    }
                 } catch (SQLException ex) {
                     Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -906,28 +844,17 @@ public class MenuSewa extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (btn_simpan.getText().equals("SIMPAN")) {
-                    insertData(); // Tambahkan data ke tbl_sewa
-                    insertDataDetail(); // Tambahkan data ke tbl_detail_sewa
+                    insertData(); // Menyimpan data baru ke database
+                    insertDataDetail();
                     hapusDataSementara();
                     resetForm();
                     loadData();
                     showPanel();
                 } else if (btn_simpan.getText().equals("PERBARUI")) {
-                    updateData();
+                    updateData(); // Memperbarui data Konsol yang sudah ada
                     resetForm();
                     loadData();
                     showPanel();
-                }
-            }
-        });
-
-        btn_ubah.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (btn_ubah.getText().equals("TAMBAH")) {
-                    insertDataSementara();
-                } else if (btn_ubah.getText().equals("UBAH")) {
-                    updateData();
                 }
             }
         });
@@ -939,12 +866,11 @@ public class MenuSewa extends javax.swing.JPanel {
             }
         });
 
-        btn_cancel_sementara.addActionListener(new ActionListener() {
+        btn_cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loadDataSementara();
-                resetFormKonsol();
-                btn_ubah.setText("TAMBAH"); // Tampilkan tombol hapus
+                showPanel(); // Kembali ke panel utama
+                loadData(); // Refresh data di JTable
             }
         });
 
@@ -959,25 +885,17 @@ public class MenuSewa extends javax.swing.JPanel {
         txt_search.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-
+                searchData(); // Memanggil fungsi searchData() untuk mencari data berdasarkan kata kunci
             }
         });
 
         tbl_data.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                pn_detail.setVisible(true);
-//                getDataDetail();
-            }
-        });
-
-        tbl_data_sementara.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                btn_ubah.setText("UBAH"); // Tampilkan tombol hapus
+                btn_tambah.setText("UBAH"); // Ubah tombol tambah menjadi "UBAH"
+                btn_simpan.setText("PERBARUI"); // Ubah tombol simpan menjadi "PERBARUI"
+                btn_cancel.setVisible(true); // Tampilkan tombol batal
                 btn_hapus.setVisible(true); // Tampilkan tombol hapus
-                btn_cancel_sementara.setVisible(true); // Tampilkan tombol hapus
-                dataTabelSementara();
             }
         });
 
@@ -998,11 +916,7 @@ public class MenuSewa extends javax.swing.JPanel {
         txt_jumlah.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (btn_ubah.getText().equals("TAMBAH")) {
-                    insertDataSementara();
-                } else if (btn_ubah.getText().equals("UBAH")) {
-                    updateData();
-                }
+                insertDataSementara();
             }
         });
     }
@@ -1039,12 +953,11 @@ public class MenuSewa extends javax.swing.JPanel {
         int startIndex = (HalamanSaatIni - 1) * DataperHalaman;// Menentukan indeks awal data berdasarkan halaman saat ini
         getData(startIndex, DataperHalaman, (DefaultTableModel) tbl_data.getModel());// Mendapatkan data untuk ditampilkan di tabel
         btn_hapus.setVisible(false); // Menyembunyikan tombol hapus
+        btn_cancel.setVisible(false); // Menyembunyikan tombol batal
     }
 
     private void loadDataSementara() {
         getDataSementara((DefaultTableModel) tbl_data_sementara.getModel());
-        btn_cancel_sementara.setVisible(false);
-        btn_hapus.setVisible(false);
     }
 
     // showPanel() - Mengatur tampilan panel utama
@@ -1129,54 +1042,6 @@ public class MenuSewa extends javax.swing.JPanel {
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data_sementara.setModel(model); // Mengatur model tabel untuk JTable
-        loadData(); // Memuat data ke dalam tabel
-    }
-
-    private void getDataDetail(DefaultTableModel model) {
-        model.setRowCount(0); // Mengosongkan data yang ada di tabel
-
-        try {
-            String sql = "SELECT sw.ID_Sewa, sw.Tanggal_Sewa, sw.Tanggal_Pengembalian, sw.Total, "
-                    + "plgn.Nama AS NamaPelanggan, usr.Nama_User AS NamaUser "
-                    + "FROM tbl_sewa sw "
-                    + "INNER JOIN tbl_pelanggan plgn ON plgn.ID_Pelanggan = sw.ID_Pelanggan "
-                    + "INNER JOIN tbl_user usr ON usr.ID_User = sw.ID_User "
-                    + "ORDER BY sw.ID_Sewa ASC LIMIT ?, ?";
-            // Query dengan limit berdasarkan halaman
-
-            try (PreparedStatement st = con.prepareStatement(sql)) {
-                ResultSet rs = st.executeQuery(); // Eksekusi query
-
-                while (rs.next()) {
-                    // Ambil data dari ResultSet
-                    String IdSewa = rs.getString("ID_Sewa");
-                    String TanggalSewa = rs.getString("Tanggal_Sewa");
-                    String TanggalKembali = rs.getString("Tanggal_Pengembalian");
-                    String TotalSewa = rs.getString("Total");
-                    String NamaPelanggan = rs.getString("NamaPelanggan");
-                    String NamaUser = rs.getString("NamaUser");
-
-                    // Tambahkan ke model tabel
-                    Object[] rowData = {IdSewa, TanggalSewa, TanggalKembali, TotalSewa, NamaPelanggan, NamaUser};
-                    model.addRow(rowData); // Menambahkan baris data ke dalam tabel
-                }
-            }
-        } catch (Exception e) {
-            Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-
-    // setTabelModel() - Mengatur model tabel dengan kolom-kolom yang sesuai
-    private void setTabelModelDetail() {
-        String[] columnNames = {
-            "ID",
-            "ID Konsol",
-            "Nama Buku",
-            "Jumlah Sewa",
-            "Status Sewa"
-        };
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
-        tbl_data_detail.setModel(model); // Mengatur model tabel untuk JTable
         loadData(); // Memuat data ke dalam tabel
     }
 
@@ -1275,25 +1140,9 @@ public class MenuSewa extends javax.swing.JPanel {
             return;
         }
 
-        // Validasi keberadaan ID_Pelanggan
-        try {
-            String cekPelangganSQL = "SELECT COUNT(*) FROM tbl_pelanggan WHERE ID_Pelanggan = ?";
-            try (PreparedStatement cekSt = con.prepareStatement(cekPelangganSQL)) {
-                cekSt.setString(1, IdPelanggan);
-                ResultSet rs = cekSt.executeQuery();
-                if (rs.next() && rs.getInt(1) == 0) {
-                    JOptionPane.showMessageDialog(this, "ID Pelanggan tidak valid!", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
-            return;
-        }
-
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_sewa (ID_Sewa, Tanggal_Sewa, Tanggal_Pengembalian, Total, ID_Pelanggan, ID_User) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO tbl_sewa (ID_Sewa, Tanggal_Sewa, Tanggal_Pengembalian, Total, ID_User, ID_Pelanggan) VALUES (?,?,?,?,?,?)";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, IdSewa);
                 st.setString(2, tglSewa);
@@ -1305,6 +1154,9 @@ public class MenuSewa extends javax.swing.JPanel {
                 int rowInserted = st.executeUpdate(); // Menjalankan perintah insert
                 if (rowInserted > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan");
+                    resetForm(); // Kosongkan text field setelah data berhasil ditambahkan
+                    loadData();  // Memuat data ke tampilan JTable atau komponen lainnya
+                    showPanel();
                 }
             }
         } catch (SQLException e) {
@@ -1312,32 +1164,17 @@ public class MenuSewa extends javax.swing.JPanel {
         }
     }
 
+    // insertData() - Menambahkan data Konsol ke database
     private void insertDataDetail() {
         String IdSewa = txt_id.getText();
 
-        // Validasi keberadaan ID_Sewa
-        try {
-            String cekSewaSQL = "SELECT COUNT(*) FROM tbl_sewa WHERE ID_Sewa = ?";
-            try (PreparedStatement cekSt = con.prepareStatement(cekSewaSQL)) {
-                cekSt.setString(1, IdSewa);
-                ResultSet rs = cekSt.executeQuery();
-                if (rs.next() && rs.getInt(1) == 0) {
-                    JOptionPane.showMessageDialog(this, "ID Sewa tidak valid!", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
-            return;
-        }
-
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_detail_sewa (ID_Sewa, ID_Konsol, Jumlah_Sewa, Status_Sewa) SELECT ?, ID_Konsol, Jumlah_Sewa, Status_Sewa FROM tbl_sementara";
+            String sql = "INSERT INTO tbl_detail_sewa (ID_Sewa, ID_Konsol, Jumlah_Sewa, Status_Sewa) SELECT '" + IdSewa + "', ID_Konsol, Jumlah_Sewa, Status_Sewa FROM tbl_sementara";
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, IdSewa);
                 st.executeUpdate();
             }
+
         } catch (SQLException e) {
             Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -1414,57 +1251,35 @@ public class MenuSewa extends javax.swing.JPanel {
         String id = tbl_data.getModel().getValueAt(row, 0).toString();
 
         // Mengisi field form dengan data dari baris yang dipilih
-        txt_id_konsol.setText(tbl_data.getValueAt(row, 0).toString());
-        txt_nama_konsol.setText(tbl_data.getValueAt(row, 1).toString());
-        txt_jumlah.setText(tbl_data.getValueAt(row, 2).toString());
-        txt_harga_perhari.setText(tbl_data.getValueAt(row, 3).toString());
-        txt_jumlah.setText(tbl_data.getValueAt(row, 1).toString());
-    }
+        txt_id.setText(tbl_data.getValueAt(row, 0).toString());
 
-    private void dataTabelSementara() {
-        int row = tbl_data_sementara.getSelectedRow();
-        if (row != -1) {
-            btn_set_konsol.setEnabled(false);
-            txt_id_konsol.setEnabled(false);
-            txt_nama_konsol.setEnabled(false);
-            txt_jumlah.setEnabled(true);
-            txt_harga_perhari.setEnabled(false);
-
-            String id = tbl_data_sementara.getValueAt(row, 0).toString();
-            txt_id_konsol.setText(tbl_data_sementara.getValueAt(row, 0).toString());
-            txt_nama_konsol.setText(tbl_data_sementara.getValueAt(row, 1).toString());
-            txt_jumlah.setText(tbl_data_sementara.getValueAt(row, 2).toString());
-            txt_harga_perhari.setText(tbl_data_sementara.getValueAt(row, 3).toString());
-
-            txt_jumlah.requestFocus();
-        }
     }
 
     // updateData() - Memperbarui data Konsol di database
     private void updateData() {
-        String IdKonsol = txt_id_konsol.getText();
-        String JumlahSewa = txt_jumlah.getText();
+        String IdKonsol = txt_id.getText();
+        String HargaPerhari = txt_harga_perhari.getText();
 
-        if (IdKonsol.isEmpty() || JumlahSewa.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua kolom harus dipilih dan diisi !", "Validasi", JOptionPane.ERROR_MESSAGE);
+        // Validasi input data
+        if (IdKonsol.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Dipilih dan Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
+        // Update data ke database
         try {
-            String sql = "UPDATE tbl_sementara SET Jumlah_Sewa=? WHERE ID_Konsol=?";
-
+            // Memperbaiki query untuk memasukkan nilai Stock, Status, HargaPerjam, dan HargaPerhari
+            String sql = "UPDATE tbl_sewa SET Nama_Konsol=?, Status=?, Stock=?, Harga_Perjam=?, Harga_Perhari=?, ID_Kategori=? WHERE ID_Sewa=?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, JumlahSewa);
-                st.setString(2, IdKonsol);
-                int rowUpdated = st.executeUpdate();
+                st.setString(5, HargaPerhari); // Set Harga per Hari
+                st.setString(7, IdKonsol);
 
-                int totalPinjam = getTotalData();
-                lb_totalSewa.setText(String.valueOf(totalPinjam));
-
+                int rowUpdated = st.executeUpdate(); // Menjalankan perintah update
                 if (rowUpdated > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Diperbarui");
-                    resetFormKonsol();
-                    loadDataSementara();
+                    resetForm(); // Kosongkan form setelah data diperbarui
+                    loadData();  // Refresh data di JTable
+                    showPanel(); // Tampilkan panel utama
                 }
             }
         } catch (SQLException e) {
@@ -1474,36 +1289,27 @@ public class MenuSewa extends javax.swing.JPanel {
 
     // hapusData() - Menghapus data Konsol dari database
     private void hapusData() {
-        int row = tbl_data_sementara.getSelectedRow();  // Mendapatkan baris yang dipilih
+        int row = tbl_data.getSelectedRow();// Mendapatkan baris yang dipilih
+        String IdKonsol = tbl_data.getValueAt(row, 0).toString();// Mendapatkan ID Konsol dari baris yang dipilih
 
-        // Pastikan baris yang dipilih tidak -1 (tidak ada yang dipilih)
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus!", "Peringatan", JOptionPane.WARNING_MESSAGE);
-            return;  // Jika tidak ada baris yang dipilih, batalkan penghapusan
-        }
-
+        // Konfirmasi penghapusan
         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Menghapus Data Ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-
         if (confirm == JOptionPane.YES_OPTION) {
-            String id = tbl_data_sementara.getValueAt(row, 0).toString();  // Mendapatkan ID dari baris yang dipilih
             try {
-                String sql = "DELETE FROM tbl_sementara WHERE ID_Konsol=?";
+                String sql = "DELETE FROM tbl_sewa WHERE ID_Sewa=?";
                 try (PreparedStatement st = con.prepareStatement(sql)) {
-                    st.setString(1, id);
+                    st.setString(1, IdKonsol);
 
-                    int rowDeleted = st.executeUpdate(); // Eksekusi penghapusan
+                    int rowDeleted = st.executeUpdate();// Eksekusi penghapusan
                     if (rowDeleted > 0) {
                         JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Data Gagal Dihapus");
+                        loadData();// Refresh data di JTable
                     }
                 }
             } catch (SQLException e) {
                 Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-        loadDataSementara();  // Muat ulang data setelah penghapusan
-        resetFormKonsol();    // Kosongkan form setelah penghapusan
     }
 
     private void hapusDataSementara() {
@@ -1526,12 +1332,11 @@ public class MenuSewa extends javax.swing.JPanel {
 
         try {
             // Modifikasi query untuk mencakup pencarian berdasarkan Nama_Konsol dan Stock
-            String sql = "SELECT sw.ID_Sewa, sw.Tanggal_Sewa, sw.Tanggal_Pengembalian, sw.Total, "
-                    + "plgn.Nama AS NamaPelanggan, usr.Nama_User AS NamaUser "
-                    + "FROM tbl_sewa sw "
-                    + "INNER JOIN tbl_pelanggan plgn ON plgn.ID_Pelanggan = sw.ID_Pelanggan "
-                    + "INNER JOIN tbl_user usr ON usr.ID_User = sw.ID_User "
-                    + "WHERE sw.ID_Sewa Like ? OR plgn.Nama Like ?";
+            String sql = "SELECT tbl_sewa.ID_Sewa, tbl_sewa.Nama_Konsol, tbl_sewa.Status, tbl_sewa.Stock, tbl_sewa.Harga_Perjam, tbl_sewa.Harga_Perhari, "
+                    + "tbl_kategori.ID_Kategori, tbl_kategori.Nama_Kategori "
+                    + "FROM tbl_sewa "
+                    + "INNER JOIN tbl_kategori ON tbl_kategori.ID_Kategori = tbl_sewa.ID_Kategori "
+                    + "WHERE tbl_sewa.Nama_Konsol Like ? OR tbl_sewa.Status Like ?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 // Menambahkan parameter pencarian pada kolom Nama_Konsol dan Stock
                 st.setString(1, "%" + kataKunci + "%");
@@ -1540,17 +1345,17 @@ public class MenuSewa extends javax.swing.JPanel {
                 ResultSet rs = st.executeQuery();
 
                 while (rs.next()) {
-                    // Ambil data dari ResultSet
-                    String IdSewa = rs.getString("ID_Sewa");
-                    String TanggalSewa = rs.getString("Tanggal_Sewa");
-                    String TanggalKembali = rs.getString("Tanggal_Pengembalian");
-                    String TotalSewa = rs.getString("Total");
-                    String NamaPelanggan = rs.getString("NamaPelanggan");
-                    String NamaUser = rs.getString("NamaUser");
+                    String IdKonsol = rs.getString("ID_Sewa");
+                    String NamaKonsol = rs.getString("Nama_Konsol");
+                    String NamaKategori = rs.getString("Nama_Kategori");
+                    String Status = rs.getString("Status");
+                    String Stock = rs.getString("Stock");
+                    String HargaPerjam = rs.getString("Harga_Perjam");
+                    String HargaPerhari = rs.getString("Harga_Perhari");
 
-                    // Tambahkan ke model tabel
-                    Object[] rowData = {IdSewa, TanggalSewa, TanggalKembali, TotalSewa, NamaPelanggan, NamaUser};
-                    model.addRow(rowData); // Menambahkan baris data ke dalam tabel
+                    // Menambahkan hasil pencarian ke dalam JTable
+                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam, HargaPerhari};
+                    model.addRow(rowData);
                 }
             }
         } catch (Exception e) {
