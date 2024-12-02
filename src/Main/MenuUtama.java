@@ -96,8 +96,10 @@ public class MenuUtama extends javax.swing.JFrame {
         pn_kiri = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+
         jScrollPane1 = new javax.swing.JScrollPane();
         Sidemenu = new javax.swing.JPanel();
+
         pn_kanan = new javax.swing.JPanel();
         jPanelGradient1 = new Palette.JPanelGradient();
         lb_date = new javax.swing.JLabel();
@@ -134,6 +136,62 @@ public class MenuUtama extends javax.swing.JFrame {
         Sidemenu.setLayout(new javax.swing.BoxLayout(Sidemenu, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(Sidemenu);
 
+        pn_btnKategori2.setBackground(new java.awt.Color(255, 255, 255));
+
+        pn_line11.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pn_line11Layout = new javax.swing.GroupLayout(pn_line11);
+        pn_line11.setLayout(pn_line11Layout);
+        pn_line11Layout.setHorizontalGroup(
+            pn_line11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 9, Short.MAX_VALUE)
+        );
+        pn_line11Layout.setVerticalGroup(
+            pn_line11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Table.png"))); // NOI18N
+
+        btn_kategori2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        btn_kategori2.setForeground(new java.awt.Color(102, 102, 102));
+        btn_kategori2.setText("Meja");
+        btn_kategori2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_kategori2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_kategori2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_kategori2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pn_btnKategori2Layout = new javax.swing.GroupLayout(pn_btnKategori2);
+        pn_btnKategori2.setLayout(pn_btnKategori2Layout);
+        pn_btnKategori2Layout.setHorizontalGroup(
+            pn_btnKategori2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_btnKategori2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(pn_line11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_kategori2, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pn_btnKategori2Layout.setVerticalGroup(
+            pn_btnKategori2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_btnKategori2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(pn_btnKategori2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pn_line11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btn_kategori2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
+        );
+
         javax.swing.GroupLayout pn_kiriLayout = new javax.swing.GroupLayout(pn_kiri);
         pn_kiri.setLayout(pn_kiriLayout);
         pn_kiriLayout.setHorizontalGroup(
@@ -143,6 +201,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+
                 .addGap(20, 20, 20))
             .addGroup(pn_kiriLayout.createSequentialGroup()
                 .addContainerGap()
@@ -158,6 +217,7 @@ public class MenuUtama extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+
                 .addContainerGap())
         );
 
@@ -250,6 +310,7 @@ public class MenuUtama extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_formMouseDragged
 
+
     /**
      * @param args the command line arguments
      */
@@ -292,9 +353,11 @@ public class MenuUtama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JPanel Sidemenu;
     private javax.swing.JButton btn_profile;
     private javax.swing.JLabel jLabel1;
+
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private Palette.JPanelGradient jPanelGradient1;
@@ -303,6 +366,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_kiri;
+
     private javax.swing.JPanel pn_utama;
     // End of variables declaration//GEN-END:variables
 
