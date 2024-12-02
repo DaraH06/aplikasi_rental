@@ -1,5 +1,5 @@
 package View;
-
+//data
 import java.sql.Connection;
 import database.database_two;
 import java.awt.event.KeyAdapter;

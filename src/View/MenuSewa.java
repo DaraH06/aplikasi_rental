@@ -1,5 +1,5 @@
 package View;
-
+//data
 import com.mysql.cj.protocol.Resultset;
 import database.database_two;
 import java.awt.event.ActionEvent;

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-
+//menu laporan
 import java.awt.Color;
 import java.awt.PopupMenu;
 import javax.swing.JPanel;

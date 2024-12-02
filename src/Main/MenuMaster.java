@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-
+//menu master
 import View.MenuDashboard;
 import View.MenuKategori;
 import View.MenuKonsol;

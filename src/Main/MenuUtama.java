@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Main;
-
+//menu utama
 import View.MenuDashboard;
 import View.MenuKategori;
 import View.MenuKonsol;
@@ -77,7 +77,9 @@ public class MenuUtama extends javax.swing.JFrame {
                 SimpleDateFormat formatHari = new SimpleDateFormat("EEEE", new Locale("in", "ID"));
                 SimpleDateFormat formatTanggal = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 String hari = formatHari.format(calender.getTime());
+                String waktuTanggal = formatTanggal.format(now);
                 
+                //lb_date.setText( );
             }
         });
     }
@@ -98,7 +100,7 @@ public class MenuUtama extends javax.swing.JFrame {
         Sidemenu = new javax.swing.JPanel();
         pn_kanan = new javax.swing.JPanel();
         jPanelGradient1 = new Palette.JPanelGradient();
-        jLabel3 = new javax.swing.JLabel();
+        lb_date = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btn_profile = new javax.swing.JButton();
         pn_dasar = new javax.swing.JPanel();
@@ -167,10 +169,10 @@ public class MenuUtama extends javax.swing.JFrame {
         jPanelGradient1.setColorend(new java.awt.Color(0, 255, 255));
         jPanelGradient1.setColorstart(new java.awt.Color(204, 204, 240));
 
-        jLabel3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Date");
+        lb_date.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lb_date.setForeground(new java.awt.Color(102, 102, 102));
+        lb_date.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_date.setText("Date");
 
         jLabel4.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -186,7 +188,7 @@ public class MenuUtama extends javax.swing.JFrame {
             jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGradient1Layout.createSequentialGroup()
                 .addContainerGap(922, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lb_date, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -200,7 +202,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addGroup(jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lb_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -294,10 +296,10 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JButton btn_profile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private Palette.JPanelGradient jPanelGradient1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lb_date;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_kiri;
