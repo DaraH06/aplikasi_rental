@@ -264,7 +264,7 @@ public class MenuLaporan extends javax.swing.JPanel {
 
     private void back_dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_dashboardMouseClicked
         back_dashboard.removeAll();
-        back_dashboard.add(new MenuUtama());
+//        back_dashboard.add(new MenuUtama());
         back_dashboard.repaint();
         back_dashboard.revalidate();
     }//GEN-LAST:event_back_dashboardMouseClicked

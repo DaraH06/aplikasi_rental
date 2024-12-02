@@ -6,6 +6,7 @@
 package View;
 
 import Main.MenuUtama;
+import Main.MenuUtama;
 import database.database_two;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
@@ -17,6 +18,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -205,27 +208,7 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseDragged
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-//        try {
-//            String sql = "SELECT * FROM tbl_user where Nama_User = '" + txt_username.getText()
-//                    + "'AND Password ='" + txt_password.getText() + "'";
-//            java.sql.Connection con = (Connection) database_two.con();
-//            java.sql.PreparedStatement pst = con.prepareStatement(sql);
-//            java.sql.ResultSet rs = pst.executeQuery(sql);
-//            if (rs.next()) {
-//                if (txt_username.getText().equals(rs.getString("Nama_User"))
-//                        && txt_password.getText().equals(rs.getString("Password"))) {
-//                    JOptionPane.showMessageDialog(null, "Berhasil  Login");
-//                    this.setVisible(false);
-//                    new MenuUtama().setVisible(true);
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Username atau Password salah");
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e.getMessage());
-//        }
-//        //        new MenuUtama().show();
-//        //        this.dispose();
+//     
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
@@ -353,23 +336,28 @@ public class FormLogin extends javax.swing.JFrame {
         return valid;
     }
 
-    private String checkLogin(String username, String password) {
+    private Map<String, String> checkLogin(String username, String password) {
+        Map<String, String> result = new HashMap<>();
         if (con != null) {
             try {
-                String sql = "SELECT ID_User FROM tbl_user WHERE Nama_User=? AND Password=?";
+                // Query SQL dengan parameter
+                String sql = "SELECT * FROM tbl_user WHERE Nama_User=? AND `Password`=?";
                 PreparedStatement st = con.prepareStatement(sql);
-                st.setString(1, username);
-                st.setString(2, password);
+                st.setString(1, username.trim()); // Menghapus spasi di awal/akhir
+                st.setString(2, password.trim());
 
                 ResultSet rs = st.executeQuery();
                 if (rs.next()) {
-                    return rs.getString("ID_User"); // Mengembalikan ID_User jika cocok
+                    result.put("ID_User", rs.getString("ID_User"));
+                    result.put("Nama_User", rs.getString("Nama_User"));
+                    result.put("Level", rs.getString("Level"));
+                    return result;
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return null; // Mengembalikan null jika tidak ditemukan
+        return null; // Jika tidak ditemukan
     }
 
     private void prosesLogin() {
@@ -378,10 +366,13 @@ public class FormLogin extends javax.swing.JFrame {
             String password = new String(txt_password.getPassword());
             String hashedPassword = getMd5java(password);
 
-            String userID = checkLogin(username, hashedPassword); // Deklarasi UserID di sini
+            Map<String, String> loginResult = checkLogin(username, hashedPassword); // Deklarasi UserID di sini      
 
-            if (userID != null) {
-                MenuUtama mn = new MenuUtama(userID); // Gunakan UserID yang valid
+            if (loginResult != null) {
+                String userID = loginResult.get("ID_User");
+                String levelUser = loginResult.get("Level");
+
+                MenuUtama mn = new MenuUtama(userID, levelUser); // Gunakan UserID yang valid
                 mn.setVisible(true);
                 mn.revalidate();
 
