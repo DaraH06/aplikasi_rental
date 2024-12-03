@@ -113,6 +113,11 @@ public class FormLogin extends javax.swing.JFrame {
                 btn_loginActionPerformed(evt);
             }
         });
+        btn_login.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_loginKeyPressed(evt);
+            }
+        });
 
         custom_ButtonRounded2.setBackground(new java.awt.Color(255, 255, 255));
         custom_ButtonRounded2.setText("REGISTER");
@@ -230,6 +235,10 @@ public class FormLogin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_custom_ButtonRounded2ActionPerformed
 
+    private void btn_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_loginKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_loginKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +280,15 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
+        txt_username.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    txt_password.requestFocus(); // Pindahkan fokus ke kolom password
+                }
+            }
+        });
+
         hide_eye.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -299,11 +317,11 @@ public class FormLogin extends javax.swing.JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    btn_login.doClick();
+                    prosesLogin(); // Panggil metode prosesLogin() langsung
                 }
             }
-
         });
+
     }
 
     public String getMd5java(String message) {
