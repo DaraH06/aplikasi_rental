@@ -30,9 +30,20 @@ public class MenuLaporan extends javax.swing.JPanel {
     private int DataperHalaman = 14;
     private int totalpages;
 
+    private String userID;
     private final Connection con;// Koneksi database
 
     // Konstruktor kelas MenuKategori
+    public MenuLaporan(String userID) {
+        con = database_two.con(); // Membuat koneksi ke database
+        initComponents(); // Inisialisasi komponen GUI
+        loadData(); // Memuat data Kategori ke dalam JTable
+        setTabelModel(); // Mengatur model tabel (misalnya, kolom-kolomnya)
+        pagination(); // Mengatur paginasi untuk tampilan data
+        updateTotalPendapatan(con);
+        this.userID = userID;
+    }
+
     public MenuLaporan() {
         con = database_two.con(); // Membuat koneksi ke database
         initComponents(); // Inisialisasi komponen GUI
@@ -40,6 +51,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         setTabelModel(); // Mengatur model tabel (misalnya, kolom-kolomnya)
         pagination(); // Mengatur paginasi untuk tampilan data
         updateTotalPendapatan(con);
+        this.userID = userID;
     }
 
     /**
@@ -251,7 +263,7 @@ public class MenuLaporan extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_dataMouseClicked
-        
+
     }//GEN-LAST:event_tbl_dataMouseClicked
 
     private void txt_searchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyTyped
@@ -269,25 +281,24 @@ public class MenuLaporan extends javax.swing.JPanel {
         back_dashboard.revalidate();
     }//GEN-LAST:event_back_dashboardMouseClicked
 //untuk sum total bayar
+
     public void updateTotalPendapatan(Connection con) {
-    String sql = "SELECT SUM(total) AS Total_Pendapatan FROM tbl_transaksi";
+        String sql = "SELECT SUM(total) AS Total_Pendapatan FROM tbl_transaksi";
 
-    try (PreparedStatement stmt = con.prepareStatement(sql); 
-         ResultSet rs = stmt.executeQuery()) {
+        try (PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
-        if (rs.next()) {
-            double totalPendapatan = rs.getDouble("Total_Pendapatan"); // Ambil hasil query
-            pendapatanTotal.setText("Rp " + totalPendapatan);          // Update JLabel dengan nilai pendapatan
-        } else {
-            pendapatanTotal.setText("Rp 0"); // Jika tidak ada data, tampilkan Rp 0
+            if (rs.next()) {
+                double totalPendapatan = rs.getDouble("Total_Pendapatan"); // Ambil hasil query
+                pendapatanTotal.setText("Rp " + totalPendapatan);          // Update JLabel dengan nilai pendapatan
+            } else {
+                pendapatanTotal.setText("Rp 0"); // Jika tidak ada data, tampilkan Rp 0
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            pendapatanTotal.setText("Error!"); // Jika terjadi error, tampilkan pesan error
         }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-        pendapatanTotal.setText("Error!"); // Jika terjadi error, tampilkan pesan error
     }
-}
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -311,7 +322,6 @@ public class MenuLaporan extends javax.swing.JPanel {
     private Palette.JTextfieldRounded txt_search;
     // End of variables declaration//GEN-END:variables
 
-    
     // pagination() - Mengatur fungsi pagination untuk Kategori
     private void pagination() {
         // Mengatur tombol halaman pertama
@@ -386,25 +396,24 @@ public class MenuLaporan extends javax.swing.JPanel {
     // showPanel() - Mengatur tampilan panel utama
     private void showPanel() {
         panelMain.removeAll();// Menghapus semua komponen di panel utama
-        panelMain.add(new MenuLaporan());// Menambahkan panel MenuKategori ke panel utama
+        panelMain.add(new MenuLaporan(userID));// Menambahkan panel MenuKategori ke panel utama
         panelMain.repaint();// Menggambar ulang panel utama
         panelMain.revalidate();// Memastikan perubahan diterapkan
     }
 
     // resetForm() - Mengosongkan input form Kategori
-   /* private void resetForm() {
+    /* private void resetForm() {
         txt_id.setText("");
         txt_nama.setText("");
         txt_Deskripsi.setText("");
     }*/
-
     // setTabelModel() - Mengatur model tabel dengan kolom-kolom yang sesuai
     private void setTabelModel() {
         String[] columnNames = {
             "ID_Transaksi",
             "Nama PS",
             "Durasi",
-            "Tanggal","Bayar"
+            "Tanggal", "Bayar"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data.setModel(model); // Mengatur model tabel untuk JTable
@@ -429,7 +438,7 @@ public class MenuLaporan extends javax.swing.JPanel {
                     String tanggal = rs.getString("tgl_transaksi");
                     String hargatotal = rs.getString("total");
 
-                    Object[] rowData = {IdTransaksi, NamaKonsol, durasi,tanggal,hargatotal}; // Data Kategori
+                    Object[] rowData = {IdTransaksi, NamaKonsol, durasi, tanggal, hargatotal}; // Data Kategori
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
@@ -502,7 +511,6 @@ public class MenuLaporan extends javax.swing.JPanel {
         // Mengembalikan status validasi (true jika valid, false jika tidak valid)
         return valid;
     }*/
-
     // insertData() - Menambahkan data Kategori ke database
     /*private void insertData() {
         String IdKategori = txt_id.getText();
@@ -540,7 +548,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         }
     }*/
     // dataTabel() - Menampilkan data Kategori dari JTable ke dalam form untuk diperbarui
-  /*  private void dataTabel() {
+    /*  private void dataTabel() {
         int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
         if (row == -1) { // Jika tidak ada baris yang dipilih
             JOptionPane.showMessageDialog(this, "Pilih baris terlebih dahulu!", "Peringatan", JOptionPane.WARNING_MESSAGE);
@@ -558,7 +566,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         txt_nama.setText(tbl_data.getValueAt(row, 1).toString());
         txt_Deskripsi.setText(tbl_data.getValueAt(row, 2).toString());
     }
-*/
+     */
     // updateData() - Memperbarui data Kategori di database
     /*private void updateData() {
         // Mengambil data dari form
@@ -592,7 +600,7 @@ public class MenuLaporan extends javax.swing.JPanel {
             Logger.getLogger(MenuLaporan.class.getName()).log(Level.SEVERE, null, e);
         }
     }*/
-/*
+ /*
     // hapusData() - Menghapus data Kategori dari database
     private void hapusData() {
         int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih
@@ -622,8 +630,7 @@ public class MenuLaporan extends javax.swing.JPanel {
             }
         }
     }
-*/
-   
+     */
     // searchData() - Mencari data Kategori berdasarkan nama atau alamat
     private void searchData() {
         String kataKunci = txt_search.getText(); // Mengambil kata kunci dari text field pencarian

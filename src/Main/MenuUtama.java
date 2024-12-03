@@ -5,15 +5,10 @@
  */
 package Main;
 //menu utama
+
 import View.MenuDashboard;
-import View.MenuKategori;
-import View.MenuKonsol;
-import View.MenuLaporan;
-import View.MenuPelanggan;
-import View.MenuPengembalian;
-import View.MenuSewa;
-import View.MenuUser;
-import java.awt.Color;
+import View.MenuProfile;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -37,10 +32,11 @@ public class MenuUtama extends javax.swing.JFrame {
     /**
      * Creates new form MenuUtama
      */
-    public MenuUtama(String userID, String levelUser) {
+    public MenuUtama(String userID, String namaUser, String levelUser) {
         initComponents();
         this.userID = userID;
         this.levelUser = levelUser;
+        lb_name.setText(namaUser);
         addMenu();
         setDate();
     }
@@ -67,8 +63,8 @@ public class MenuUtama extends javax.swing.JFrame {
             Sidemenu.add(new MenuLaporan1(this));
         }
     }
-    
-    private void setDate(){
+
+    private void setDate() {
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,10 +74,11 @@ public class MenuUtama extends javax.swing.JFrame {
                 SimpleDateFormat formatTanggal = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 String hari = formatHari.format(calender.getTime());
                 String waktuTanggal = formatTanggal.format(now);
-                
-                //lb_date.setText( );
+
+                lb_date.setText(hari + "," + waktuTanggal);
             }
         });
+        timer.start();
     }
 
     /**
@@ -101,7 +98,7 @@ public class MenuUtama extends javax.swing.JFrame {
         pn_kanan = new javax.swing.JPanel();
         jPanelGradient1 = new Palette.JPanelGradient();
         lb_date = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lb_name = new javax.swing.JLabel();
         btn_profile = new javax.swing.JButton();
         pn_dasar = new javax.swing.JPanel();
         pn_utama = new javax.swing.JPanel();
@@ -115,6 +112,11 @@ public class MenuUtama extends javax.swing.JFrame {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -174,24 +176,29 @@ public class MenuUtama extends javax.swing.JFrame {
         lb_date.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_date.setText("Date");
 
-        jLabel4.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Profile Name");
+        lb_name.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        lb_name.setForeground(new java.awt.Color(102, 102, 102));
+        lb_name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_name.setText("Profile Name");
 
         btn_profile.setForeground(new java.awt.Color(255, 255, 255));
         btn_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon6.png"))); // NOI18N
+        btn_profile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_profileActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelGradient1Layout = new javax.swing.GroupLayout(jPanelGradient1);
         jPanelGradient1.setLayout(jPanelGradient1Layout);
         jPanelGradient1Layout.setHorizontalGroup(
             jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGradient1Layout.createSequentialGroup()
-                .addContainerGap(922, Short.MAX_VALUE)
-                .addComponent(lb_date, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(768, Short.MAX_VALUE)
+                .addComponent(lb_date, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_name, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_profile)
                 .addContainerGap())
         );
@@ -201,7 +208,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lb_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -250,6 +257,22 @@ public class MenuUtama extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_formMouseDragged
 
+    private void btn_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_profileActionPerformed
+        MenuProfile menu = new MenuProfile(this, true, this);
+        Point p = btn_profile.getLocationOnScreen();
+        int x = p.x + btn_profile.getWidth() - menu.getWidth();
+        int y = p.y + btn_profile.getHeight();
+        menu.setLocation(x,y);
+        menu.setVisible(true);
+    }//GEN-LAST:event_btn_profileActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        pn_utama.removeAll();
+        pn_utama.add(new MenuDashboard());
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -285,8 +308,9 @@ public class MenuUtama extends javax.swing.JFrame {
             public void run() {
                 String userID = "ID_User";
                 String levelUser = "Level";
+                String namaUser = "Nama_User";
 
-                new MenuUtama(userID, levelUser).setVisible(true);
+                new MenuUtama(userID, namaUser, levelUser).setVisible(true);
             }
         });
     }
@@ -296,10 +320,10 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JButton btn_profile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private Palette.JPanelGradient jPanelGradient1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_date;
+    private javax.swing.JLabel lb_name;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_kiri;

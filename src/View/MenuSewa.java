@@ -1,5 +1,6 @@
 package View;
 //data
+
 import com.mysql.cj.protocol.Resultset;
 import database.database_two;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -669,35 +671,38 @@ public class MenuSewa extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(lb_totalSewa))
                     .addGroup(panelcustom5Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lb_totalSewa)
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         panelcustom5Layout.setVerticalGroup(
             panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelcustom5Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelcustom5Layout.createSequentialGroup()
-                        .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lb_totalSewa))
-                .addContainerGap(10, Short.MAX_VALUE))
+                            .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb_totalSewa)
+                        .addContainerGap())))
         );
 
         tbl_data_sementara.setModel(new javax.swing.table.DefaultTableModel(
@@ -768,7 +773,7 @@ public class MenuSewa extends javax.swing.JPanel {
                         .addComponent(panelcustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         panelMain.add(panelAdd, "card2");
@@ -1338,20 +1343,31 @@ public class MenuSewa extends javax.swing.JPanel {
         txt_harga_perhari.setEnabled(false);
     }
 
-    // insertData() - Menambahkan data Konsol ke database
     private void insertData() {
         String IdSewa = txt_id.getText();
         String tglSewa = txt_tgl_sewa.getText();
         String tglKembali = txt_tgl_kembali.getText();
-        String TotalSewa = lb_totalSewa.getText();
         String IdPelanggan = txt_id_pelanggan.getText();
 
         // Validasi input data
-        if (IdSewa.isEmpty() || tglSewa.isEmpty() || tglKembali.isEmpty() || TotalSewa.isEmpty() || IdPelanggan.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+        if (IdSewa.isEmpty() || tglSewa.isEmpty() || tglKembali.isEmpty() || IdPelanggan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua kolom harus diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
+        // Validasi format tanggal (contoh menggunakan SimpleDateFormat)
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            sdf.parse(tglSewa);
+            sdf.parse(tglKembali);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Format tanggal tidak valid!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Hitung total sewa sebelum insert
+        int totalSewa = getTotalSewa(IdSewa, tglSewa, tglKembali);
+        jLabel24.setText(String.valueOf(totalSewa));
         // Insert data ke database
         try {
             String sql = "INSERT INTO tbl_sewa (ID_Sewa, Tanggal_Sewa, Tanggal_Pengembalian, Total, ID_Pelanggan, ID_User) VALUES (?,?,?,?,?,?)";
@@ -1359,7 +1375,7 @@ public class MenuSewa extends javax.swing.JPanel {
                 st.setString(1, IdSewa);
                 st.setString(2, tglSewa);
                 st.setString(3, tglKembali);
-                st.setString(4, TotalSewa);
+                st.setInt(4, totalSewa);
                 st.setString(5, IdPelanggan);
                 st.setString(6, userID);
 
@@ -1384,11 +1400,11 @@ public class MenuSewa extends javax.swing.JPanel {
 
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_detail_sewa (ID_Sewa, ID_Konsol, Jumlah_Sewa, Status_Sewa) SELECT '" + IdSewa + "', ID_Konsol, Jumlah_Sewa, Status_Sewa FROM tbl_sementara";
+            String sql = "INSERT INTO tbl_detail_sewa (ID_Sewa, ID_Konsol, Jumlah_Sewa, Status_Sewa, HargaPerHari) "
+                    + "SELECT '" + IdSewa + "', ID_Konsol, Jumlah_Sewa, Status_Sewa, Harga_Perhari FROM tbl_sementara";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.executeUpdate();
             }
-
         } catch (SQLException e) {
             Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -1396,14 +1412,14 @@ public class MenuSewa extends javax.swing.JPanel {
 
     private boolean cekStok(String IdKonsol, int JumlahSewa) {
         try {
-            String sql = "SELECT Stok FROM tbl_konsol WHERE ID_Konsol=?";
+            String sql = "SELECT Stock FROM tbl_konsol WHERE ID_Konsol=?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, IdKonsol);
 
                 ResultSet rs = st.executeQuery();
 
                 if (rs.next()) {
-                    int stokTersedia = rs.getInt("Stok");
+                    int stokTersedia = rs.getInt("Stock");
                     return JumlahSewa <= stokTersedia;
                 }
             }
@@ -1445,9 +1461,6 @@ public class MenuSewa extends javax.swing.JPanel {
 
                 st.executeUpdate(); // Menjalankan perintah insert
 
-                int totalSewa = getTotalSewa();
-                lb_totalSewa.setText(String.valueOf(totalSewa)); // Update total sewa
-
                 loadDataSementara(); // Memuat data sementara
 
                 // Konfirmasi untuk menambah konsol lagi atau tidak
@@ -1466,21 +1479,27 @@ public class MenuSewa extends javax.swing.JPanel {
         }
     }
 
-    private int getTotalSewa() {
+    private int getTotalSewa(String idSewa, String tglSewa, String tglKembali) {
         int totalSewa = 0;
+        // Query SQL untuk menghitung total sewa
+        String sql = "SELECT (DATEDIFF(day, ?, ?) * Harga_PerHari) AS TotalSewa "
+                + "FROM tbl_sewa s "
+                + "INNER JOIN tbl_konsol k ON s.ID_Konsol = k.ID_Konsol "
+                + "WHERE s.ID_Sewa = ?";
 
-        try {
-            String sql = "SELECT SUM(Jumlah_Sewa) as total FROM tbl_sementara";
-            try (PreparedStatement st = con.prepareStatement(sql)) {
-                ResultSet rs = st.executeQuery();
-                if (rs.next()) {
-                    totalSewa = rs.getInt("total");
-                }
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setString(1, tglSewa);
+            st.setString(2, tglKembali);
+            st.setString(3, idSewa);
+
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("TotalSewa");
             }
-        } catch (Exception e) {
-            Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
+        } catch (SQLException e) {
+            // Tangani error
         }
-        return totalSewa;
+        return totalSewa; // Atau nilai default lainnya jika terjadi error
     }
 
     // dataTabel() - Menampilkan data Konsol dari JTable ke dalam form untuk diperbarui
@@ -1517,9 +1536,8 @@ public class MenuSewa extends javax.swing.JPanel {
                 st.setString(1, JumlahSewa); // Set Harga per Hari
                 st.setString(2, IdKonsol);
 
-                int totalSewa = getTotalSewa();
-                lb_totalSewa.setText(String.valueOf(totalSewa));
-
+//                int totalSewa = getTotalSewa(IdSewa, tglSewa, tglKembali);
+//                jLabel24.setText(String.valueOf(totalSewa));
                 int rowUpdated = st.executeUpdate(); // Menjalankan perintah update
                 if (rowUpdated > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Diperbarui");
@@ -1555,13 +1573,12 @@ public class MenuSewa extends javax.swing.JPanel {
                     st.setString(1, id);
                     int rowDeleted = st.executeUpdate();
 
-                    int totalSewa = getTotalSewa();
-                    if (totalSewa > 0) {
-                        lb_totalSewa.setText(String.valueOf(totalSewa));
-                    } else {
-                        lb_totalSewa.setText("Total");
-                    }
-
+//                    int totalSewa = getTotalSewa(id);
+//                    if (totalSewa > 0) {
+//                        jLabel24.setText(String.valueOf(totalSewa));
+//                    } else {
+//                        jLabel24.setText("Total");
+//                    }
                     if (rowDeleted > 0) {
                         JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
                     } else {

@@ -4,9 +4,12 @@
  */
 package Main;
 //menu laporan
+
+import View.MenuDashboard;
 import java.awt.Color;
 import java.awt.PopupMenu;
 import javax.swing.JPanel;
+import View.MenuLaporan;
 
 /**
  *
@@ -122,9 +125,11 @@ public class MenuLaporan1 extends javax.swing.JPanel {
 
         JPanel jp = menuUtama.getPanelUtama();
         jp.removeAll();
-//        jp.add(MenuLaporan(menuUtama.getUserID()));
+        jp.add(new MenuLaporan());
         jp.repaint();
         jp.revalidate();
+        
+        
     }//GEN-LAST:event_btn_laporanMouseClicked
 
     private void btn_laporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseEntered
@@ -146,5 +151,5 @@ public class MenuLaporan1 extends javax.swing.JPanel {
     private javax.swing.JPanel pn_line7;
     // End of variables declaration//GEN-END:variables
 
-   
+    
 }

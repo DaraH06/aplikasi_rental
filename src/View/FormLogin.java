@@ -235,11 +235,7 @@ public class FormLogin extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 //        FlatLightLaf.setup();
-        UIManager.put("Component.arc", 30); // Sudut melengkung pada komponen
-        UIManager.put("Button.arc", 30);    // Sudut melengkung pada tombo
-        UIManager.put("Button.background", new java.awt.Color(70, 130, 180)); // Warna latar belakang tombol
-        UIManager.put("Button.foreground", java.awt.Color.WHITE); // Warna teks tombol
-        UIManager.put("Button.hoverBackground", new java.awt.Color(100, 150, 200)); // Warna tombol saat dihover
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -370,9 +366,10 @@ public class FormLogin extends javax.swing.JFrame {
 
             if (loginResult != null) {
                 String userID = loginResult.get("ID_User");
+                String namaUser = loginResult.get("Nama_User");
                 String levelUser = loginResult.get("Level");
 
-                MenuUtama mn = new MenuUtama(userID, levelUser); // Gunakan UserID yang valid
+                MenuUtama mn = new MenuUtama(userID, namaUser, levelUser); // Gunakan UserID yang valid
                 mn.setVisible(true);
                 mn.revalidate();
 
