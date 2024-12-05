@@ -185,11 +185,11 @@ public class MenuSewa extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Transaksi.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Bayar.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Data Transaksi Sewa");
+        jLabel3.setText("Data Transaksi Rental");
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add.png"))); // NOI18N
         btn_tambah.setText("Tambah");
@@ -221,7 +221,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Data Detail Sewa");
+        jLabel4.setText("Data Detail Rental");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
@@ -362,11 +362,11 @@ public class MenuSewa extends javax.swing.JPanel {
         jLabel8.setText("ID");
 
         lb_ID.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        lb_ID.setForeground(new java.awt.Color(102, 102, 102));
+        lb_ID.setForeground(new java.awt.Color(41, 128, 185));
         lb_ID.setText("ID Sewa");
 
         lb_totalRental.setFont(new java.awt.Font("Poppins Light", 1, 30)); // NOI18N
-        lb_totalRental.setForeground(new java.awt.Color(102, 102, 102));
+        lb_totalRental.setForeground(new java.awt.Color(41, 128, 185));
         lb_totalRental.setText("TOTAL");
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -374,7 +374,7 @@ public class MenuSewa extends javax.swing.JPanel {
         jLabel24.setText("Total Harga");
 
         lb_totalRental1.setFont(new java.awt.Font("Poppins Light", 1, 30)); // NOI18N
-        lb_totalRental1.setForeground(new java.awt.Color(102, 102, 102));
+        lb_totalRental1.setForeground(new java.awt.Color(41, 128, 185));
         lb_totalRental1.setText("Rp.");
 
         javax.swing.GroupLayout panelcustom1Layout = new javax.swing.GroupLayout(panelcustom1);
@@ -438,6 +438,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_nama_pelanggan.setForeground(new java.awt.Color(102, 102, 102));
         txt_nama_pelanggan.setText("Nama_Pelanggan");
+        txt_nama_pelanggan.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_nama_pelanggan.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         txt_nama_pelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -451,6 +452,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_tlp_pelanggan.setForeground(new java.awt.Color(102, 102, 102));
         txt_tlp_pelanggan.setText("Telepon");
+        txt_tlp_pelanggan.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_tlp_pelanggan.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -459,6 +461,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_alamat.setForeground(new java.awt.Color(102, 102, 102));
         txt_alamat.setText("Alamat");
+        txt_alamat.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_alamat.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         btn_set_pelanggan.setText("...");
@@ -520,6 +523,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_id_konsol.setForeground(new java.awt.Color(102, 102, 102));
         txt_id_konsol.setText("ID");
+        txt_id_konsol.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_id_konsol.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -528,6 +532,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_nama_konsol.setForeground(new java.awt.Color(102, 102, 102));
         txt_nama_konsol.setText("Nama_Konsol");
+        txt_nama_konsol.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_nama_konsol.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -536,6 +541,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_harga_perhari.setForeground(new java.awt.Color(102, 102, 102));
         txt_harga_perhari.setText("Harga_Perjam");
+        txt_harga_perhari.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_harga_perhari.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         btn_set_konsol.setText("...");
@@ -625,6 +631,7 @@ public class MenuSewa extends javax.swing.JPanel {
         panelcustom5.setRoundTopRight(20);
 
         txt_tgl_sewa.setForeground(new java.awt.Color(102, 102, 102));
+        txt_tgl_sewa.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_tgl_sewa.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         txt_tgl_sewa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -642,10 +649,12 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_durasi.setForeground(new java.awt.Color(102, 102, 102));
         txt_durasi.setText("Durasi");
+        txt_durasi.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_durasi.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         txt_jumlah.setForeground(new java.awt.Color(102, 102, 102));
         txt_jumlah.setText("Jumlah");
+        txt_jumlah.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_jumlah.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -713,6 +722,7 @@ public class MenuSewa extends javax.swing.JPanel {
         panelcustom6.setRoundTopRight(20);
 
         txt_bayar.setForeground(new java.awt.Color(102, 102, 102));
+        txt_bayar.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_bayar.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         txt_bayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -726,6 +736,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_kembalian.setForeground(new java.awt.Color(102, 102, 102));
         txt_kembalian.setText("Jumlah");
+        txt_kembalian.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_kembalian.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         jLabel27.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -761,13 +772,13 @@ public class MenuSewa extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Save.png"))); // NOI18N
+        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Downloading Updates.png"))); // NOI18N
         btn_simpan.setText("Simpan");
         btn_simpan.setFillClick(new java.awt.Color(0, 51, 102));
         btn_simpan.setFillOver(new java.awt.Color(41, 128, 185));
 
         btn_batal_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cancel.png"))); // NOI18N
-        btn_batal_add.setText("Batal");
+        btn_batal_add.setText("Cancel");
         btn_batal_add.setFillClick(new java.awt.Color(153, 51, 0));
         btn_batal_add.setFillOriginal(new java.awt.Color(255, 102, 0));
         btn_batal_add.setFillOver(new java.awt.Color(204, 102, 0));
