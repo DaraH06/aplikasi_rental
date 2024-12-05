@@ -1,2 +1,4 @@
 /build/
 /dist/
+.Libraries
+nbproject/project.properties
