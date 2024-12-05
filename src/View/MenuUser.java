@@ -81,7 +81,7 @@ public class MenuUser extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         txt_email = new Palette.JTextfieldRounded();
         jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lb_password = new javax.swing.JLabel();
         txt_username = new Palette.JTextfieldRounded();
         jLabel13 = new javax.swing.JLabel();
         txt_password = new Palette.Custom_JPasswordFieldRounded();
@@ -331,9 +331,9 @@ public class MenuUser extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("Email");
 
-        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Password");
+        lb_password.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        lb_password.setForeground(new java.awt.Color(102, 102, 102));
+        lb_password.setText("Password");
 
         txt_username.setForeground(new java.awt.Color(102, 102, 102));
         txt_username.setText("Username");
@@ -397,7 +397,7 @@ public class MenuUser extends javax.swing.JPanel {
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel15)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel14)
+                            .addComponent(lb_password)
                             .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                             .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbx_level, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -432,7 +432,7 @@ public class MenuUser extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelAddLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
+                        .addComponent(lb_password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
@@ -535,7 +535,6 @@ public class MenuUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -546,6 +545,7 @@ public class MenuUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_halaman;
+    private javax.swing.JLabel lb_password;
     private javax.swing.JPanel panelAdd;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelView;
@@ -656,7 +656,6 @@ public class MenuUser extends javax.swing.JPanel {
             "Nama User",
             "Username",
             "Email",
-            "Password",
             "Level"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
@@ -765,7 +764,9 @@ public class MenuUser extends javax.swing.JPanel {
         int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
         jLabel7.setText("PERBARUI DATA USER"); // Mengubah teks label menjadi "PERBARUI DATA PELANGGAN"
         txt_id.setEnabled(false); // Menonaktifkan field ID pelanggan agar tidak bisa diedit
-
+        lb_password.setVisible(false);
+        txt_password.setVisible(false);
+        
         // Mengisi field form dengan data dari baris yang dipilih
         txt_id.setText(tbl_data.getValueAt(row, 0).toString());
         txt_nama.setText(tbl_data.getValueAt(row, 1).toString());
@@ -781,6 +782,7 @@ public class MenuUser extends javax.swing.JPanel {
         String NamaUser = txt_nama.getText();
         String UserName = txt_username.getText();
         String Email = txt_email.getText();
+        
         String LevelUser = cbx_level.getSelectedItem().toString();
 
         // Validasi input data

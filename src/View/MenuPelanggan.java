@@ -28,7 +28,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
     private int HalamanSaatIni = 1;
     private int DataperHalaman = 14;
     private int totalpages;
-    
+
     private final Connection con;// Koneksi database
 
     // Konstruktor kelas MenuPelanggan
@@ -486,7 +486,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
         panelMain.add(panelAdd);// Beralih ke panel tambah/edit
         panelMain.repaint();
         panelMain.revalidate();
-        
+
         try {
             txt_id.setText(setIDPelanggan()); // Menyiapkan ID pelanggan baru secara otomatis
             if (btn_tambah.getText().equals("UBAH")) { // Jika tombol menunjukkan "UBAH"
@@ -688,14 +688,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
                     String JkPelanggan = rs.getString("Jenis_Kelamin");
                     String TeleponPelanggan = rs.getString("Telepon");
                     String AlamatPelanggan = rs.getString("Alamat");
-                    
+
                     Object[] rowData = {IdPelanggan, NamaPelanggan, TipeIdentitas, JkPelanggan, TeleponPelanggan, AlamatPelanggan}; // Data pelanggan
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
         } catch (Exception e) {
             Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
-            
+
         }
     }
 
@@ -705,17 +705,17 @@ public class MenuPelanggan extends javax.swing.JPanel {
         Date now = new Date();
         SimpleDateFormat noFormat = new SimpleDateFormat("yyMM"); // Format tanggal sebagai bagian dari ID
         String no = noFormat.format(now);
-        
-        String sql = "SELECT RIGHT(ID_Pelanggan, 3) AS Nomor FROM tbl_pelanggan WHERE ID_Pelanggan LIKE 'PLGN" + no + "%' ORDER BY ID_Pelanggan DESC LIMIT 1";
-        
+
+        String sql = "SELECT RIGHT(ID_Pelanggan, 3) AS Nomor FROM tbl_pelanggan WHERE ID_Pelanggan LIKE '" + no + "%' ORDER BY ID_Pelanggan DESC LIMIT 1";
+
         try (PreparedStatement st = con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery(); // Eksekusi query
 
             if (rs.next()) {
                 int nomor = Integer.parseInt(rs.getString("nomor")) + 1; // Menambah nomor urut
-                urutan = "PLGN" + no + String.format("%03d", nomor); // Format ID baru
+                urutan = no + String.format("%03d", nomor); // Format ID baru
             } else {
-                urutan = "PLGN" + no + "001"; // ID awal jika tidak ada data
+                urutan = no + "001"; // ID awal jika tidak ada data
             }
         } catch (SQLException e) {
             java.util.logging.Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
@@ -749,7 +749,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 st.setString(4, JkPelanggan);
                 st.setString(5, TeleponPelanggan);
                 st.setString(6, AlamatPelanggan);
-                
+
                 int rowInserted = st.executeUpdate();// Menjalankan perintah insert
                 if (rowInserted > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan");
@@ -784,7 +784,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
         } else if (jenisKelamin.equals("Perempuan")) {
             rb_perempuan.setSelected(true);// Memilih radio button Perempuan jika data di tabel sama
         }
-        
+
         txt_telepon.setText(tbl_data.getValueAt(row, 4).toString());
         txt_alamat.setText(tbl_data.getValueAt(row, 5).toString());// Mengisi field alamat dengan data dari tabel
     }
@@ -816,7 +816,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 st.setString(4, TeleponPelanggan);
                 st.setString(5, AlamatPelanggan);
                 st.setString(6, IdPelanggan);
-                
+
                 int rowUpdated = st.executeUpdate();
                 if (rowUpdated > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Diperbarui");
@@ -842,7 +842,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 String sql = "DELETE FROM tbl_pelanggan WHERE ID_Pelanggan=?";
                 try (PreparedStatement st = con.prepareStatement(sql)) {
                     st.setString(1, IdPelanggan);
-                    
+
                     int rowDeleted = st.executeUpdate();// Eksekusi penghapusan
                     if (rowDeleted > 0) {
                         JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
@@ -869,7 +869,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 st.setString(2, "%" + kataKunci + "%");// Parameter pencarian pada kolom Alamat
 
                 ResultSet rs = st.executeQuery();
-                
+
                 while (rs.next()) {
                     String IdPelanggan = rs.getString("ID_Pelanggan");
                     String NamaPelanggan = rs.getString("Nama");
@@ -877,14 +877,14 @@ public class MenuPelanggan extends javax.swing.JPanel {
                     String JkPelanggan = rs.getString("Jenis_Kelamin");
                     String TeleponPelanggan = rs.getString("Telepon");
                     String AlamatPelanggan = rs.getString("Alamat");
-                    
+
                     Object[] rowData = {IdPelanggan, NamaPelanggan, TipeIdentitas, JkPelanggan, TeleponPelanggan, AlamatPelanggan};
                     model.addRow(rowData);// Tambahkan hasil pencarian ke dalam JTable
                 }
             }
         } catch (Exception e) {
             Logger.getLogger(MenuPelanggan.class.getName()).log(Level.SEVERE, null, e);
-            
+
         }
     }
 }
