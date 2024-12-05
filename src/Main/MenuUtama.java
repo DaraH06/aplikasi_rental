@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package Main;
-//menu utama
-
+//menu utama update
 import View.MenuDashboard;
 import View.MenuProfile;
 import java.awt.Point;

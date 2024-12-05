@@ -8,7 +8,7 @@ package View;
 import database.database_two;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+//dashboard
 /**
  *
  * @author mahar
@@ -33,6 +33,7 @@ public class MenuDashboard extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lb_jumlah2 = new javax.swing.JLabel();
         CardPelanggan = new Palette.Panelcustom();
         jPanelGradient1 = new Palette.JPanelGradient();
         lb_IconPelanggan = new javax.swing.JLabel();
@@ -59,15 +60,19 @@ public class MenuDashboard extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        CardPelanggan.setBackground(new java.awt.Color(102, 255, 204));
+        lb_jumlah2.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        lb_jumlah2.setForeground(new java.awt.Color(102, 102, 102));
+        lb_jumlah2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/download__1_-removebg-preview.png"))); // NOI18N
+
+        CardPelanggan.setBackground(new java.awt.Color(204, 204, 255));
         CardPelanggan.setToolTipText("");
         CardPelanggan.setRoundBottomRight(30);
         CardPelanggan.setRoundBottomleft(30);
         CardPelanggan.setRoundTopLeft(30);
         CardPelanggan.setRoundTopRight(30);
 
-        jPanelGradient1.setColorend(new java.awt.Color(0, 204, 153));
-        jPanelGradient1.setColorstart(new java.awt.Color(0, 255, 204));
+        jPanelGradient1.setColorend(new java.awt.Color(102, 255, 255));
+        jPanelGradient1.setColorstart(new java.awt.Color(204, 204, 240));
 
         lb_IconPelanggan.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
         lb_IconPelanggan.setForeground(new java.awt.Color(204, 204, 240));
@@ -90,7 +95,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addGroup(jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_jumlah_konsol)
                     .addComponent(lb_pelanggan))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(lb_IconPelanggan)
                 .addGap(20, 20, 20))
         );
@@ -128,19 +133,19 @@ public class MenuDashboard extends javax.swing.JPanel {
         lb_jumlah1.setForeground(new java.awt.Color(102, 102, 102));
         lb_jumlah1.setText("STATUS Playstation");
 
-        CardPelanggan1.setBackground(new java.awt.Color(102, 255, 204));
+        CardPelanggan1.setBackground(new java.awt.Color(204, 204, 255));
         CardPelanggan1.setToolTipText("");
         CardPelanggan1.setRoundBottomRight(30);
         CardPelanggan1.setRoundBottomleft(30);
         CardPelanggan1.setRoundTopLeft(30);
         CardPelanggan1.setRoundTopRight(30);
 
-        jPanelGradient2.setColorend(new java.awt.Color(0, 204, 153));
+        jPanelGradient2.setColorend(new java.awt.Color(102, 255, 255));
         jPanelGradient2.setColorstart(new java.awt.Color(0, 255, 204));
 
         lb_pelanggan1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan1.setForeground(new java.awt.Color(153, 153, 153));
-        lb_pelanggan1.setText("Sewa");
+        lb_pelanggan1.setText("Rental");
 
         lb_jumlah_sewa.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         lb_jumlah_sewa.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,7 +164,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addGroup(jPanelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_pelanggan1)
                     .addComponent(lb_jumlah_sewa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(lb_IconPelanggan4)
                 .addGap(20, 20, 20))
         );
@@ -182,8 +187,8 @@ public class MenuDashboard extends javax.swing.JPanel {
             CardPelanggan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CardPelanggan1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelGradient2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanelGradient2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CardPelanggan1Layout.setVerticalGroup(
             CardPelanggan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +210,7 @@ public class MenuDashboard extends javax.swing.JPanel {
 
         lb_pelanggan3.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan3.setForeground(new java.awt.Color(153, 153, 153));
-        lb_pelanggan3.setText("Kembali");
+        lb_pelanggan3.setText("Selesai");
 
         lb_jumlah_kembali.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         lb_jumlah_kembali.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,7 +229,7 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addGroup(jPanelGradient3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_pelanggan3)
                     .addComponent(lb_jumlah_kembali))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(lb_IconPelanggan8)
                 .addGap(20, 20, 20))
         );
@@ -312,8 +317,8 @@ public class MenuDashboard extends javax.swing.JPanel {
             CardPelanggan4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CardPelanggan4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelGradient4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         CardPelanggan4Layout.setVerticalGroup(
             CardPelanggan4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,28 +337,34 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_jumlah1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CardPelanggan4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CardPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(40, 40, 40)
-                        .addComponent(CardPelanggan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(CardPelanggan3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CardPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CardPelanggan4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CardPelanggan3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CardPelanggan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(lb_jumlah2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lb_jumlah1)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(CardPelanggan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CardPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CardPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CardPelanggan3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CardPelanggan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(CardPelanggan4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                    .addComponent(CardPelanggan4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CardPelanggan3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 32, Short.MAX_VALUE)
+                .addComponent(lb_jumlah2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         add(jPanel1, "card2");
@@ -365,7 +376,6 @@ public class MenuDashboard extends javax.swing.JPanel {
     private Palette.Panelcustom CardPelanggan1;
     private Palette.Panelcustom CardPelanggan3;
     private Palette.Panelcustom CardPelanggan4;
-    private Palette.Panelcustom CardPelanggan6;
     private javax.swing.JPanel jPanel1;
     private Palette.JPanelGradient jPanelGradient1;
     private Palette.JPanelGradient jPanelGradient2;
@@ -374,19 +384,17 @@ public class MenuDashboard extends javax.swing.JPanel {
     private javax.swing.JLabel lb_IconPelanggan;
     private javax.swing.JLabel lb_IconPelanggan2;
     private javax.swing.JLabel lb_IconPelanggan4;
-    private javax.swing.JLabel lb_IconPelanggan6;
     private javax.swing.JLabel lb_IconPelanggan8;
     private javax.swing.JLabel lb_jumlah1;
+    private javax.swing.JLabel lb_jumlah2;
     private javax.swing.JLabel lb_jumlah_kembali;
     private javax.swing.JLabel lb_jumlah_konsol;
     private javax.swing.JLabel lb_jumlah_pelanggan;
     private javax.swing.JLabel lb_jumlah_sewa;
-    private javax.swing.JLabel lb_jumlah_sewa1;
     private javax.swing.JLabel lb_pelanggan;
     private javax.swing.JLabel lb_pelanggan1;
     private javax.swing.JLabel lb_pelanggan3;
     private javax.swing.JLabel lb_pelanggan4;
-    private javax.swing.JLabel lb_pelanggan6;
     // End of variables declaration//GEN-END:variables
 
     private int jumlahPelanggan() {
