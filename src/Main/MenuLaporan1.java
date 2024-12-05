@@ -5,6 +5,7 @@
 package Main;
 //menu laporan
 
+import View.LaporanRental;
 import View.MenuDashboard;
 import java.awt.Color;
 import java.awt.PopupMenu;
@@ -125,7 +126,7 @@ public class MenuLaporan1 extends javax.swing.JPanel {
 
         JPanel jp = menuUtama.getPanelUtama();
         jp.removeAll();
-        jp.add(new MenuLaporan());
+        jp.add(new LaporanRental(menuUtama.getUserID()));
         jp.repaint();
         jp.revalidate();
         

@@ -1,5 +1,6 @@
 package View;
 //data
+
 import java.sql.Connection;
 import database.database_two;
 import java.awt.event.KeyAdapter;
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mahar
  */
-public class DataSewa extends javax.swing.JDialog {
+public class DataRental extends javax.swing.JDialog {
 
     /**
      * Creates new form DataPelanggan
@@ -29,22 +30,32 @@ public class DataSewa extends javax.swing.JDialog {
 
     private final Connection con;// Koneksi database
 
-    private String idSewa;
-    private String tanggalSewa;
+    private String idRental;
+    private String tanggalRental;
     private String tanggalKembali;
     private String idPelanggan;
     private String NamaPelanggan;
     private String idKonsol;
     private String namaKonsol;
-    private String hargaPerhari;
-    private String jumlahSewa;
+    private String hargaPerjam;
+    private String jumlahRental;
+    private String durasi;
+    private String TotalHarga;
 
-    public String getIdSewa() {
-        return idSewa;
+    public String getDurasi() {
+        return durasi;
     }
 
-    public String getTanggalSewa() {
-        return tanggalSewa;
+    public String getTotalHarga() {
+        return TotalHarga;
+    }
+
+    public String getIdRental() {
+        return idRental;
+    }
+
+    public String getTanggalRental() {
+        return tanggalRental;
     }
 
     public String getTanggalKembali() {
@@ -67,15 +78,15 @@ public class DataSewa extends javax.swing.JDialog {
         return namaKonsol;
     }
 
-    public String getHargaPerhari() {
-        return hargaPerhari;
+    public String gethargaPerjam() {
+        return hargaPerjam;
     }
 
-    public String getJumlahSewa() {
-        return jumlahSewa;
+    public String getJumlahRental() {
+        return jumlahRental;
     }
 
-    public DataSewa(java.awt.Frame parent, boolean modal) {
+    public DataRental(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         con = database_two.con();
@@ -170,10 +181,10 @@ public class DataSewa extends javax.swing.JDialog {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(panelViewLayout.createSequentialGroup()
-                .addGap(172, 172, 172)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelViewLayout.createSequentialGroup()
                         .addComponent(btn_first)
@@ -189,7 +200,7 @@ public class DataSewa extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lb_halaman)
                         .addGap(27, 27, 27)))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addGap(288, 288, 288))
         );
         panelViewLayout.setVerticalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +237,7 @@ public class DataSewa extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -245,21 +257,83 @@ public class DataSewa extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DataSewa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DataSewa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DataSewa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DataSewa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DataSewa dialog = new DataSewa(new javax.swing.JFrame(), true);
+                DataRental dialog = new DataRental(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -350,7 +424,7 @@ public class DataSewa extends javax.swing.JDialog {
     private int getTotalData() {
         int totalData = 0;
         try {
-            String sql = "SELECT COUNT(*) AS total FROM tbl_sewa";// Query menghitung total data pelanggan
+            String sql = "SELECT COUNT(*) AS total FROM tbl_Rental";// Query menghitung total data pelanggan
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 ResultSet rs = st.executeQuery(); // Eksekusi query
                 if (rs.next()) {
@@ -376,14 +450,15 @@ public class DataSewa extends javax.swing.JDialog {
     private void setTabelModel() {
         String[] columnNames = {
             "ID",
-            "Tanggal Sewa",
-            "Tanggal Kembali",
+            "Tanggal Rental",
             "ID Pelanggan",
             "Nama Pelanggan",
             "ID Konsol",
             "Nama Konsol",
-            "Harga Perhari",
-            "Jumlah"
+            "Harga Perjam",
+            "Jumlah",
+            "Durasi",
+            "TotalHarga"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data.setModel(model); // Mengatur model tabel untuk JTable
@@ -397,11 +472,11 @@ public class DataSewa extends javax.swing.JDialog {
         try {
             // Query yang telah diperbaiki
             String sql = "SELECT * "
-                    + "FROM tbl_detail_sewa swd "
-                    + "INNER JOIN tbl_sewa sw ON sw.ID_Sewa = swd.ID_Sewa "
+                    + "FROM tbl_detail_rental swd "
+                    + "INNER JOIN tbl_Rental sw ON sw.ID_Rental = swd.ID_Rental "
                     + "INNER JOIN tbl_pelanggan plgn ON plgn.ID_Pelanggan = sw.ID_Pelanggan "
                     + "INNER JOIN tbl_konsol ksl ON ksl.ID_Konsol = swd.ID_Konsol "
-                    + "WHERE swd.Status_Sewa = 'Sedang Disewa' "
+                    + "WHERE swd.Status_Rental = 'Sedang DiRental' "
                     + // Pastikan menggunakan alias tabel
                     "LIMIT ?, ?"; // Query dengan limit berdasarkan halaman
 
@@ -412,21 +487,22 @@ public class DataSewa extends javax.swing.JDialog {
 
                 // Ambil data dari result set
                 while (rs.next()) {
-                    String IdSewa = rs.getString("ID_Sewa");
-                    String tanggalSewa = rs.getString("Tanggal_Sewa");
-                    String tanggalKembali = rs.getString("Tanggal_Pengembalian");
+                    String IdRental = rs.getString("ID_Rental");
+                    String tanggalRental = rs.getString("Tanggal_Rental");
                     String IdPelanggan = rs.getString("ID_Pelanggan");
                     String namaPelanggan = rs.getString("Nama");
                     String IdKonsol = rs.getString("ID_Konsol");
                     String namaKonsol = rs.getString("Nama_Konsol");
-                    String hargaPerhari = rs.getString("Harga_Perhari");
-                    String jumlahSewa = rs.getString("Jumlah_Sewa");
+                    String hargaPerjam = rs.getString("Harga_Perjam");
+                    String jumlahRental = rs.getString("Jumlah_Rental");
+                    String durasi = rs.getString("Durasi");
+                    String totalHarga = String.format("%.0f", rs.getDouble("Total_Harga")); // Menghilangkan .0
 
                     // Data pelanggan dalam array
                     Object[] rowData = {
-                        IdSewa, tanggalSewa, tanggalKembali,
+                        IdRental, tanggalRental,
                         IdPelanggan, namaPelanggan, IdKonsol,
-                        namaKonsol, hargaPerhari, jumlahSewa
+                        namaKonsol, hargaPerjam, jumlahRental, durasi, totalHarga
                     };
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
@@ -445,38 +521,39 @@ public class DataSewa extends javax.swing.JDialog {
         try {
             String sql;
             if (!kataKunci.isEmpty()) {
-                sql = "SELECT * FROM tbl_detail_sewa swd "
-                        + "INNER JOIN tbl_sewa sw ON sw.ID_Sewa = swd.ID_Sewa "
+                sql = "SELECT * FROM tbl_detail_rental swd "
+                        + "INNER JOIN tbl_Rental sw ON sw.ID_Rental = swd.ID_Rental "
                         + "INNER JOIN tbl_pelanggan plgn ON plgn.ID_Pelanggan = sw.ID_Pelanggan "
                         + "INNER JOIN tbl_konsol ksl ON ksl.ID_Konsol = swd.ID_Konsol "
-                        + "WHERE Status_Sewa = 'Sedang Disewa' AND "
-                        + "(sw.ID_Sewa LIKE ? OR plgn.Nama LIKE ?)";
+                        + "WHERE Status_Rental = 'Sedang DiRental' AND "
+                        + "(sw.ID_Rental LIKE ? OR plgn.Nama LIKE ?)";
             } else {
-                sql = "SELECT * FROM tbl_detail_sewa swd "
-                        + "INNER JOIN tbl_sewa sw ON sw.ID_Sewa = swd.ID_Sewa "
+                sql = "SELECT * FROM tbl_detail_rental swd "
+                        + "INNER JOIN tbl_Rental sw ON sw.ID_Rental = swd.ID_Rental "
                         + "INNER JOIN tbl_pelanggan plgn ON plgn.ID_Pelanggan = sw.ID_Pelanggan "
                         + "INNER JOIN tbl_konsol ksl ON ksl.ID_Konsol = swd.ID_Konsol "
-                        + "WHERE Status_Sewa = 'Sedang Disewa'";
+                        + "WHERE Status_Rental = 'Sedang DiRental'";
             }
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 if (!kataKunci.isEmpty()) {
-                    st.setString(1, "%" + kataKunci + "%"); // Parameter pencarian pada ID_Sewa
+                    st.setString(1, "%" + kataKunci + "%"); // Parameter pencarian pada ID_Rental
                     st.setString(2, "%" + kataKunci + "%"); // Parameter pencarian pada Nama
                 }
                 ResultSet rs = st.executeQuery();
 
                 while (rs.next()) {
-                    String IdSewa = rs.getString("ID_Sewa");
-                    String tanggalSewa = rs.getString("Tanggal_Sewa");
-                    String tanggalKembali = rs.getString("Tanggal_Pengembalian");
+                    String IdRental = rs.getString("ID_Rental");
+                    String tanggalRental = rs.getString("Tanggal_Rental");
                     String IdPelanggan = rs.getString("ID_Pelanggan");
                     String namaPelanggan = rs.getString("Nama");
                     String IdKonsol = rs.getString("ID_Konsol");
                     String namaKonsol = rs.getString("Nama_Konsol");
-                    String hargaPerhari = rs.getString("Harga_Perhari");
-                    String jumlahSewa = rs.getString("Jumlah_Sewa");
+                    String hargaPerjam = rs.getString("Harga_Perjam");
+                    String jumlahRental = rs.getString("Jumlah_Rental");
+                    String durasi = rs.getString("Durasi");
+                    String totalHarga = rs.getString("Total_Harga");
 
-                    Object[] rowData = {IdSewa, tanggalSewa, tanggalKembali, IdPelanggan, namaPelanggan, IdKonsol, namaKonsol, hargaPerhari, jumlahSewa};
+                    Object[] rowData = {IdRental, tanggalRental, IdPelanggan, namaPelanggan, IdKonsol, namaKonsol, hargaPerjam, jumlahRental, durasi, totalHarga};
                     model.addRow(rowData); // Tambahkan hasil pencarian ke dalam JTable
                 }
             }
@@ -496,15 +573,16 @@ public class DataSewa extends javax.swing.JDialog {
                 }
 
                 // Ambil data berdasarkan indeks kolom
-                idSewa = tbl_data.getValueAt(row, 0).toString();
-                tanggalSewa = tbl_data.getValueAt(row, 1).toString();
-                tanggalKembali = tbl_data.getValueAt(row, 2).toString();
-                idPelanggan = tbl_data.getValueAt(row, 3).toString();
-                NamaPelanggan = tbl_data.getValueAt(row, 4).toString();
-                idKonsol = tbl_data.getValueAt(row, 5).toString();
-                namaKonsol = tbl_data.getValueAt(row, 6).toString();
-                hargaPerhari = tbl_data.getValueAt(row, 7).toString();
-                jumlahSewa = tbl_data.getValueAt(row, 8).toString();
+                idRental = tbl_data.getValueAt(row, 0).toString();
+                tanggalRental = tbl_data.getValueAt(row, 1).toString();
+                idPelanggan = tbl_data.getValueAt(row, 2).toString();
+                NamaPelanggan = tbl_data.getValueAt(row, 3).toString();
+                idKonsol = tbl_data.getValueAt(row, 4).toString();
+                namaKonsol = tbl_data.getValueAt(row, 5).toString();
+                hargaPerjam = tbl_data.getValueAt(row, 6).toString();
+                jumlahRental = tbl_data.getValueAt(row, 7).toString();
+                durasi = tbl_data.getValueAt(row, 8).toString();
+                TotalHarga = tbl_data.getValueAt(row, 9).toString();
 
                 dispose(); // Tutup dialog setelah data dipilih
             } catch (ArrayIndexOutOfBoundsException e) {

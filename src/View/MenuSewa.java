@@ -49,6 +49,7 @@ public class MenuSewa extends javax.swing.JPanel {
         con = database_two.con(); // Membuat koneksi ke database
         this.userID = userID;
         initComponents(); // Inisialisasi komponen GUI
+        initListeners();
         loadData(); // Memuat data Konsol ke dalam JTable
         loadDataSementara();
         setTabelModel(); // Mengatur model tabel (misalnya, kolom-kolomnya)
@@ -110,17 +111,12 @@ public class MenuSewa extends javax.swing.JPanel {
         tbl_data_detail = new Palette.JTable_Custom();
         btn_cancel_detail = new Palette.Custom_ButtonRounded();
         panelAdd = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        btn_simpan = new Palette.Custom_ButtonRounded();
-        btn_batal_add = new Palette.Custom_ButtonRounded();
         panelcustom1 = new Palette.Panelcustom();
         jLabel8 = new javax.swing.JLabel();
-        txt_id = new Palette.JTextfieldRounded();
-        jLabel9 = new javax.swing.JLabel();
-        txt_tgl_sewa = new Palette.JTextfieldRounded();
-        txt_tgl_kembali = new Palette.JTextfieldRounded();
-        jLabel10 = new javax.swing.JLabel();
+        lb_ID = new javax.swing.JLabel();
+        lb_totalRental = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        lb_totalRental1 = new javax.swing.JLabel();
         panelcustom2 = new Palette.Panelcustom();
         jLabel11 = new javax.swing.JLabel();
         txt_id_pelanggan = new Palette.JTextfieldRounded();
@@ -139,20 +135,27 @@ public class MenuSewa extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         txt_harga_perhari = new Palette.JTextfieldRounded();
         btn_set_konsol = new Palette.Custom_ButtonRounded();
-        panelcustom5 = new Palette.Panelcustom();
-        jLabel23 = new javax.swing.JLabel();
-        txt_jumlah = new Palette.JTextfieldRounded();
-        lb_totalSewa = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         btn_ubah = new Palette.Custom_ButtonRounded();
         btn_hapus = new Palette.Custom_ButtonRounded();
         btn_cancel_sementara = new Palette.Custom_ButtonRounded();
+        panelcustom5 = new Palette.Panelcustom();
+        txt_tgl_sewa = new Palette.JTextfieldRounded();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        txt_durasi = new Palette.JTextfieldRounded();
+        txt_jumlah = new Palette.JTextfieldRounded();
+        jLabel23 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_data_sementara = new Palette.JTable_Custom();
+        panelcustom6 = new Palette.Panelcustom();
+        txt_bayar = new Palette.JTextfieldRounded();
+        jLabel10 = new javax.swing.JLabel();
+        txt_kembalian = new Palette.JTextfieldRounded();
+        jLabel27 = new javax.swing.JLabel();
+        btn_simpan = new Palette.Custom_ButtonRounded();
+        btn_batal_add = new Palette.Custom_ButtonRounded();
 
         dateChooser1.setTextRefernce(txt_tgl_sewa);
-
-        dateChooser2.setTextRefernce(txt_tgl_kembali);
 
         setLayout(new java.awt.CardLayout());
 
@@ -348,25 +351,6 @@ public class MenuSewa extends javax.swing.JPanel {
 
         panelAdd.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon2.png"))); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Transaksi Sewa");
-
-        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Save.png"))); // NOI18N
-        btn_simpan.setText("Simpan");
-        btn_simpan.setFillClick(new java.awt.Color(0, 51, 102));
-        btn_simpan.setFillOver(new java.awt.Color(41, 128, 185));
-
-        btn_batal_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cancel.png"))); // NOI18N
-        btn_batal_add.setText("Batal");
-        btn_batal_add.setFillClick(new java.awt.Color(153, 51, 0));
-        btn_batal_add.setFillOriginal(new java.awt.Color(255, 102, 0));
-        btn_batal_add.setFillOver(new java.awt.Color(204, 102, 0));
-
         panelcustom1.setBackground(new java.awt.Color(250, 250, 250));
         panelcustom1.setRoundBottomRight(20);
         panelcustom1.setRoundBottomleft(20);
@@ -377,28 +361,21 @@ public class MenuSewa extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("ID");
 
-        txt_id.setForeground(new java.awt.Color(102, 102, 102));
-        txt_id.setText("ID");
-        txt_id.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        lb_ID.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        lb_ID.setForeground(new java.awt.Color(102, 102, 102));
+        lb_ID.setText("ID Sewa");
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Tanggal Sewa");
+        lb_totalRental.setFont(new java.awt.Font("Poppins Light", 1, 30)); // NOI18N
+        lb_totalRental.setForeground(new java.awt.Color(102, 102, 102));
+        lb_totalRental.setText("TOTAL");
 
-        txt_tgl_sewa.setForeground(new java.awt.Color(102, 102, 102));
-        txt_tgl_sewa.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-        txt_tgl_sewa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_tgl_sewaActionPerformed(evt);
-            }
-        });
+        jLabel24.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel24.setText("Total Harga");
 
-        txt_tgl_kembali.setForeground(new java.awt.Color(102, 102, 102));
-        txt_tgl_kembali.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("Tanggal Kembali");
+        lb_totalRental1.setFont(new java.awt.Font("Poppins Light", 1, 30)); // NOI18N
+        lb_totalRental1.setForeground(new java.awt.Color(102, 102, 102));
+        lb_totalRental1.setText("Rp.");
 
         javax.swing.GroupLayout panelcustom1Layout = new javax.swing.GroupLayout(panelcustom1);
         panelcustom1.setLayout(panelcustom1Layout);
@@ -406,34 +383,32 @@ public class MenuSewa extends javax.swing.JPanel {
             panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelcustom1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_tgl_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelcustom1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(18, 18, 18)
+                            .addComponent(lb_ID)))
+                    .addGroup(panelcustom1Layout.createSequentialGroup()
+                        .addComponent(lb_totalRental1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_totalRental)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         panelcustom1Layout.setVerticalGroup(
             panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom1Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(txt_tgl_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
             .addGroup(panelcustom1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_totalRental)
+                    .addComponent(lb_totalRental1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -449,6 +424,7 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_id_pelanggan.setForeground(new java.awt.Color(102, 102, 102));
         txt_id_pelanggan.setText("ID");
+        txt_id_pelanggan.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txt_id_pelanggan.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         txt_id_pelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -491,27 +467,23 @@ public class MenuSewa extends javax.swing.JPanel {
         panelcustom2.setLayout(panelcustom2Layout);
         panelcustom2Layout.setHorizontalGroup(
             panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom2Layout.createSequentialGroup()
+            .addGroup(panelcustom2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom2Layout.createSequentialGroup()
+                .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcustom2Layout.createSequentialGroup()
                         .addComponent(txt_id_pelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_set_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_nama_pelanggan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(txt_tlp_pelanggan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_alamat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelcustom2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(284, Short.MAX_VALUE)))
+                    .addComponent(txt_alamat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_nama_pelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelcustom2Layout.setVerticalGroup(
             panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,22 +493,19 @@ public class MenuSewa extends javax.swing.JPanel {
                     .addComponent(btn_set_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_id_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(txt_nama_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txt_tlp_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txt_alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelcustom2Layout.createSequentialGroup()
-                    .addGap(62, 62, 62)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_nama_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_tlp_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         panelcustom4.setBackground(new java.awt.Color(250, 250, 250));
@@ -563,10 +532,10 @@ public class MenuSewa extends javax.swing.JPanel {
 
         jLabel21.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel21.setText("Harga Perhari");
+        jLabel21.setText("Harga Perjam");
 
         txt_harga_perhari.setForeground(new java.awt.Color(102, 102, 102));
-        txt_harga_perhari.setText("Harga_Perhari");
+        txt_harga_perhari.setText("Harga_Perjam");
         txt_harga_perhari.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         btn_set_konsol.setText("...");
@@ -576,74 +545,12 @@ public class MenuSewa extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout panelcustom4Layout = new javax.swing.GroupLayout(panelcustom4);
-        panelcustom4.setLayout(panelcustom4Layout);
-        panelcustom4Layout.setHorizontalGroup(
-            panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelcustom4Layout.createSequentialGroup()
-                        .addComponent(txt_id_konsol, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_set_konsol, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_nama_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_harga_perhari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(45, 45, 45))
-        );
-        panelcustom4Layout.setVerticalGroup(
-            panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelcustom4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(txt_id_konsol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_set_konsol, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_nama_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_harga_perhari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        panelcustom5.setBackground(new java.awt.Color(250, 250, 250));
-        panelcustom5.setRoundBottomRight(20);
-        panelcustom5.setRoundBottomleft(20);
-        panelcustom5.setRoundTopLeft(20);
-        panelcustom5.setRoundTopRight(20);
-
-        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel23.setText("Jumlah");
-
-        txt_jumlah.setForeground(new java.awt.Color(102, 102, 102));
-        txt_jumlah.setText("Jumlah");
-        txt_jumlah.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        lb_totalSewa.setFont(new java.awt.Font("Poppins Light", 1, 30)); // NOI18N
-        lb_totalSewa.setForeground(new java.awt.Color(102, 102, 102));
-        lb_totalSewa.setText("TOTAL");
-
-        jLabel24.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel24.setText("Total Sewa");
-
-        btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Save.png"))); // NOI18N
-        btn_ubah.setText("Simpan");
+        btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add.png"))); // NOI18N
+        btn_ubah.setText("Tambah");
         btn_ubah.setFillClick(new java.awt.Color(0, 51, 102));
         btn_ubah.setFillOver(new java.awt.Color(41, 128, 185));
 
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Delete.png"))); // NOI18N
-        btn_hapus.setText("Hapus");
         btn_hapus.setFillClick(new java.awt.Color(153, 0, 51));
         btn_hapus.setFillOriginal(new java.awt.Color(255, 0, 51));
         btn_hapus.setFillOver(new java.awt.Color(204, 0, 51));
@@ -654,55 +561,130 @@ public class MenuSewa extends javax.swing.JPanel {
         });
 
         btn_cancel_sementara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cancel.png"))); // NOI18N
-        btn_cancel_sementara.setText("Batal");
         btn_cancel_sementara.setFillClick(new java.awt.Color(153, 51, 0));
         btn_cancel_sementara.setFillOriginal(new java.awt.Color(255, 102, 0));
         btn_cancel_sementara.setFillOver(new java.awt.Color(204, 102, 0));
+
+        javax.swing.GroupLayout panelcustom4Layout = new javax.swing.GroupLayout(panelcustom4);
+        panelcustom4.setLayout(panelcustom4Layout);
+        panelcustom4Layout.setHorizontalGroup(
+            panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcustom4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcustom4Layout.createSequentialGroup()
+                        .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelcustom4Layout.createSequentialGroup()
+                                .addComponent(txt_id_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_set_konsol, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_nama_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_harga_perhari, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
+                    .addGroup(panelcustom4Layout.createSequentialGroup()
+                        .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelcustom4Layout.setVerticalGroup(
+            panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcustom4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txt_id_konsol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_set_konsol, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_nama_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_harga_perhari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_ubah, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                        .addComponent(btn_hapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        panelcustom5.setBackground(new java.awt.Color(250, 250, 250));
+        panelcustom5.setRoundBottomRight(20);
+        panelcustom5.setRoundBottomleft(20);
+        panelcustom5.setRoundTopLeft(20);
+        panelcustom5.setRoundTopRight(20);
+
+        txt_tgl_sewa.setForeground(new java.awt.Color(102, 102, 102));
+        txt_tgl_sewa.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_tgl_sewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_tgl_sewaActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel9.setText("Tanggal Rental");
+
+        jLabel25.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel25.setText("Durasi");
+
+        txt_durasi.setForeground(new java.awt.Color(102, 102, 102));
+        txt_durasi.setText("Durasi");
+        txt_durasi.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        txt_jumlah.setForeground(new java.awt.Color(102, 102, 102));
+        txt_jumlah.setText("Jumlah");
+        txt_jumlah.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel23.setText("Jumlah");
 
         javax.swing.GroupLayout panelcustom5Layout = new javax.swing.GroupLayout(panelcustom5);
         panelcustom5.setLayout(panelcustom5Layout);
         panelcustom5Layout.setHorizontalGroup(
             panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelcustom5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelcustom5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(lb_totalSewa))
-                    .addGroup(panelcustom5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel23))
+                .addGap(40, 40, 40)
+                .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_jumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(txt_durasi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
         panelcustom5Layout.setVerticalGroup(
             panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelcustom5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelcustom5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_cancel_sementara, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(12, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lb_totalSewa)
-                        .addContainerGap())))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_durasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         tbl_data_sementara.setModel(new javax.swing.table.DefaultTableModel(
@@ -724,56 +706,119 @@ public class MenuSewa extends javax.swing.JPanel {
         tbl_data_sementara.setSelectionForeground(new java.awt.Color(204, 255, 51));
         jScrollPane2.setViewportView(tbl_data_sementara);
 
+        panelcustom6.setBackground(new java.awt.Color(250, 250, 250));
+        panelcustom6.setRoundBottomRight(20);
+        panelcustom6.setRoundBottomleft(20);
+        panelcustom6.setRoundTopLeft(20);
+        panelcustom6.setRoundTopRight(20);
+
+        txt_bayar.setForeground(new java.awt.Color(102, 102, 102));
+        txt_bayar.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_bayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_bayarActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText("Bayar");
+
+        txt_kembalian.setForeground(new java.awt.Color(102, 102, 102));
+        txt_kembalian.setText("Jumlah");
+        txt_kembalian.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        jLabel27.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel27.setText("Kembalian");
+
+        javax.swing.GroupLayout panelcustom6Layout = new javax.swing.GroupLayout(panelcustom6);
+        panelcustom6.setLayout(panelcustom6Layout);
+        panelcustom6Layout.setHorizontalGroup(
+            panelcustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcustom6Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(panelcustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel27))
+                .addGap(40, 40, 40)
+                .addGroup(panelcustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_kembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(txt_bayar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
+        );
+        panelcustom6Layout.setVerticalGroup(
+            panelcustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcustom6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelcustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_kembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Save.png"))); // NOI18N
+        btn_simpan.setText("Simpan");
+        btn_simpan.setFillClick(new java.awt.Color(0, 51, 102));
+        btn_simpan.setFillOver(new java.awt.Color(41, 128, 185));
+
+        btn_batal_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cancel.png"))); // NOI18N
+        btn_batal_add.setText("Batal");
+        btn_batal_add.setFillClick(new java.awt.Color(153, 51, 0));
+        btn_batal_add.setFillOriginal(new java.awt.Color(255, 102, 0));
+        btn_batal_add.setFillOver(new java.awt.Color(204, 102, 0));
+
         javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(panelAdd);
         panelAdd.setLayout(panelAddLayout);
         panelAddLayout.setHorizontalGroup(
             panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelcustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelAddLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
                     .addGroup(panelAddLayout.createSequentialGroup()
-                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelcustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
+                        .addComponent(panelcustom6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelAddLayout.createSequentialGroup()
+                        .addComponent(panelcustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelcustom2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, 371, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(panelcustom5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelcustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelAddLayout.setVerticalGroup(
             panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
+                .addContainerGap()
+                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelcustom2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelcustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelcustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelcustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
-                        .addComponent(panelcustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
-                        .addComponent(panelcustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelAddLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelcustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelcustom6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelAddLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_batal_add, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         panelMain.add(panelAdd, "card2");
@@ -805,6 +850,10 @@ public class MenuSewa extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_hapusActionPerformed
 
+    private void txt_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bayarActionPerformed
+
+    }//GEN-LAST:event_txt_bayarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Palette.Custom_ButtonRounded btn_batal_add;
@@ -835,17 +884,19 @@ public class MenuSewa extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lb_ID;
     private javax.swing.JLabel lb_halaman;
-    private javax.swing.JLabel lb_totalSewa;
+    private javax.swing.JLabel lb_totalRental;
+    private javax.swing.JLabel lb_totalRental1;
     private javax.swing.JPanel panelAdd;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelView;
@@ -853,23 +904,56 @@ public class MenuSewa extends javax.swing.JPanel {
     private Palette.Panelcustom panelcustom2;
     private Palette.Panelcustom panelcustom4;
     private Palette.Panelcustom panelcustom5;
+    private Palette.Panelcustom panelcustom6;
     private javax.swing.JPanel pn_detail;
     private Palette.JTable_Custom tbl_data;
     private Palette.JTable_Custom tbl_data_detail;
     private Palette.JTable_Custom tbl_data_sementara;
     private Palette.JTextfieldRounded txt_alamat;
+    private Palette.JTextfieldRounded txt_bayar;
+    private Palette.JTextfieldRounded txt_durasi;
     private Palette.JTextfieldRounded txt_harga_perhari;
-    private Palette.JTextfieldRounded txt_id;
     private Palette.JTextfieldRounded txt_id_konsol;
     private Palette.JTextfieldRounded txt_id_pelanggan;
     private Palette.JTextfieldRounded txt_jumlah;
+    private Palette.JTextfieldRounded txt_kembalian;
     private Palette.JTextfieldRounded txt_nama_konsol;
     private Palette.JTextfieldRounded txt_nama_pelanggan;
     private Palette.JTextfieldRounded txt_search;
-    private Palette.JTextfieldRounded txt_tgl_kembali;
     private Palette.JTextfieldRounded txt_tgl_sewa;
     private Palette.JTextfieldRounded txt_tlp_pelanggan;
     // End of variables declaration//GEN-END:variables
+
+    private void calculateKembalian() {
+        try {
+            // Ambil nilai total harga dari label
+            String totalStr = lb_totalRental.getText().replaceAll("[^\\d]", ""); // Hanya angka
+            if (totalStr.isEmpty()) {
+                txt_kembalian.setText(""); // Kosongkan kembalian jika total tidak valid
+                return;
+            }
+
+            int total = Integer.parseInt(totalStr);
+
+            // Ambil nilai bayar dari text field
+            String bayarStr = txt_bayar.getText();
+            if (bayarStr.trim().isEmpty()) {
+                txt_kembalian.setText(""); // Kosongkan kembalian jika bayar tidak diisi
+                return;
+            }
+
+            int bayar = Integer.parseInt(bayarStr);
+
+            // Hitung kembalian
+            int kembali = bayar - total;
+
+            // Set nilai kembalian ke text field
+            txt_kembalian.setText(String.valueOf(kembali >= 0 ? kembali : 0)); // Kembalian tidak bisa negatif
+        } catch (NumberFormatException e) {
+            // Kosongkan kembalian jika terjadi error
+            txt_kembalian.setText("");
+        }
+    }
 
     // paginationKonsol() - Mengatur fungsi pagination untuk Konsol
     private void paginationKonsol() {
@@ -924,9 +1008,9 @@ public class MenuSewa extends javax.swing.JPanel {
 
                 try {
                     // Set ID untuk txt_id
-                    String idSewa = setIDSewa();
-                    txt_id.setText(idSewa);
-                    txt_id.setEnabled(false); // Disable input txt_id
+                    String idSewa = setIDRental();
+                    lb_ID.setText(idSewa);
+                    lb_ID.setEnabled(false); // Disable input txt_id
 
                     // Ubah teks tombol simpan jika kondisi terpenuhi
                     if ("UBAH".equals(btn_tambah.getText())) {
@@ -1063,10 +1147,33 @@ public class MenuSewa extends javax.swing.JPanel {
         });
     }
 
+    private void initListeners() {
+        txt_bayar.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                updateKembalian();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                updateKembalian();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                updateKembalian();
+            }
+        });
+    }
+
     // calculateTotalPage() - Menghitung total halaman berdasarkan jumlah data dan data per halaman
     private void calculateTotalPage() {
         int totalData = getTotalData();// Mendapatkan total data Konsol
         totalpages = (int) Math.ceil((double) totalData / DataperHalaman);// Menghitung total halaman
+    }
+
+    private double calculateSubTotal(int jumlahRental, double hargaPerjam) {
+        return jumlahRental * hargaPerjam;
     }
 
     // getTotalData() - Mendapatkan total data Konsol dari database
@@ -1115,9 +1222,12 @@ public class MenuSewa extends javax.swing.JPanel {
 
     // resetForm() - Mengosongkan input form Konsol
     private void resetForm() {
-        txt_id.setText("");
+        lb_ID.setText("");
         txt_nama_konsol.setText("");
         txt_harga_perhari.setText("");
+        lb_totalRental.setText("0");
+        txt_bayar.setText("0");
+        txt_kembalian.setText("0");
     }
 
     private void resetFormKonsol() {
@@ -1145,10 +1255,11 @@ public class MenuSewa extends javax.swing.JPanel {
     private void setTabelModel() {
         String[] columnNames = {
             "No",
-            "ID Sewa",
-            "Tanggal Sewa",
-            "Tanggal Kembali",
-            "Total",
+            "ID Rental",
+            "Tanggal Rental",
+            "Total Harga",
+            "Bayar",
+            "Kembalian",
             "Nama Pelanggan",
             "Nama User"
         };
@@ -1162,32 +1273,34 @@ public class MenuSewa extends javax.swing.JPanel {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            String sql = "SELECT sw.ID_Sewa, sw.Tanggal_Sewa, sw.Tanggal_Pengembalian, sw.Total, "
-                    + "plgn.Nama AS NamaPelanggan, usr.Nama_User AS NamaUser "
-                    + "FROM tbl_sewa sw "
+            String sql = "SELECT sw.ID_Rental, sw.Tanggal_Rental, sw.Total_Harga, sw.Bayar, sw.Kembalian, "
+                    + "plgn.Nama AS Nama_Pelanggan, usr.Nama_User AS Nama_User  "
+                    + "FROM tbl_rental sw "
                     + "INNER JOIN tbl_pelanggan plgn ON plgn.ID_Pelanggan = sw.ID_Pelanggan "
                     + "INNER JOIN tbl_user usr ON usr.ID_User = sw.ID_User "
-                    + "ORDER BY sw.ID_Sewa ASC LIMIT ?, ?";
-            // Query dengan limit berdasarkan halaman
+                    + "ORDER BY sw.ID_Rental ASC "
+                    + "LIMIT ? OFFSET ?"; // Menambahkan LIMIT dan OFFSET
 
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setInt(1, startIndex); // Indeks awal
-                st.setInt(2, entriesPage); // Jumlah data per halaman
+                st.setInt(1, entriesPage); // Jumlah data per halaman
+                st.setInt(2, startIndex); // Indeks awal
+
                 ResultSet rs = st.executeQuery(); // Eksekusi query
 
                 int no = startIndex + 1;
 
                 while (rs.next()) {
                     // Ambil data dari ResultSet
-                    String IdSewa = rs.getString("ID_Sewa");
-                    String TanggalSewa = rs.getString("Tanggal_Sewa");
-                    String TanggalKembali = rs.getString("Tanggal_Pengembalian");
-                    String TotalSewa = rs.getString("Total");
-                    String NamaPelanggan = rs.getString("NamaPelanggan");
-                    String NamaUser = rs.getString("NamaUser");
+                    String IdRental = rs.getString("ID_Rental");
+                    String TanggalRental = rs.getString("Tanggal_Rental");
+                    String TotalHarga = String.format("%.0f", rs.getDouble("Total_Harga")); // Menghilangkan .0
+                    String Bayar = String.format("%.0f", rs.getDouble("Bayar")); // Menghilangkan .0
+                    String Kembalian = String.format("%.0f", rs.getDouble("Kembalian")); // Menghilangkan .0
+                    String NamaPelanggan = rs.getString("Nama_Pelanggan");
+                    String NamaUser = rs.getString("Nama_User");
 
                     // Tambahkan ke model tabel
-                    Object[] rowData = {"   " + no++, IdSewa, TanggalSewa, TanggalKembali, TotalSewa, NamaPelanggan, NamaUser};
+                    Object[] rowData = {"   " + no++, IdRental, TanggalRental, TotalHarga, Bayar, Kembalian, NamaPelanggan, NamaUser};
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
@@ -1196,14 +1309,16 @@ public class MenuSewa extends javax.swing.JPanel {
         }
     }
 
-    // setTabelModel() - Mengatur model tabel dengan kolom-kolom yang sesuai
     private void setTabelModelSementara() {
         String[] columnNames = {
             "No",
-            "ID",
-            "Nama",
-            "Jumlah Sewa",
-            "Harga Perhari"
+            "ID Konsol",
+            "Nama Konsol",
+            "Durasi",
+            "Jumlah Rental",
+            "Harga Perhari",
+            "Sub Total",
+            "Status Rental"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data_sementara.setModel(model); // Mengatur model tabel untuk JTable
@@ -1218,6 +1333,8 @@ public class MenuSewa extends javax.swing.JPanel {
             "ID Konsol",
             "Nama Konsol",
             "Jumlah",
+            "Durasi",
+            "Total Harga",
             "Status Pinjam"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
@@ -1229,12 +1346,14 @@ public class MenuSewa extends javax.swing.JPanel {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            // Pastikan ada spasi di antara setiap bagian query
-            String sql = "SELECT swd.ID_Sewa, knsl.ID_Konsol, knsl.Nama_Konsol, swd.Jumlah_Sewa, swd.Status_Sewa "
-                    + "FROM tbl_detail_sewa swd "
-                    + "INNER JOIN tbl_konsol knsl ON knsl.ID_Konsol = swd.ID_Konsol "
-                    + "WHERE swd.ID_Sewa = ? "
-                    + "ORDER BY swd.ID_Sewa ASC";
+            String sql = "SELECT tbl_rental.ID_Rental, tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, "
+                    + "tbl_detail_rental.Jumlah_Rental, tbl_detail_rental.Durasi, tbl_detail_rental.Sub_Total, "
+                    + "tbl_detail_rental.Status_Rental "
+                    + "FROM tbl_detail_rental "
+                    + "INNER JOIN tbl_rental ON tbl_rental.ID_Rental = tbl_detail_rental.ID_Rental "
+                    + "INNER JOIN tbl_konsol ON tbl_konsol.ID_Konsol = tbl_detail_rental.ID_Konsol "
+                    + "WHERE tbl_rental.ID_Rental = ? " // Menambahkan kondisi untuk ID_Rental
+                    + "ORDER BY tbl_detail_rental.ID_Rental ASC"; // Menghapus LIMIT dan OFFSET
 
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, id); // Menggunakan parameterized query untuk keamanan
@@ -1244,14 +1363,16 @@ public class MenuSewa extends javax.swing.JPanel {
 
                 while (rs.next()) {
                     // Ambil data dari ResultSet
-                    String IdSewa = rs.getString("ID_Sewa");
+                    String IdRental = rs.getString("ID_Rental");
                     String IdKonsol = rs.getString("ID_Konsol");
                     String NamaKonsol = rs.getString("Nama_Konsol");
-                    String JumlahSewa = rs.getString("Jumlah_Sewa");
-                    String StatusSewa = rs.getString("Status_Sewa");
+                    String JumlahRental = rs.getString("Jumlah_Rental");
+                    String Durasi = rs.getString("Durasi");
+                    String TotalHarga = String.format("%.0f", rs.getDouble("Sub_Total")); // Menghilangkan .0
+                    String StatusRental = rs.getString("Status_Rental");
 
                     // Tambahkan ke model tabel
-                    Object[] rowData = {"   " + no++, IdSewa, IdKonsol, NamaKonsol, JumlahSewa, StatusSewa};
+                    Object[] rowData = {"   " + no++, IdRental, IdKonsol, NamaKonsol, JumlahRental, Durasi, TotalHarga, StatusRental};
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
@@ -1264,8 +1385,7 @@ public class MenuSewa extends javax.swing.JPanel {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            String sql = "SELECT * FROM tbl_sementara";
-            // Query dengan limit berdasarkan halaman
+            String sql = "SELECT * FROM tbl_sementara"; // Ambil semua data dari tabel sementara
 
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 ResultSet rs = st.executeQuery(); // Eksekusi query
@@ -1276,11 +1396,14 @@ public class MenuSewa extends javax.swing.JPanel {
                     // Ambil data dari ResultSet
                     String IdKonsol = rs.getString("ID_Konsol");
                     String NamaKonsol = rs.getString("Nama_Konsol");
-                    String JumlahSewa = rs.getString("Jumlah_Sewa");
-                    String HargaPerhari = rs.getString("Harga_Perhari");
+                    String JumlahRental = rs.getString("Jumlah_Rental");
+                    String Durasi = rs.getString("Durasi");
+                    String HargaPerjam = rs.getString("Harga_Perjam");
+                    String SubTotal = rs.getString("Sub_Total");
+                    String StatusRental = rs.getString("Status_Rental");
 
                     // Tambahkan ke model tabel
-                    Object[] rowData = {"   " + no++, IdKonsol, NamaKonsol, JumlahSewa, HargaPerhari};
+                    Object[] rowData = {"   " + no++, IdKonsol, NamaKonsol, Durasi, JumlahRental, HargaPerjam, SubTotal, StatusRental};
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
@@ -1290,13 +1413,13 @@ public class MenuSewa extends javax.swing.JPanel {
     }
 
     // setIDKonsol() - Mengatur ID Konsol secara otomatis
-    private String setIDSewa() throws SQLException {
+    private String setIDRental() throws SQLException {
         String urutan = null;
         Date now = new Date();
         SimpleDateFormat noFormat = new SimpleDateFormat("yyMM"); // Format tanggal sebagai bagian dari ID
         String no = noFormat.format(now);
 
-        String sql = "SELECT RIGHT(ID_Sewa, 3) AS Nomor FROM tbl_sewa WHERE ID_Sewa LIKE '" + no + "%' ORDER BY ID_Sewa DESC LIMIT 1";
+        String sql = "SELECT RIGHT(ID_Rental, 3) AS Nomor FROM tbl_rental WHERE ID_Rental LIKE '" + no + "%' ORDER BY ID_Rental DESC LIMIT 1";
 
         try (PreparedStatement st = con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery(); // Eksekusi query
@@ -1336,75 +1459,122 @@ public class MenuSewa extends javax.swing.JPanel {
 
         txt_id_konsol.setText(konsol.getIdKonsol());
         txt_nama_konsol.setText(konsol.getNamaKonsol());
-        txt_harga_perhari.setText(konsol.getHargaPerhari());
+        txt_harga_perhari.setText(konsol.getHargaPerjam());
 
         txt_id_konsol.setEnabled(false);
         txt_nama_konsol.setEnabled(false);
         txt_harga_perhari.setEnabled(false);
     }
 
+    private void updateKembalian() {
+        try {
+            // Ambil nilai total harga dari label
+            String totalStr = lb_totalRental.getText().replaceAll("[^\\d]", ""); // Hanya angka
+            if (totalStr.isEmpty()) {
+                txt_kembalian.setText(""); // Kosongkan jika total tidak valid
+                return;
+            }
+
+            int total = Integer.parseInt(totalStr);
+
+            // Ambil nilai bayar dari text field
+            String bayarStr = txt_bayar.getText();
+            if (bayarStr.trim().isEmpty()) {
+                txt_kembalian.setText(""); // Kosongkan jika bayar kosong
+                return;
+            }
+
+            int bayar = Integer.parseInt(bayarStr);
+
+            // Hitung kembalian
+            int kembali = bayar - total;
+
+            // Tampilkan kembalian, tidak boleh negatif
+            txt_kembalian.setText(String.valueOf(kembali >= 0 ? kembali : 0));
+        } catch (NumberFormatException e) {
+            // Kosongkan jika input tidak valid
+            txt_kembalian.setText("");
+        }
+    }
+
     private void insertData() {
-        String IdSewa = txt_id.getText();
-        String tglSewa = txt_tgl_sewa.getText();
-        String tglKembali = txt_tgl_kembali.getText();
+        String IdRental = lb_ID.getText();
+        String tglRental = txt_tgl_sewa.getText();
         String IdPelanggan = txt_id_pelanggan.getText();
 
         // Validasi input data
-        if (IdSewa.isEmpty() || tglSewa.isEmpty() || tglKembali.isEmpty() || IdPelanggan.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua kolom harus diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+        if (IdRental.isEmpty() || tglRental.isEmpty() || IdPelanggan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Validasi format tanggal (contoh menggunakan SimpleDateFormat)
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        // Hitung total harga dari tbl_sementara
+        double totalHarga = getTotalHarga(); // Mengambil total harga dari tabel sementara
+        if (totalHarga == 0) {
+            JOptionPane.showMessageDialog(this, "Total harga tidak valid, periksa data di tabel sementara!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validasi kembalian
+        String kembaliStr = txt_kembalian.getText();
+        if (kembaliStr.trim().isEmpty() || Integer.parseInt(kembaliStr) < 0) {
+            JOptionPane.showMessageDialog(this, "Jumlah bayar tidak mencukupi atau belum valid.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Ambil nilai bayar
+        String bayarStr = txt_bayar.getText();
+        double uangBayar = 0;
         try {
-            sdf.parse(tglSewa);
-            sdf.parse(tglKembali);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(this, "Format tanggal tidak valid!", "Error", JOptionPane.ERROR_MESSAGE);
+            uangBayar = Double.parseDouble(bayarStr); // Ambil nilai bayar
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Masukkan jumlah bayar yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Hitung total sewa sebelum insert
-        int totalSewa = getTotalSewa(IdSewa, tglSewa, tglKembali);
-        jLabel24.setText(String.valueOf(totalSewa));
+        double kembalian = Double.parseDouble(kembaliStr); // Ambil kembalian
+
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_sewa (ID_Sewa, Tanggal_Sewa, Tanggal_Pengembalian, Total, ID_Pelanggan, ID_User) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO tbl_rental (ID_Rental, Tanggal_Rental, Total_Harga, Bayar, Kembalian, ID_Pelanggan, ID_User) VALUES (?,?,?,?,?,?,?)";
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, IdSewa);
-                st.setString(2, tglSewa);
-                st.setString(3, tglKembali);
-                st.setInt(4, totalSewa);
-                st.setString(5, IdPelanggan);
-                st.setString(6, userID);
+                st.setString(1, IdRental);
+                st.setString(2, tglRental);
+                st.setDouble(3, totalHarga); // Menyimpan total harga
+                st.setDouble(4, uangBayar); // Menyimpan jumlah bayar
+                st.setDouble(5, kembalian); // Menyimpan kembalian
+                st.setString(6, IdPelanggan);
+                st.setString(7, userID);
 
                 int rowInserted = st.executeUpdate(); // Menjalankan perintah insert
                 if (rowInserted > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan");
-                    insertDataDetail();
-                    insertDataSementara();
+                    insertDataDetail(); // Menambahkan data ke tabel detail
+                    hapusDataSementara(); // Menghapus data sementara setelah insert
                     resetForm(); // Kosongkan text field setelah data berhasil ditambahkan
-                    loadData();  // Memuat data ke tampilan JTable atau komponen lainnya
-                    showPanel();
+                    loadData(); // Memuat data ke tampilan JTable atau komponen lainnya
+                    showPanel(); // Menampilkan panel yang sesuai
                 }
             }
         } catch (SQLException e) {
             Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menyimpan data!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    // insertData() - Menambahkan data Konsol ke database
+// insertDataDetail() - Menambahkan data Konsol ke database
     private void insertDataDetail() {
-        String IdSewa = txt_id.getText();
+        String IdRental = lb_ID.getText();
 
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_detail_sewa (ID_Sewa, ID_Konsol, Jumlah_Sewa, Status_Sewa, HargaPerHari) "
-                    + "SELECT '" + IdSewa + "', ID_Konsol, Jumlah_Sewa, Status_Sewa, Harga_Perhari FROM tbl_sementara";
+            String sql = "INSERT INTO tbl_detail_rental (ID_Rental, ID_Konsol, Jumlah_Rental, Durasi, Sub_Total, Status_Rental) "
+                    + "SELECT ?, ID_Konsol, Jumlah_Rental, Durasi, Sub_Total, Status_Rental FROM tbl_sementara";
             try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, IdRental); // Set ID_Rental ke dalam parameter query
                 st.executeUpdate();
             }
+
         } catch (SQLException e) {
             Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -1412,14 +1582,14 @@ public class MenuSewa extends javax.swing.JPanel {
 
     private boolean cekStok(String IdKonsol, int JumlahSewa) {
         try {
-            String sql = "SELECT Stock FROM tbl_konsol WHERE ID_Konsol=?";
+            String sql = "SELECT Stok FROM tbl_konsol WHERE ID_Konsol=?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, IdKonsol);
 
                 ResultSet rs = st.executeQuery();
 
                 if (rs.next()) {
-                    int stokTersedia = rs.getInt("Stock");
+                    int stokTersedia = rs.getInt("Stok");
                     return JumlahSewa <= stokTersedia;
                 }
             }
@@ -1430,42 +1600,54 @@ public class MenuSewa extends javax.swing.JPanel {
         return false;
     }
 
-    // insertData() - Menambahkan data Konsol ke database
-    // insertDataSementara() - Menambahkan data Konsol ke database
     private void insertDataSementara() {
         String IdKonsol = txt_id_konsol.getText();
         String NamaKonsol = txt_nama_konsol.getText();
-        int JumlahSewa = Integer.parseInt(txt_jumlah.getText());
-        String HargaPerhari = txt_harga_perhari.getText();
-        String StatusSewa = "Sedang diSewa";
+        int JumlahRental;
+        int Durasi;
+        int HargaPerJam;
 
-        // Validasi input data
-        if (IdKonsol.isEmpty() || NamaKonsol.isEmpty() || HargaPerhari.isEmpty() || StatusSewa.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
+        try {
+            // Validasi dan parsing input
+            JumlahRental = Integer.parseInt(txt_jumlah.getText());
+            Durasi = Integer.parseInt(txt_durasi.getText());
+            HargaPerJam = Integer.parseInt(txt_harga_perhari.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Pastikan jumlah, durasi, dan harga per jam adalah angka! ", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (!cekStok(IdKonsol, JumlahSewa)) {
-            JOptionPane.showMessageDialog(this, "Stok Konsol Tidak Tersedia !", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        String StatusRental = "Sedang diRental";
+
+        // Hitung subtotal
+        int SubTotal = Durasi * JumlahRental * HargaPerJam;
+
+        // Validasi input data
+        if (IdKonsol.isEmpty() || NamaKonsol.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi! ", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
-            String sql = "INSERT INTO tbl_sementara (ID_Konsol, Nama_Konsol, Jumlah_Sewa, Harga_Perhari, Status_Sewa) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO tbl_sementara (ID_Konsol, Nama_Konsol, Jumlah_Rental, Durasi, Harga_Perjam, Sub_Total, Status_Rental) VALUES (?,?,?,?,?,?,?)";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, IdKonsol);
                 st.setString(2, NamaKonsol);
-                st.setInt(3, JumlahSewa); // Menggunakan integer untuk JumlahSewa
-                st.setDouble(4, Double.parseDouble(HargaPerhari)); // Menggunakan double untuk HargaPerhari
-                st.setString(5, StatusSewa);
+                st.setInt(3, JumlahRental);
+                st.setInt(4, Durasi);
+                st.setInt(5, HargaPerJam);
+                st.setInt(6, SubTotal);
+                st.setString(7, StatusRental);
 
                 st.executeUpdate(); // Menjalankan perintah insert
 
                 loadDataSementara(); // Memuat data sementara
 
                 // Konfirmasi untuk menambah konsol lagi atau tidak
-                if (JOptionPane.showConfirmDialog(this, "Mau Tambah Konsol?", "Konfirmasi", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                if (JOptionPane.showConfirmDialog(this, "Mau Tambah Konsol? ", "Konfirmasi", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     resetFormKonsol(); // Reset form konsol jika ingin menambah konsol lagi
+                    int totalHarga = (int) getTotalHarga(); // Konversi ke integer
+                    lb_totalRental.setText(String.valueOf(totalHarga)); // Menampilkan bilangan bulat
                     btn_set_konsol.requestFocus(); // Fokuskan tombol untuk tambah konsol
                 } else {
                     resetFormKonsol(); // Reset form konsol jika tidak menambah konsol lagi
@@ -1475,31 +1657,24 @@ public class MenuSewa extends javax.swing.JPanel {
             }
         } catch (SQLException e) {
             Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, "Error saat insert data", e);
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menyimpan data!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menyimpan data! ", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private int getTotalSewa(String idSewa, String tglSewa, String tglKembali) {
-        int totalSewa = 0;
-        // Query SQL untuk menghitung total sewa
-        String sql = "SELECT (DATEDIFF(day, ?, ?) * Harga_PerHari) AS TotalSewa "
-                + "FROM tbl_sewa s "
-                + "INNER JOIN tbl_konsol k ON s.ID_Konsol = k.ID_Konsol "
-                + "WHERE s.ID_Sewa = ?";
-
-        try (PreparedStatement st = con.prepareStatement(sql)) {
-            st.setString(1, tglSewa);
-            st.setString(2, tglKembali);
-            st.setString(3, idSewa);
-
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                return rs.getInt("TotalSewa");
+    private double getTotalHarga() {
+        double totalHarga = 0;
+        try {
+            String sql = "SELECT SUM(Sub_Total) as total FROM tbl_sementara";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                ResultSet rs = st.executeQuery();
+                if (rs.next()) {
+                    totalHarga = rs.getDouble("total");
+                }
             }
         } catch (SQLException e) {
-            // Tangani error
+            Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
         }
-        return totalSewa; // Atau nilai default lainnya jika terjadi error
+        return totalHarga;
     }
 
     // dataTabel() - Menampilkan data Konsol dari JTable ke dalam form untuk diperbarui
@@ -1508,47 +1683,85 @@ public class MenuSewa extends javax.swing.JPanel {
         panelAdd.setVisible(true); // Menampilkan panel tambah/edit
 
         int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
-        jLabel7.setText("PERBARUI DATA Konsol"); // Mengubah teks label menjadi "PERBARUI DATA Konsol"
-        txt_id.setEnabled(false); // Menonaktifkan field ID Konsol agar tidak bisa diedit
+        lb_ID.setEnabled(false); // Menonaktifkan field ID Konsol agar tidak bisa diedit
         String id = tbl_data.getModel().getValueAt(row, 0).toString();
 
         // Mengisi field form dengan data dari baris yang dipilih
-        txt_id.setText(tbl_data.getValueAt(row, 0).toString());
+        lb_ID.setText(tbl_data.getValueAt(row, 0).toString());
 
     }
 
     // updateData() - Memperbarui data Konsol di database
     private void updateData() {
         String IdKonsol = txt_id_konsol.getText();
-        String JumlahSewa = txt_jumlah.getText();
+        String JumlahSewaStr = txt_jumlah.getText();
+        String DurasiStr = txt_durasi.getText();
 
         // Validasi input data
-        if (IdKonsol.isEmpty() || JumlahSewa.isEmpty()) {
+        if (IdKonsol.isEmpty() || JumlahSewaStr.isEmpty() || DurasiStr.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua Kolom Harus Dipilih dan Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Update data ke database
-        try {
-            // Memperbaiki query untuk memasukkan nilai Stock, Status, HargaPerjam, dan HargaPerhari
-            String sql = "UPDATE tbl_sementara SET Jumlah_Sewa=? WHERE ID_Konsol=?";
-            try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, JumlahSewa); // Set Harga per Hari
-                st.setString(2, IdKonsol);
+        int JumlahSewa;
+        int Durasi;
 
-//                int totalSewa = getTotalSewa(IdSewa, tglSewa, tglKembali);
-//                jLabel24.setText(String.valueOf(totalSewa));
-                int rowUpdated = st.executeUpdate(); // Menjalankan perintah update
+        // Validasi angka
+        try {
+            JumlahSewa = Integer.parseInt(JumlahSewaStr);
+            Durasi = Integer.parseInt(DurasiStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Jumlah Sewa dan Durasi harus berupa angka!", "Validasi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Ambil HargaPerJam dari kolom di tabel atau database
+            String sqlHarga = "SELECT Harga_Perjam FROM tbl_sementara WHERE ID_Konsol = ?";
+            int HargaPerJam = 0;
+
+            try (PreparedStatement stHarga = con.prepareStatement(sqlHarga)) {
+                stHarga.setString(1, IdKonsol);
+                ResultSet rs = stHarga.executeQuery();
+                if (rs.next()) {
+                    HargaPerJam = rs.getInt("Harga_Perjam");
+                }
+            }
+
+            if (HargaPerJam == 0) {
+                JOptionPane.showMessageDialog(this, "Harga per jam tidak ditemukan untuk konsol ini!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Hitung Sub_Total
+            int SubTotal = Durasi * JumlahSewa * HargaPerJam;
+
+            // Update data ke database
+            String sqlUpdate = "UPDATE tbl_sementara SET Jumlah_Rental = ?, Durasi = ?, Sub_Total = ? WHERE ID_Konsol = ?";
+            try (PreparedStatement stUpdate = con.prepareStatement(sqlUpdate)) {
+                stUpdate.setInt(1, JumlahSewa);      // Jumlah Rental
+                stUpdate.setInt(2, Durasi);          // Durasi
+                stUpdate.setInt(3, SubTotal);        // Sub_Total
+                stUpdate.setString(4, IdKonsol);     // ID Konsol
+
+                int rowUpdated = stUpdate.executeUpdate(); // Menjalankan perintah update
                 if (rowUpdated > 0) {
                     JOptionPane.showMessageDialog(this, "Data Berhasil Diperbarui");
-                    resetFormKonsol(); // Kosongkan form setelah data diperbarui
-                    loadDataSementara();  // Refresh data di JTable
+                    resetFormKonsol();    // Kosongkan form setelah data diperbarui
+                    loadDataSementara(); // Refresh data di JTable
                     aktifKonsol();
                     btn_simpan.setEnabled(true);
+
+                    // Perbarui label total rental tanpa desimal
+                    int totalHarga = (int) getTotalHarga(); // Konversi ke integer
+                    lb_totalRental.setText(String.valueOf(totalHarga)); // Menampilkan bilangan bulat
+                } else {
+                    JOptionPane.showMessageDialog(this, "Tidak ada data yang diperbarui!", "Informasi", JOptionPane.WARNING_MESSAGE);
                 }
             }
         } catch (SQLException e) {
             Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat memperbarui data!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1573,12 +1786,13 @@ public class MenuSewa extends javax.swing.JPanel {
                     st.setString(1, id);
                     int rowDeleted = st.executeUpdate();
 
-//                    int totalSewa = getTotalSewa(id);
-//                    if (totalSewa > 0) {
-//                        jLabel24.setText(String.valueOf(totalSewa));
-//                    } else {
-//                        jLabel24.setText("Total");
-//                    }
+                    double totalHarga = getTotalHarga();
+                    if (totalHarga > 0) {
+                        lb_totalRental.setText(String.valueOf(totalHarga));
+                    } else {
+                        lb_totalRental.setText("Total");
+                    }
+
                     if (rowDeleted > 0) {
                         JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
                     } else {
@@ -1615,9 +1829,10 @@ public class MenuSewa extends javax.swing.JPanel {
             String id = tbl_data_sementara.getValueAt(row, 1).toString();
             txt_id_konsol.setText(tbl_data_sementara.getValueAt(row, 1).toString());
             txt_nama_konsol.setText(tbl_data_sementara.getValueAt(row, 2).toString());
-            txt_harga_perhari.setText(tbl_data_sementara.getValueAt(row, 3).toString());
+            txt_harga_perhari.setText(tbl_data_sementara.getValueAt(row, 5).toString());
 
             txt_jumlah.requestFocus();
+            txt_durasi.requestFocus();
         }
     }
 
@@ -1645,11 +1860,11 @@ public class MenuSewa extends javax.swing.JPanel {
                     String idSewa = rs.getString("ID_Sewa");
                     String tanggalSewa = rs.getString("Tanggal_Sewa");
                     String tanggalKembali = rs.getString("Tanggal_Pengembalian");
-                    String totalSewa = rs.getString("Total");
+                    String totalRental = rs.getString("Total");
                     String namaPelanggan = rs.getString("Nama_Pelanggan");
                     String namaUser = rs.getString("Nama_User");
 
-                    Object[] rowData = {"   " + no++, idSewa, tanggalSewa, tanggalKembali, totalSewa, namaPelanggan, namaUser};
+                    Object[] rowData = {"   " + no++, idSewa, tanggalSewa, tanggalKembali, totalRental, namaPelanggan, namaUser};
                     model.addRow(rowData);
                 }
             }
@@ -1657,5 +1872,4 @@ public class MenuSewa extends javax.swing.JPanel {
             Logger.getLogger(MenuSewa.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
 }

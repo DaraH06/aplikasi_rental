@@ -92,8 +92,6 @@ public class MenuKonsol extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         rb_tersedia = new javax.swing.JRadioButton();
         rb_digunakan = new javax.swing.JRadioButton();
-        jLabel14 = new javax.swing.JLabel();
-        txt_harga_perhari = new Palette.JTextfieldRounded();
         txt_harga_perjam = new Palette.JTextfieldRounded();
         jLabel13 = new javax.swing.JLabel();
         sp_stock = new javax.swing.JSpinner();
@@ -307,15 +305,7 @@ public class MenuKonsol extends javax.swing.JPanel {
         rbJenisKelamin.add(rb_digunakan);
         rb_digunakan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         rb_digunakan.setForeground(new java.awt.Color(51, 51, 51));
-        rb_digunakan.setText("Digunakan");
-
-        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Harga Perhari");
-
-        txt_harga_perhari.setForeground(new java.awt.Color(102, 102, 102));
-        txt_harga_perhari.setText("Harga Perhari");
-        txt_harga_perhari.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        rb_digunakan.setText("Dugunakan");
 
         txt_harga_perjam.setForeground(new java.awt.Color(102, 102, 102));
         txt_harga_perjam.setText("Harga Perjam");
@@ -359,11 +349,8 @@ public class MenuKonsol extends javax.swing.JPanel {
                             .addComponent(cbx_kategori, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel14)
-                                .addComponent(txt_harga_perhari, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-                                .addComponent(jLabel13)
-                                .addComponent(txt_harga_perjam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel13)
+                            .addComponent(txt_harga_perjam, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15)
                             .addComponent(sp_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -418,17 +405,11 @@ public class MenuKonsol extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_harga_perjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_harga_perhari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel16))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbx_kategori)))
+                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbx_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addGap(27, 27, 27)
@@ -460,7 +441,6 @@ public class MenuKonsol extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
@@ -480,7 +460,6 @@ public class MenuKonsol extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_tersedia;
     private javax.swing.JSpinner sp_stock;
     private Palette.JTable_Custom tbl_data;
-    private Palette.JTextfieldRounded txt_harga_perhari;
     private Palette.JTextfieldRounded txt_harga_perjam;
     private Palette.JTextfieldRounded txt_id;
     private Palette.JTextfieldRounded txt_nama;
@@ -654,7 +633,6 @@ public class MenuKonsol extends javax.swing.JPanel {
         txt_nama.setText(""); // Mengosongkan teks Nama Konsol
         rbJenisKelamin.clearSelection(); // Mengosongkan pilihan jenis kelamin pada radio button
         txt_harga_perjam.setText(""); // Mengosongkan harga per jam
-        txt_harga_perhari.setText(""); // Mengosongkan harga per hari
 //        txt_kategori.setText(""); // Mengosongkan kategori
         sp_stock.setValue(0); // Mengatur nilai stok kembali ke default, misalnya 0 jika menggunakan JSpinner
     }
@@ -668,7 +646,6 @@ public class MenuKonsol extends javax.swing.JPanel {
             "Status",
             "Stock",
             "Harga Perjam",
-            "Harga Perhari"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data.setModel(model); // Mengatur model tabel untuk JTable
@@ -680,7 +657,7 @@ public class MenuKonsol extends javax.swing.JPanel {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, tbl_konsol.Harga_Perhari, "
+            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, "
                     + "tbl_kategori.ID_Kategori, tbl_kategori.Nama_Kategori "
                     + "FROM tbl_konsol "
                     + "INNER JOIN tbl_kategori ON tbl_kategori.ID_Kategori = tbl_konsol.ID_Kategori "
@@ -698,9 +675,8 @@ public class MenuKonsol extends javax.swing.JPanel {
                     String Status = rs.getString("Status");
                     String Stock = rs.getString("Stock");
                     String HargaPerjam = rs.getString("Harga_Perjam");
-                    String HargaPerhari = rs.getString("Harga_Perhari");
 
-                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam, HargaPerhari}; // Data Konsol
+                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam}; // Data Konsol
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
@@ -776,25 +752,23 @@ public class MenuKonsol extends javax.swing.JPanel {
         Integer Stock = (Integer) sp_stock.getValue();  // Mengambil nilai stock dari JSpinner
 
         String HargaPerjam = txt_harga_perjam.getText();
-        String HargaPerhari = txt_harga_perhari.getText();
 
         // Validasi input data
-        if (IdKonsol.isEmpty() || NamaKonsol.isEmpty() || Status.isEmpty() || Stock == null || HargaPerjam.isEmpty() || HargaPerhari.isEmpty() || cbx_kategori.getSelectedItem().toString().equals("Pilih Kategori")) {
+        if (IdKonsol.isEmpty() || NamaKonsol.isEmpty() || Status.isEmpty() || Stock == null || HargaPerjam.isEmpty() || cbx_kategori.getSelectedItem().toString().equals("Pilih Kategori")) {
             JOptionPane.showMessageDialog(this, "Semua Kolom Harus Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_konsol (ID_Konsol, Nama_Konsol, Status, Stock, Harga_Perjam, Harga_Perhari, ID_Kategori) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO tbl_konsol (ID_Konsol, Nama_Konsol, Status, Stock, Harga_Perjam, ID_Kategori) VALUES (?,?,?,?,?,?)";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, IdKonsol);
                 st.setString(2, NamaKonsol);
                 st.setString(3, Status);
                 st.setInt(4, Stock); // Menyimpan nilai stock sebagai integer
                 st.setString(5, HargaPerjam);
-                st.setString(6, HargaPerhari);
-                st.setString(7, IdKategori);
+                st.setString(6, IdKategori);
 
                 int rowInserted = st.executeUpdate(); // Menjalankan perintah insert
                 if (rowInserted > 0) {
@@ -837,7 +811,6 @@ public class MenuKonsol extends javax.swing.JPanel {
 
         // Mengisi harga per jam dan harga per hari
         txt_harga_perjam.setText(tbl_data.getValueAt(row, 5).toString());
-        txt_harga_perhari.setText(tbl_data.getValueAt(row, 6).toString());
 
         getKategoriID(IdKategori);
     }
@@ -899,10 +872,9 @@ public class MenuKonsol extends javax.swing.JPanel {
         Integer Stock = (Integer) sp_stock.getValue();  // Mengambil nilai stock dari JSpinner
 
         String HargaPerjam = txt_harga_perjam.getText();
-        String HargaPerhari = txt_harga_perhari.getText();
 
         // Validasi input data
-        if (IdKonsol.isEmpty() || NamaKonsol.isEmpty() || Status.isEmpty() || Stock == null || HargaPerjam.isEmpty() || HargaPerhari.isEmpty() || cbx_kategori.getSelectedItem().toString().equals("Pilih Kategori")) {
+        if (IdKonsol.isEmpty() || NamaKonsol.isEmpty() || Status.isEmpty() || Stock == null || HargaPerjam.isEmpty() || cbx_kategori.getSelectedItem().toString().equals("Pilih Kategori")) {
             JOptionPane.showMessageDialog(this, "Semua Kolom Harus Dipilih dan Diisi!", "Validasi", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -916,9 +888,8 @@ public class MenuKonsol extends javax.swing.JPanel {
                 st.setString(2, Status); // Set Status (Tersedia / Digunakan)
                 st.setInt(3, Stock);  // Menyimpan nilai stock yang sudah diambil sebagai integer
                 st.setString(4, HargaPerjam); // Set Harga per Jam
-                st.setString(5, HargaPerhari); // Set Harga per Hari
-                st.setString(6, IdKategori);
-                st.setString(7, IdKonsol);
+                st.setString(5, IdKategori);
+                st.setString(6, IdKonsol);
 
                 int rowUpdated = st.executeUpdate(); // Menjalankan perintah update
                 if (rowUpdated > 0) {
@@ -967,7 +938,7 @@ public class MenuKonsol extends javax.swing.JPanel {
 
         try {
             // Modifikasi query untuk mencakup pencarian berdasarkan Nama_Konsol dan Stock
-            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, tbl_konsol.Harga_Perhari, "
+            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, "
                     + "tbl_kategori.ID_Kategori, tbl_kategori.Nama_Kategori "
                     + "FROM tbl_konsol "
                     + "INNER JOIN tbl_kategori ON tbl_kategori.ID_Kategori = tbl_konsol.ID_Kategori "
@@ -986,10 +957,9 @@ public class MenuKonsol extends javax.swing.JPanel {
                     String Status = rs.getString("Status");
                     String Stock = rs.getString("Stock");
                     String HargaPerjam = rs.getString("Harga_Perjam");
-                    String HargaPerhari = rs.getString("Harga_Perhari");
 
                     // Menambahkan hasil pencarian ke dalam JTable
-                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam, HargaPerhari};
+                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam};
                     model.addRow(rowData);
                 }
             }

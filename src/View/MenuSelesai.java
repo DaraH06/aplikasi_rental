@@ -1,5 +1,6 @@
 package View;
 //data
+
 import com.mysql.cj.protocol.Resultset;
 import database.database_two;
 import java.awt.event.ActionEvent;
@@ -30,7 +31,7 @@ import javax.swing.table.TableColumnModel;
  *
  * @author mahar
  */
-public class MenuPengembalian extends javax.swing.JPanel {
+public class MenuSelesai extends javax.swing.JPanel {
 
     /**
      * Creates new form MenuDashboard
@@ -44,7 +45,7 @@ public class MenuPengembalian extends javax.swing.JPanel {
     private String userID;
 
     // Konstruktor kelas MenuKonsol
-    public MenuPengembalian(String userID) {
+    public MenuSelesai(String userID) {
         con = database_two.con(); // Membuat koneksi ke database
         this.userID = userID;
         initComponents(); // Inisialisasi komponen GUI
@@ -53,7 +54,6 @@ public class MenuPengembalian extends javax.swing.JPanel {
         resetForm(); // Mereset form input menjadi kosong
         paginationKonsol(); // Mengatur paginasi untuk tampilan data
         actionButton();
-        setTabelModelDetail();
     }
 
     /**
@@ -80,12 +80,6 @@ public class MenuPengembalian extends javax.swing.JPanel {
         btn_next = new javax.swing.JButton();
         btn_last = new javax.swing.JButton();
         lb_halaman = new javax.swing.JLabel();
-        pn_detail = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbl_data_detail = new Palette.JTable_Custom();
-        btn_cancel_detail = new Palette.Custom_ButtonRounded();
         panelAdd = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -98,11 +92,9 @@ public class MenuPengembalian extends javax.swing.JPanel {
         txt_tanggal = new Palette.JTextfieldRounded();
         panelcustom2 = new Palette.Panelcustom();
         jLabel11 = new javax.swing.JLabel();
-        txt_id_sewa = new Palette.JTextfieldRounded();
+        txt_id_rental = new Palette.JTextfieldRounded();
         jLabel12 = new javax.swing.JLabel();
         txt_tgl_sewa = new Palette.JTextfieldRounded();
-        jLabel13 = new javax.swing.JLabel();
-        txt_tgl_kembali = new Palette.JTextfieldRounded();
         jLabel14 = new javax.swing.JLabel();
         txt_id_pelanggan = new Palette.JTextfieldRounded();
         btn_get_sewa = new Palette.Custom_ButtonRounded();
@@ -115,10 +107,8 @@ public class MenuPengembalian extends javax.swing.JPanel {
         txt_nama_konsol = new Palette.JTextfieldRounded();
         jLabel21 = new javax.swing.JLabel();
         txt_harga_perhari = new Palette.JTextfieldRounded();
-        panelcustom5 = new Palette.Panelcustom();
-        jLabel23 = new javax.swing.JLabel();
-        txt_denda = new Palette.JTextfieldRounded();
-        lb_info_denda = new javax.swing.JLabel();
+        txt_durasi = new Palette.JTextfieldRounded();
+        jLabel22 = new javax.swing.JLabel();
 
         dateChooser1.setTextRefernce(txt_tanggal);
 
@@ -154,7 +144,7 @@ public class MenuPengembalian extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Data Pengembalian Sewa");
+        jLabel3.setText("Data Selesai Rental");
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add.png"))); // NOI18N
         btn_tambah.setText("Tambah");
@@ -184,68 +174,6 @@ public class MenuPengembalian extends javax.swing.JPanel {
         lb_halaman.setForeground(new java.awt.Color(153, 153, 153));
         lb_halaman.setText("Halaman of Total Halaman");
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Data Detail Pengembalian Sewa");
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Transaksi.png"))); // NOI18N
-
-        tbl_data_detail.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
-            }
-        ));
-        tbl_data_detail.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        tbl_data_detail.setSelectionForeground(new java.awt.Color(204, 255, 51));
-        jScrollPane3.setViewportView(tbl_data_detail);
-
-        btn_cancel_detail.setBackground(new java.awt.Color(255, 255, 255));
-        btn_cancel_detail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Multiply.png"))); // NOI18N
-        btn_cancel_detail.setFillClick(new java.awt.Color(255, 255, 255));
-        btn_cancel_detail.setFillOriginal(new java.awt.Color(255, 255, 255));
-        btn_cancel_detail.setFillOver(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pn_detailLayout = new javax.swing.GroupLayout(pn_detail);
-        pn_detail.setLayout(pn_detailLayout);
-        pn_detailLayout.setHorizontalGroup(
-            pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_detailLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(pn_detailLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_cancel_detail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        pn_detailLayout.setVerticalGroup(
-            pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_detailLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pn_detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(btn_cancel_detail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
-        );
-
         javax.swing.GroupLayout panelViewLayout = new javax.swing.GroupLayout(panelView);
         panelView.setLayout(panelViewLayout);
         panelViewLayout.setHorizontalGroup(
@@ -260,15 +188,14 @@ public class MenuPengembalian extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelViewLayout.createSequentialGroup()
                         .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pn_detail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE)
                             .addGroup(panelViewLayout.createSequentialGroup()
                                 .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(58, 58, 58))))
             .addGroup(panelViewLayout.createSequentialGroup()
-                .addGap(324, 324, 324)
+                .addGap(326, 326, 326)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelViewLayout.createSequentialGroup()
                         .addComponent(btn_first)
@@ -283,7 +210,7 @@ public class MenuPengembalian extends javax.swing.JPanel {
                     .addGroup(panelViewLayout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(lb_halaman)))
-                .addGap(0, 374, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelViewLayout.setVerticalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +224,7 @@ public class MenuPengembalian extends javax.swing.JPanel {
                     .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lb_halaman)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,9 +234,7 @@ public class MenuPengembalian extends javax.swing.JPanel {
                     .addComponent(cbx_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_next)
                     .addComponent(btn_last))
-                .addGap(18, 18, 18)
-                .addComponent(pn_detail, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(27, 27, 27))
         );
 
         panelMain.add(panelView, "card2");
@@ -398,20 +323,20 @@ public class MenuPengembalian extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Sewa");
+        jLabel11.setText("Rental");
 
-        txt_id_sewa.setForeground(new java.awt.Color(102, 102, 102));
-        txt_id_sewa.setText("ID");
-        txt_id_sewa.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-        txt_id_sewa.addActionListener(new java.awt.event.ActionListener() {
+        txt_id_rental.setForeground(new java.awt.Color(102, 102, 102));
+        txt_id_rental.setText("ID");
+        txt_id_rental.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_id_rental.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id_sewaActionPerformed(evt);
+                txt_id_rentalActionPerformed(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("Tanggal Sewa");
+        jLabel12.setText("Tanggal Rental");
 
         txt_tgl_sewa.setForeground(new java.awt.Color(102, 102, 102));
         txt_tgl_sewa.setText("Tanggal Peminjaman");
@@ -421,14 +346,6 @@ public class MenuPengembalian extends javax.swing.JPanel {
                 txt_tgl_sewaActionPerformed(evt);
             }
         });
-
-        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Tanggal Kembali");
-
-        txt_tgl_kembali.setForeground(new java.awt.Color(102, 102, 102));
-        txt_tgl_kembali.setText("Tanggal Pengembalian");
-        txt_tgl_kembali.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
@@ -466,16 +383,13 @@ public class MenuPengembalian extends javax.swing.JPanel {
                         .addComponent(txt_id_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelcustom2Layout.createSequentialGroup()
                         .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_tgl_sewa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_tgl_kembali, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom2Layout.createSequentialGroup()
-                                .addComponent(txt_id_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_id_rental, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_get_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelcustom2Layout.createSequentialGroup()
@@ -491,7 +405,7 @@ public class MenuPengembalian extends javax.swing.JPanel {
                 .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_get_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_id_sewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_id_rental, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -499,17 +413,13 @@ public class MenuPengembalian extends javax.swing.JPanel {
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_tgl_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_id_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelcustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_nama_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         panelcustom4.setBackground(new java.awt.Color(250, 250, 250));
@@ -536,11 +446,19 @@ public class MenuPengembalian extends javax.swing.JPanel {
 
         jLabel21.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel21.setText("Harga Perhari");
+        jLabel21.setText("Harga Perjam");
 
         txt_harga_perhari.setForeground(new java.awt.Color(102, 102, 102));
-        txt_harga_perhari.setText("Harga_Perhari");
+        txt_harga_perhari.setText("Harga Perjam");
         txt_harga_perhari.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        txt_durasi.setForeground(new java.awt.Color(102, 102, 102));
+        txt_durasi.setText("Durasi");
+        txt_durasi.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+
+        jLabel22.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel22.setText("Durasi");
 
         javax.swing.GroupLayout panelcustom4Layout = new javax.swing.GroupLayout(panelcustom4);
         panelcustom4.setLayout(panelcustom4Layout);
@@ -548,15 +466,18 @@ public class MenuPengembalian extends javax.swing.JPanel {
             panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_nama_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt_harga_perhari, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(txt_id_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txt_id_konsol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_durasi, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
                 .addGap(45, 45, 45))
         );
         panelcustom4Layout.setVerticalGroup(
@@ -574,49 +495,11 @@ public class MenuPengembalian extends javax.swing.JPanel {
                 .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_harga_perhari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        panelcustom5.setBackground(new java.awt.Color(250, 250, 250));
-        panelcustom5.setRoundBottomRight(20);
-        panelcustom5.setRoundBottomleft(20);
-        panelcustom5.setRoundTopLeft(20);
-        panelcustom5.setRoundTopRight(20);
-
-        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel23.setText("Denda");
-
-        txt_denda.setForeground(new java.awt.Color(102, 102, 102));
-        txt_denda.setText("Jumlah");
-        txt_denda.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-
-        lb_info_denda.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        lb_info_denda.setForeground(new java.awt.Color(102, 102, 102));
-        lb_info_denda.setText("Info Denda");
-
-        javax.swing.GroupLayout panelcustom5Layout = new javax.swing.GroupLayout(panelcustom5);
-        panelcustom5.setLayout(panelcustom5Layout);
-        panelcustom5Layout.setHorizontalGroup(
-            panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelcustom5Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_denda, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lb_info_denda, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelcustom5Layout.setVerticalGroup(
-            panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcustom5Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addGroup(panelcustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_denda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_info_denda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelcustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_durasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(panelAdd);
@@ -639,9 +522,7 @@ public class MenuPengembalian extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAddLayout.createSequentialGroup()
                             .addComponent(panelcustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(panelcustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(panelcustom5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         panelAddLayout.setVerticalGroup(
@@ -658,13 +539,10 @@ public class MenuPengembalian extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addComponent(panelcustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelcustom5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelcustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelcustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelcustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         panelMain.add(panelAdd, "card2");
@@ -672,9 +550,9 @@ public class MenuPengembalian extends javax.swing.JPanel {
         add(panelMain, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_id_sewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_sewaActionPerformed
+    private void txt_id_rentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_rentalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_id_sewaActionPerformed
+    }//GEN-LAST:event_txt_id_rentalActionPerformed
 
     private void txt_tgl_sewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tgl_sewaActionPerformed
         // TODO add your handling code here:
@@ -696,7 +574,6 @@ public class MenuPengembalian extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Palette.Custom_ButtonRounded btn_batal_add;
     private javax.swing.JButton btn_before;
-    private Palette.Custom_ButtonRounded btn_cancel_detail;
     private javax.swing.JButton btn_first;
     private Palette.Custom_ButtonRounded btn_get_sewa;
     private javax.swing.JButton btn_last;
@@ -708,45 +585,36 @@ public class MenuPengembalian extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lb_halaman;
-    private javax.swing.JLabel lb_info_denda;
     private javax.swing.JPanel panelAdd;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelView;
     private Palette.Panelcustom panelcustom1;
     private Palette.Panelcustom panelcustom2;
     private Palette.Panelcustom panelcustom4;
-    private Palette.Panelcustom panelcustom5;
-    private javax.swing.JPanel pn_detail;
     private Palette.JTable_Custom tbl_data;
-    private Palette.JTable_Custom tbl_data_detail;
-    private Palette.JTextfieldRounded txt_denda;
+    private Palette.JTextfieldRounded txt_durasi;
     private Palette.JTextfieldRounded txt_harga_perhari;
     private Palette.JTextfieldRounded txt_id;
     private Palette.JTextfieldRounded txt_id_konsol;
     private Palette.JTextfieldRounded txt_id_pelanggan;
-    private Palette.JTextfieldRounded txt_id_sewa;
+    private Palette.JTextfieldRounded txt_id_rental;
     private Palette.JTextfieldRounded txt_nama_konsol;
     private Palette.JTextfieldRounded txt_nama_pelanggan;
     private Palette.JTextfieldRounded txt_search;
     private Palette.JTextfieldRounded txt_tanggal;
-    private Palette.JTextfieldRounded txt_tgl_kembali;
     private Palette.JTextfieldRounded txt_tgl_sewa;
     // End of variables declaration//GEN-END:variables
 
@@ -799,9 +667,9 @@ public class MenuPengembalian extends javax.swing.JPanel {
                 panelMain.revalidate();
 
                 try {
-                    txt_id.setText(setIDPengembalian());
+                    txt_id.setText(setIdSelesai());
                 } catch (SQLException ex) {
-                    Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -810,7 +678,6 @@ public class MenuPengembalian extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 insertData();
-                insertDataDetail();
                 updateStatus();
                 resetForm();
                 loadData();
@@ -819,14 +686,6 @@ public class MenuPengembalian extends javax.swing.JPanel {
         });
 
         btn_batal_add.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showPanel();
-                loadData();
-            }
-        });
-
-        btn_cancel_detail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 showPanel();
@@ -844,88 +703,75 @@ public class MenuPengembalian extends javax.swing.JPanel {
         tbl_data.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                pn_detail.setVisible(true);
-
                 int row = tbl_data.getSelectedRow();
                 String id = tbl_data.getValueAt(row, 1).toString();
-                getDataDetail((DefaultTableModel) tbl_data_detail.getModel(), id);
+                
             }
         });
 
         btn_get_sewa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getSewa();
-                hitungDenda();
+                getRental();
             }
         });
     }
 
-    // calculateTotalPage() - Menghitung total halaman berdasarkan jumlah data dan data per halaman
+// calculateTotalPage() - Menghitung total halaman berdasarkan jumlah data dan data per halaman
     private void calculateTotalPage() {
-        int totalData = getTotalData();// Mendapatkan total data Konsol
-        totalpages = (int) Math.ceil((double) totalData / DataperHalaman);// Menghitung total halaman
+        int totalData = getTotalData(); // Mendapatkan total data
+        totalpages = (int) Math.ceil((double) totalData / DataperHalaman); // Menghitung total halaman
     }
 
-    // getTotalData() - Mendapatkan total data Konsol dari database
+// getTotalData() - Mendapatkan total data dari tabel selesai
     private int getTotalData() {
         int totalData = 0;
         try {
-            String sql = "SELECT COUNT(*) AS total FROM tbl_pengembalian";// Query menghitung total data Konsol
+            String sql = "SELECT COUNT(*) AS total FROM tbl_selesai"; // Query menghitung total data
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 ResultSet rs = st.executeQuery(); // Eksekusi query
                 if (rs.next()) {
-                    totalData = rs.getInt("total");// Mendapatkan jumlah total dari kolom "total"
+                    totalData = rs.getInt("total"); // Mendapatkan jumlah total dari kolom "total"
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, null, e);
         }
-        return totalData;// Mengembalikan jumlah data
+        return totalData; // Mengembalikan jumlah data
     }
 
-    // loadData() - Memuat data Konsol ke dalam JTable berdasarkan halaman saat ini
+// loadData() - Memuat data dari tabel selesai ke dalam JTable
     private void loadData() {
-        calculateTotalPage();// Menghitung total halaman
-        int totalData = getTotalData();// Mendapatkan total data Konsol
+        calculateTotalPage(); // Menghitung total halaman
+        int totalData = getTotalData(); // Mendapatkan total data
         lb_halaman.setText(String.valueOf("Halaman " + HalamanSaatIni + " Dari total data " + totalData)); // Menampilkan halaman saat ini
 
-        int startIndex = (HalamanSaatIni - 1) * DataperHalaman;// Menentukan indeks awal data berdasarkan halaman saat ini
-        getData(startIndex, DataperHalaman, (DefaultTableModel) tbl_data.getModel());// Mendapatkan data untuk ditampilkan di tabel
-        pn_detail.setVisible(false);
-        lb_info_denda.setVisible(false);
+        int startIndex = (HalamanSaatIni - 1) * DataperHalaman; // Menentukan indeks awal data
+        getData(startIndex, DataperHalaman, (DefaultTableModel) tbl_data.getModel()); // Mendapatkan data untuk ditampilkan di tabel
     }
 
-    // showPanel() - Mengatur tampilan panel utama
+// showPanel() - Mengatur tampilan panel utama
     private void showPanel() {
-        panelMain.removeAll();// Menghapus semua komponen di panel utama
-        panelMain.add(new MenuPengembalian(userID));// Menambahkan panel MenuKonsol ke panel utama
-        panelMain.repaint();// Menggambar ulang panel utama
-        panelMain.revalidate();// Memastikan perubahan diterapkan
+        panelMain.removeAll(); // Menghapus semua komponen di panel utama
+        panelMain.add(new MenuSelesai(userID)); // Menambahkan panel MenuSelesai ke panel utama
+        panelMain.repaint(); // Menggambar ulang panel utama
+        panelMain.revalidate(); // Memastikan perubahan diterapkan
     }
 
-    // resetForm() - Mengosongkan input form Konsol
+// resetForm() - Mengosongkan input form
     private void resetForm() {
         txt_id.setText("");
         txt_tanggal.setText("");
-        txt_id_sewa.setText("");
-        txt_tgl_sewa.setText("");
-        txt_tgl_kembali.setText("");
-        txt_id_pelanggan.setText("");
-        txt_nama_pelanggan.setText("");
-        txt_id_konsol.setText("");
-        txt_nama_konsol.setText("");
-        txt_harga_perhari.setText("");
-        txt_denda.setText("");
+        txt_id_rental.setText("");
     }
 
-    // setTabelModel() - Mengatur model tabel dengan kolom-kolom yang sesuai
+// setTabelModel() - Mengatur model tabel dengan kolom yang sesuai
     private void setTabelModel() {
         String[] columnNames = {
             "No",
-            "ID Pengembalian",
-            "Tanggal Dikembalikan",
-            "ID Sewa",
+            "ID_Selesai",
+            "Tanggal Selesai",
+            "ID Rental",
             "Nama User"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
@@ -933,18 +779,16 @@ public class MenuPengembalian extends javax.swing.JPanel {
         loadData(); // Memuat data ke dalam tabel
     }
 
-    // getData() - Mendapatkan data Konsol dari database dengan batasan jumlah data per halaman
+// getData() - Mendapatkan data dari tabel selesai dengan batasan jumlah data per halaman
     private void getData(int startIndex, int entriesPage, DefaultTableModel model) {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            // Perbaikan query dengan spasi yang benar
-            String sql = "SELECT png.ID_Pengembalian, png.Tanggal_Dikembalikan,"
-                    + "sw.ID_Sewa, usr.Nama_User "
-                    + "FROM tbl_pengembalian png "
-                    + "INNER JOIN tbl_sewa sw ON sw.ID_Sewa = png.ID_Sewa "
+            String sql = "SELECT png.ID_Selesai, png.Tanggal_Selesai, sw.ID_Rental, usr.Nama_User "
+                    + "FROM tbl_selesai png "
+                    + "INNER JOIN tbl_Rental sw ON sw.ID_Rental = png.ID_Rental "
                     + "INNER JOIN tbl_user usr ON usr.ID_User = png.ID_User "
-                    + "ORDER BY png.ID_Pengembalian ASC LIMIT ?, ?";
+                    + "ORDER BY png.ID_Selesai ASC LIMIT ?, ?";
 
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setInt(1, startIndex); // Indeks awal
@@ -955,179 +799,36 @@ public class MenuPengembalian extends javax.swing.JPanel {
 
                 while (rs.next()) {
                     // Ambil data dari ResultSet
-                    String IdPengembalian = rs.getString("ID_Pengembalian");
-                    String TanggalDikembalikan = rs.getString("Tanggal_Dikembalikan");
-                    String IdSewa = rs.getString("ID_Sewa");
+                    String IdSelesai = rs.getString("ID_Selesai");
+                    String TanggalSelesai = rs.getString("Tanggal_Selesai");
+                    String IdRental = rs.getString("ID_Rental");
                     String NamaUser = rs.getString("Nama_User");
 
                     // Tambahkan data ke model tabel
                     Object[] rowData = {
-                        "   " + no++, IdPengembalian, TanggalDikembalikan, IdSewa, NamaUser
+                        "   " + no++, IdSelesai, TanggalSelesai, IdRental, NamaUser
                     };
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
-    // setTabelModel() - Mengatur model tabel dengan kolom-kolom yang sesuai
-    private void setTabelModelDetail() {
-        String[] columnNames = {
-            "No",
-            "ID Pengembalian",
-            "ID Konsol",
-            "Nama Konsol",
-            "Denda"
-        };
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
-        tbl_data_detail.setModel(model); // Mengatur model tabel untuk JTable
-        loadData(); // Memuat data ke dalam tabel
-    }
-
-    private void getDataDetail(DefaultTableModel model, String id) {
-        model.setRowCount(0); // Mengosongkan data yang ada di tabel
-
-        try {
-            // Pastikan query memiliki format yang benar
-            String sql = "SELECT png.ID_Pengembalian, ksl.ID_Konsol, ksl.Nama_Konsol, png.Jumlah_Denda "
-                    + "FROM tbl_detail_pengembalian png "
-                    + "INNER JOIN tbl_konsol ksl ON ksl.ID_Konsol = png.ID_Konsol "
-                    + "WHERE png.ID_Pengembalian =  '" + id + "'"
-                    + // Gunakan parameter `?`
-                    "ORDER BY png.ID_Pengembalian ASC";
-
-            // Gunakan PreparedStatement untuk query parameterized
-            try (PreparedStatement st = con.prepareStatement(sql)) {
-                ResultSet rs = st.executeQuery(); // Eksekusi query
-
-                DecimalFormat decimalFormat = new DecimalFormat("#"); // Format untuk Jumlah Denda
-                int no = 1; // Nomor urut
-
-                // Iterasi hasil query
-                while (rs.next()) {
-                    String IdPengembalian = rs.getString("ID_Pengembalian");
-                    String IdKonsol = rs.getString("ID_Konsol");
-                    String NamaKonsol = rs.getString("Nama_Konsol");
-                    double JumlahDenda = rs.getDouble("Jumlah_Denda");
-
-                    // Format nilai Jumlah Denda
-                    String formatDenda = (JumlahDenda == 0.0) ? "0" : decimalFormat.format(JumlahDenda);
-
-                    // Tambahkan ke model tabel
-                    Object[] rowData = {"   " + no++, IdPengembalian, IdKonsol, NamaKonsol, formatDenda};
-                    model.addRow(rowData);
-                }
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, "Error SQL: ", e);
-        }
-    }
-
-    // setIDKonsol() - Mengatur ID Konsol secara otomatis
-    private String setIDPengembalian() throws SQLException {
-        String urutan = null;
-        Date now = new Date();
-        SimpleDateFormat noFormat = new SimpleDateFormat("yyMM"); // Format tanggal sebagai bagian dari ID
-        String no = noFormat.format(now);
-
-        String sql = "SELECT RIGHT(ID_Pengembalian, 3) AS Nomor FROM tbl_pengembalian WHERE ID_Pengembalian LIKE '" + no + "%' ORDER BY ID_Pengembalian DESC LIMIT 1";
-
-        try (PreparedStatement st = con.prepareStatement(sql)) {
-            ResultSet rs = st.executeQuery(); // Eksekusi query
-
-            if (rs.next()) {
-                int nomor = Integer.parseInt(rs.getString("Nomor")) + 1; // Menambah nomor urut
-                urutan = no + String.format("%03d", nomor); // Format ID baru (tanpa "KSL")
-            } else {
-                urutan = no + "001"; // ID awal jika tidak ada data (tanpa "KSL")
-            }
-        } catch (SQLException e) {
-            java.util.logging.Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return urutan;
-    }
-
-    private void getSewa() {
-        boolean closable = true;
-        DataSewa Sewa = new DataSewa(null, closable);
-        Sewa.setVisible(true);
-
-        String id = Sewa.getIdKonsol();
-
-        txt_id_sewa.setText(Sewa.getIdSewa());
-        txt_tgl_sewa.setText(Sewa.getTanggalSewa());
-        txt_tgl_kembali.setText(Sewa.getTanggalKembali());
-        txt_id_pelanggan.setText(Sewa.getIdPelanggan());
-        txt_nama_pelanggan.setText(Sewa.getNamaPelanggan());
-        txt_id_konsol.setText(Sewa.getIdKonsol());
-        txt_nama_konsol.setText(Sewa.getNamaKonsol());
-        txt_harga_perhari.setText(Sewa.getHargaPerhari());
-
-        txt_id_sewa.setEnabled(false);
-        txt_tgl_sewa.setEnabled(false);
-        txt_tgl_kembali.setEnabled(false);
-        txt_id_pelanggan.setEnabled(false);
-        txt_nama_pelanggan.setEnabled(false);
-        txt_id_konsol.setEnabled(false);
-        txt_nama_konsol.setEnabled(false);
-        txt_harga_perhari.setEnabled(false);
-    }
-
-    private void hitungDenda() {
-        int dendaPerHari = 10000; // Nominal denda per hari
-        String tanggal = txt_tanggal.getText(); // Tanggal aktual
-        String tanggalKembali = txt_tgl_kembali.getText(); // Tanggal pengembalian
-
-        try {
-            // Format tanggal
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-            // Validasi input
-            if (tanggal.isEmpty() || tanggalKembali.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Tanggal tidak boleh kosong!", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // Parsing tanggal
-            Date tanggalAktual = dateFormat.parse(tanggal);
-            Date tanggalDikembalikan = dateFormat.parse(tanggalKembali);
-
-            // Hitung selisih hari
-            long selisihHari = (tanggalDikembalikan.getTime() - tanggalAktual.getTime()) / (24 * 60 * 60 * 1000);
-
-            // Hitung denda
-            int denda = (selisihHari > 0) ? (int) (selisihHari * dendaPerHari) : 0;
-            txt_denda.setText(Integer.toString(denda));
-
-            // Tampilkan informasi denda
-            if (selisihHari > 0) {
-                lb_info_denda.setVisible(true);
-                lb_info_denda.setText("Telat : " + selisihHari + " hari");
-            } else {
-                lb_info_denda.setVisible(true);
-                lb_info_denda.setText("Tidak ada denda");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menghitung denda!", "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
-    }
-
-    // insertData() - Menambahkan data Konsol ke database
+// insertData() - Menambahkan data ke tabel selesai
     private void insertData() {
-        String IdPengembalian = txt_id.getText();
+        String IdSelesai = txt_id.getText();
         String tanggal = txt_tanggal.getText();
-        String IdSewa = txt_id_sewa.getText();
+        String IdRental = txt_id_rental.getText();
 
         // Insert data ke database
         try {
-            String sql = "INSERT INTO tbl_pengembalian (ID_Pengembalian, Tanggal_Dikembalikan, ID_Sewa, ID_User) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO tbl_selesai (ID_Selesai, Tanggal_Selesai, ID_Rental, ID_User) VALUES (?,?,?,?)";
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, IdPengembalian);
+                st.setString(1, IdSelesai);
                 st.setString(2, tanggal);
-                st.setString(3, IdSewa);
+                st.setString(3, IdRental);
                 st.setString(4, userID);
 
                 int rowInserted = st.executeUpdate(); // Menjalankan perintah insert
@@ -1136,78 +837,33 @@ public class MenuPengembalian extends javax.swing.JPanel {
                 }
             }
         } catch (SQLException e) {
-            Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
-    private void insertDataDetail() {
-        String IdPengembalian = txt_id.getText();
-        String IdKonsol = txt_id_konsol.getText();
-        String jumlahDenda = txt_denda.getText();
-
-        // Pastikan input tidak kosong
-        if (IdPengembalian.isEmpty() || IdKonsol.isEmpty() || jumlahDenda.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua data harus diisi!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        try {
-            String sql = "INSERT INTO tbl_detail_pengembalian (ID_Pengembalian, ID_Konsol, Jumlah_Denda) VALUES (?,?,?)";
-            try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, IdPengembalian);
-                st.setString(2, IdKonsol);
-                st.setString(3, jumlahDenda);
-
-                int rowInserted = st.executeUpdate(); // Menjalankan perintah insert
-                if (rowInserted > 0) {
-                    JOptionPane.showMessageDialog(this, "Detail Pengembalian Berhasil Ditambahkan");
-                }
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menambahkan detail pengembalian", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
+// updateStatus() - Memperbarui status rental
     private void updateStatus() {
-        String IdSewa = txt_id_sewa.getText();
-        String IdKonsol = txt_id_konsol.getText();
-        String statusSewa = "Sudah Dikembalikan";
+        String IdRental = txt_id_rental.getText();
+        String statusRental = "Sudah Selesai";
 
         try {
-            String sql = "UPDATE tbl_detail_sewa SET Status_Sewa=? WHERE ID_Sewa=? AND ID_Konsol=?";
+            String sql = "UPDATE tbl_detail_Rental SET Status_Rental=? WHERE ID_Rental=?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
-                st.setString(1, statusSewa);
-                st.setString(2, IdSewa);
-                st.setString(3, IdKonsol);
+                st.setString(1, statusRental);
+                st.setString(2, IdRental);
 
                 int rowsUpdated = st.executeUpdate();
                 if (rowsUpdated > 0) {
-                    JOptionPane.showMessageDialog(this, "Status Sewa berhasil diperbarui");
+                    JOptionPane.showMessageDialog(this, "Status Rental berhasil diperbarui");
                 }
             }
         } catch (SQLException e) {
-            Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat memperbarui status sewa", "Error", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat memperbarui status Rental", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    // dataTabel() - Menampilkan data Konsol dari JTable ke dalam form untuk diperbarui
-    private void dataTabel() {
-        panelView.setVisible(false); // Menyembunyikan panel view
-        panelAdd.setVisible(true); // Menampilkan panel tambah/edit
-
-        int row = tbl_data.getSelectedRow(); // Mendapatkan baris yang dipilih pada tabel
-        jLabel7.setText("PERBARUI DATA Konsol"); // Mengubah teks label menjadi "PERBARUI DATA Konsol"
-        txt_id.setEnabled(false); // Menonaktifkan field ID Konsol agar tidak bisa diedit
-        String id = tbl_data.getModel().getValueAt(row, 0).toString();
-
-        // Mengisi field form dengan data dari baris yang dipilih
-        txt_id.setText(tbl_data.getValueAt(row, 0).toString());
-
-    }
-
-    // searchData() - Mencari data Konsol berdasarkan nama atau alamat
+// searchData() - Mencari data berdasarkan ID Rental atau Nama User
     private void searchData() {
         String kataKunci = txt_search.getText();
 
@@ -1215,12 +871,13 @@ public class MenuPengembalian extends javax.swing.JPanel {
         model.setRowCount(0);
 
         try {
-            String sql = "SELECT sw.ID_Sewa, sw.Tanggal_Sewa, sw.Tanggal_Pengembalian, sw.Total, plgn.Nama_Pelanggan, usr.Nama_User"
-                    + "FROM tbl_sewa sw"
-                    + "INNER JOIN tbl_pelanggan plgn ON plgn.ID_Pelanggan = sw.ID_Pelanggan"
-                    + "INNER JOIN tbl_user usr ON usr.ID_User = sw.ID_User"
-                    + "WHERE sw.ID_Sewa LIKE ? OR plgn.Nama_Pelanggan LIKE ?";
-            try (PreparedStatement st = con.prepareStatement(sql)) {
+            String sql = "SELECT png.ID_Selesai, png.Tanggal_Selesai, sw.ID_Rental, usr.Nama_User "
+                    + "FROM tbl_selesai png "
+                    + "INNER JOIN tbl_Rental sw ON sw.ID_Rental = png.ID_Rental "
+                    + "INNER JOIN tbl_user usr ON usr.ID_User = png.ID_User "
+                    + "WHERE png.ID_Selesai LIKE ? OR usr.Nama_User LIKE ?";
+            try (PreparedStatement st
+                    = con.prepareStatement(sql)) {
                 st.setString(1, "%" + kataKunci + "%");
                 st.setString(2, "%" + kataKunci + "%");
                 ResultSet rs = st.executeQuery();
@@ -1228,20 +885,96 @@ public class MenuPengembalian extends javax.swing.JPanel {
                 int no = 1;
 
                 while (rs.next()) {
-                    String idSewa = rs.getString("ID_Sewa");
-                    String tanggalSewa = rs.getString("Tanggal_Sewa");
-                    String tanggalKembali = rs.getString("Tanggal_Pengembalian");
-                    String totalSewa = rs.getString("Total");
-                    String namaPelanggan = rs.getString("Nama_Pelanggan");
-                    String namaUser = rs.getString("Nama_User");
+                    String IdSelesai = rs.getString("ID_Selesai");
+                    String TanggalSelesai = rs.getString("Tanggal_Selesai");
+                    String IdRental = rs.getString("ID_Rental");
+                    String NamaUser = rs.getString("Nama_User");
 
-                    Object[] rowData = {"   " + no++, idSewa, tanggalSewa, tanggalKembali, totalSewa, namaPelanggan, namaUser};
+                    Object[] rowData = {"   " + no++, IdSelesai, TanggalSelesai, IdRental, NamaUser};
                     model.addRow(rowData);
                 }
             }
         } catch (SQLException e) {
-            Logger.getLogger(MenuPengembalian.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+
+    private void getDataDetail(DefaultTableModel model, String id) {
+        model.setRowCount(0); // Mengosongkan data yang ada di tabel
+
+        try {
+            String sql = "SELECT png.ID_Selesai, sw.ID_Rental, usr.Nama_User "
+                    + "FROM tbl_selesai png "
+                    + "INNER JOIN tbl_Rental sw ON sw.ID_Rental = png.ID_Rental "
+                    + "INNER JOIN tbl_user usr ON usr.ID_User = png.ID_User "
+                    + "WHERE png.ID_Selesai = ?";
+
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, id); // Menggunakan parameter untuk ID_Selesai
+                ResultSet rs = st.executeQuery(); // Eksekusi query
+
+                int no = 1; // Nomor urut
+
+                while (rs.next()) {
+                    String IdSelesai = rs.getString("ID_Selesai");
+                    String IdRental = rs.getString("ID_Rental");
+                    String NamaUser = rs.getString("Nama_User");
+
+                    // Tambahkan ke model tabel
+                    Object[] rowData = {"   " + no++, IdSelesai, IdRental, NamaUser};
+                    model.addRow(rowData);
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, "Error SQL: ", e);
+        }
+    }
+
+    private String setIdSelesai() throws SQLException {
+        String urutan = null;
+        Date now = new Date();
+        SimpleDateFormat noFormat = new SimpleDateFormat("yyMM"); // Format tanggal sebagai bagian dari ID
+        String no = noFormat.format(now);
+
+        String sql = "SELECT RIGHT(ID_Selesai, 3) AS Nomor FROM tbl_selesai WHERE ID_Selesai LIKE '" + no + "%' ORDER BY ID_Selesai DESC LIMIT 1";
+
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            ResultSet rs = st.executeQuery(); // Eksekusi query
+
+            if (rs.next()) {
+                int nomor = Integer.parseInt(rs.getString("Nomor")) + 1; // Menambah nomor urut
+                urutan = no + String.format("%03d", nomor); // Format ID baru
+            } else {
+                urutan = no + "001"; // ID awal jika tidak ada data
+            }
+        } catch (SQLException e) {
+            java.util.logging.Logger.getLogger(MenuSelesai.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return urutan;
+    }
+
+    private void getRental() {
+        boolean closable = true;
+        DataRental Rental = new DataRental(null, closable);
+        Rental.setVisible(true);
+
+        txt_id_rental.setText(Rental.getIdRental());
+        txt_tgl_sewa.setText(Rental.getTanggalRental());
+        txt_id_pelanggan.setText(Rental.getIdPelanggan());
+        txt_nama_pelanggan.setText(Rental.getNamaPelanggan());
+        txt_id_konsol.setText(Rental.getIdKonsol());
+        txt_nama_konsol.setText(Rental.getNamaKonsol());
+        txt_harga_perhari.setText(Rental.gethargaPerjam());
+        txt_durasi.setText(Rental.getDurasi());
+
+        txt_id_rental.setEnabled(false);
+        txt_tgl_sewa.setEnabled(false);
+        txt_id_pelanggan.setEnabled(false);
+        txt_nama_pelanggan.setEnabled(false);
+        txt_id_konsol.setEnabled(false);
+        txt_nama_konsol.setEnabled(false);
+        txt_harga_perhari.setEnabled(false);
+        txt_durasi.setEnabled(false);
     }
 
 }

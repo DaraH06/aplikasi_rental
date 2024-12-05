@@ -427,7 +427,7 @@ public class MenuDashboard extends javax.swing.JPanel {
         int totalSewa = 0;
 
         try {
-            String sql = "SELECT COUNT(*) AS total FROM tbl_detail_sewa";
+            String sql = "SELECT COUNT(*) AS total FROM tbl_detail_rental";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
@@ -444,7 +444,7 @@ public class MenuDashboard extends javax.swing.JPanel {
         int totalKembali = 0;
 
         try {
-            String sql = "SELECT COUNT(*) AS total FROM tbl_detail_sewa WHERE Status_Sewa ='Sudah Dikembalikan'";
+            String sql = "SELECT COUNT(*) AS total FROM tbl_detail_rental WHERE Status_Rental ='Sudah Dikembalikan'";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 

@@ -29,7 +29,7 @@ public class DataKonsol extends javax.swing.JDialog {
 
     private String IdKonsol;
     private String NamaKonsol;
-    private String HargaPerhari;
+    private String HargaPerjam;
 
     public String getIdKonsol() {
         return IdKonsol;
@@ -39,8 +39,8 @@ public class DataKonsol extends javax.swing.JDialog {
         return NamaKonsol;
     }
 
-    public String getHargaPerhari() {
-        return HargaPerhari;
+    public String getHargaPerjam() {
+        return HargaPerjam;
     }
 
     public DataKonsol(java.awt.Frame parent, boolean modal) {
@@ -193,6 +193,7 @@ public class DataKonsol extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -347,8 +348,7 @@ public class DataKonsol extends javax.swing.JDialog {
             "Kategori",
             "Status",
             "Stock",
-            "Harga Perjam",
-            "Harga Perhari"
+            "Harga Perjam"
         };
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Membuat model tabel dengan kolom yang ditentukan
         tbl_data.setModel(model); // Mengatur model tabel untuk JTable
@@ -363,7 +363,7 @@ public class DataKonsol extends javax.swing.JDialog {
 
         try {
             // Modifikasi query untuk mencakup pencarian berdasarkan Nama_Konsol dan Stock
-            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, tbl_konsol.Harga_Perhari, "
+            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, "
                     + "tbl_kategori.ID_Kategori, tbl_kategori.Nama_Kategori "
                     + "FROM tbl_konsol "
                     + "INNER JOIN tbl_kategori ON tbl_kategori.ID_Kategori = tbl_konsol.ID_Kategori "
@@ -382,10 +382,9 @@ public class DataKonsol extends javax.swing.JDialog {
                     String Status = rs.getString("Status");
                     String Stock = rs.getString("Stock");
                     String HargaPerjam = rs.getString("Harga_Perjam");
-                    String HargaPerhari = rs.getString("Harga_Perhari");
-
+                 
                     // Menambahkan hasil pencarian ke dalam JTable
-                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam, HargaPerhari};
+                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam};
                     model.addRow(rowData);
                 }
             }
@@ -399,7 +398,7 @@ public class DataKonsol extends javax.swing.JDialog {
 
         IdKonsol = tbl_data.getValueAt(row, 0).toString();
         NamaKonsol = tbl_data.getValueAt(row, 1).toString();
-        HargaPerhari = tbl_data.getValueAt(row, 6).toString();
+        HargaPerjam = tbl_data.getValueAt(row, 5).toString();
 
         dispose();
     }
@@ -409,7 +408,7 @@ public class DataKonsol extends javax.swing.JDialog {
         model.setRowCount(0); // Mengosongkan data yang ada di tabel
 
         try {
-            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, tbl_konsol.Harga_Perhari, "
+            String sql = "SELECT tbl_konsol.ID_Konsol, tbl_konsol.Nama_Konsol, tbl_konsol.Status, tbl_konsol.Stock, tbl_konsol.Harga_Perjam, "
                     + "tbl_kategori.ID_Kategori, tbl_kategori.Nama_Kategori "
                     + "FROM tbl_konsol "
                     + "INNER JOIN tbl_kategori ON tbl_kategori.ID_Kategori = tbl_konsol.ID_Kategori "
@@ -427,9 +426,8 @@ public class DataKonsol extends javax.swing.JDialog {
                     String Status = rs.getString("Status");
                     String Stock = rs.getString("Stock");
                     String HargaPerjam = rs.getString("Harga_Perjam");
-                    String HargaPerhari = rs.getString("Harga_Perhari");
 
-                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam, HargaPerhari}; // Data Konsol
+                    Object[] rowData = {IdKonsol, NamaKonsol, NamaKategori, Status, Stock, HargaPerjam}; // Data Konsol
                     model.addRow(rowData); // Menambahkan baris data ke dalam tabel
                 }
             }

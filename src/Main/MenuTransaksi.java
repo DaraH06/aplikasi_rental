@@ -4,7 +4,7 @@
  */
 package Main;
 //menu transaksi
-import View.MenuPengembalian;
+import View.MenuSelesai;
 import View.MenuSewa;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -40,10 +40,6 @@ public class MenuTransaksi extends javax.swing.JPanel {
         pn_line5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         btn_trs_pengembalian = new javax.swing.JLabel();
-        pn_btn_trsRental = new javax.swing.JPanel();
-        pn_line6 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        btn_trs_rental = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,7 +66,7 @@ public class MenuTransaksi extends javax.swing.JPanel {
 
         btn_trs_sewa.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_trs_sewa.setForeground(new java.awt.Color(102, 102, 102));
-        btn_trs_sewa.setText("Sewa");
+        btn_trs_sewa.setText("Rental");
         btn_trs_sewa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_trs_sewaMouseClicked(evt);
@@ -126,7 +122,7 @@ public class MenuTransaksi extends javax.swing.JPanel {
 
         btn_trs_pengembalian.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         btn_trs_pengembalian.setForeground(new java.awt.Color(102, 102, 102));
-        btn_trs_pengembalian.setText("Pengembalian");
+        btn_trs_pengembalian.setText("Selesai");
         btn_trs_pengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_trs_pengembalianMouseClicked(evt);
@@ -149,7 +145,7 @@ public class MenuTransaksi extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_trs_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_trs_pengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pn_btn_trsPengembalianLayout.setVerticalGroup(
@@ -163,62 +159,6 @@ public class MenuTransaksi extends javax.swing.JPanel {
                 .addGap(5, 5, 5))
         );
 
-        pn_btn_trsRental.setBackground(new java.awt.Color(255, 255, 255));
-
-        pn_line6.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pn_line6Layout = new javax.swing.GroupLayout(pn_line6);
-        pn_line6.setLayout(pn_line6Layout);
-        pn_line6Layout.setHorizontalGroup(
-            pn_line6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 9, Short.MAX_VALUE)
-        );
-        pn_line6Layout.setVerticalGroup(
-            pn_line6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Icon5.png"))); // NOI18N
-
-        btn_trs_rental.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        btn_trs_rental.setForeground(new java.awt.Color(102, 102, 102));
-        btn_trs_rental.setText("Rental");
-        btn_trs_rental.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_trs_rentalMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_trs_rentalMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_trs_rentalMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pn_btn_trsRentalLayout = new javax.swing.GroupLayout(pn_btn_trsRental);
-        pn_btn_trsRental.setLayout(pn_btn_trsRentalLayout);
-        pn_btn_trsRentalLayout.setHorizontalGroup(
-            pn_btn_trsRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_btn_trsRentalLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(pn_line6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_trs_rental, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pn_btn_trsRentalLayout.setVerticalGroup(
-            pn_btn_trsRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_btn_trsRentalLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(pn_btn_trsRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pn_line6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(btn_trs_rental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,7 +168,6 @@ public class MenuTransaksi extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel8))
-            .addComponent(pn_btn_trsRental, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,9 +176,7 @@ public class MenuTransaksi extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pn_btn_trsSewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pn_btn_trsPengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pn_btn_trsRental, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pn_btn_trsPengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -270,7 +207,7 @@ public class MenuTransaksi extends javax.swing.JPanel {
 
         JPanel jp = menuUtama.getPanelUtama();
         jp.removeAll();
-        jp.add(new MenuPengembalian(menuUtama.getUserID()));
+        jp.add(new MenuSelesai(menuUtama.getUserID()));
         jp.repaint();
         jp.revalidate();
     }//GEN-LAST:event_btn_trs_pengembalianMouseClicked
@@ -285,41 +222,16 @@ public class MenuTransaksi extends javax.swing.JPanel {
         pn_line5.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btn_trs_pengembalianMouseExited
 
-    private void btn_trs_rentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_trs_rentalMouseClicked
-        pn_btn_trsRental.setBackground(new Color(240, 240, 240));
-        pn_line6.setBackground(new Color(0, 102, 153));
-
-        JPanel jp = menuUtama.getPanelUtama();
-        jp.removeAll();
-//        jp.add(new MenuPengembalian(getUserID()));
-        jp.repaint();
-        jp.revalidate();
-    }//GEN-LAST:event_btn_trs_rentalMouseClicked
-
-    private void btn_trs_rentalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_trs_rentalMouseEntered
-        pn_btn_trsSewa.setBackground(new Color(250, 250, 250));
-        pn_line6.setBackground(new Color(0, 102, 153));
-    }//GEN-LAST:event_btn_trs_rentalMouseEntered
-
-    private void btn_trs_rentalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_trs_rentalMouseExited
-        pn_btn_trsRental.setBackground(new Color(255, 255, 255));
-        pn_line6.setBackground(new Color(255, 255, 255));
-    }//GEN-LAST:event_btn_trs_rentalMouseExited
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_trs_pengembalian;
-    private javax.swing.JLabel btn_trs_rental;
     private javax.swing.JLabel btn_trs_sewa;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel pn_btn_trsPengembalian;
-    private javax.swing.JPanel pn_btn_trsRental;
     private javax.swing.JPanel pn_btn_trsSewa;
     private javax.swing.JPanel pn_line4;
     private javax.swing.JPanel pn_line5;
-    private javax.swing.JPanel pn_line6;
     // End of variables declaration//GEN-END:variables
 }
