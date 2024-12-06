@@ -1074,9 +1074,13 @@ public class MenuSewa extends javax.swing.JPanel {
         btn_cancel_sementara.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loadDataSementara();
-                resetFormKonsol();
-                btn_ubah.setText("TAMBAH");
+                loadDataSementara(); // Memuat data sementara
+                resetFormKonsol(); // Mengosongkan form konsol
+                btn_ubah.setText("TAMBAH"); // Mengatur ulang teks tombol ubah
+
+                // Menonaktifkan tombol tambah dan set konsol
+                btn_tambah.setEnabled(true); // Mengaktifkan kembali tombol tambah
+                btn_set_konsol.setEnabled(true); // Mengaktifkan kembali tombol set konsol
             }
         });
 

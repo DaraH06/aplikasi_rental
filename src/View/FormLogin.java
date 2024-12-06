@@ -115,7 +115,6 @@ public class FormLogin extends javax.swing.JFrame {
         });
 
         custom_ButtonRounded2.setBackground(new java.awt.Color(255, 255, 255));
-        custom_ButtonRounded2.setText("REGISTER");
         custom_ButtonRounded2.setFillClick(new java.awt.Color(0, 0, 153));
         custom_ButtonRounded2.setFillOriginal(new java.awt.Color(51, 51, 255));
         custom_ButtonRounded2.setFillOver(new java.awt.Color(51, 102, 255));

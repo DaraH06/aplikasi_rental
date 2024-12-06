@@ -882,7 +882,7 @@ public class MenuKonsol extends javax.swing.JPanel {
         // Update data ke database
         try {
             // Memperbaiki query untuk memasukkan nilai Stock, Status, HargaPerjam, dan HargaPerhari
-            String sql = "UPDATE tbl_konsol SET Nama_Konsol=?, Status=?, Stock=?, Harga_Perjam=?, Harga_Perhari=?, ID_Kategori=? WHERE ID_Konsol=?";
+            String sql = "UPDATE tbl_konsol SET Nama_Konsol=?, Status=?, Stock=?, Harga_Perjam=?, ID_Kategori=? WHERE ID_Konsol=?";
             try (PreparedStatement st = con.prepareStatement(sql)) {
                 st.setString(1, NamaKonsol); // Set Nama Konsol
                 st.setString(2, Status); // Set Status (Tersedia / Digunakan)
