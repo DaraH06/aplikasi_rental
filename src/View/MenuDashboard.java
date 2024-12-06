@@ -141,7 +141,7 @@ public class MenuDashboard extends javax.swing.JPanel {
         CardPelanggan1.setRoundTopRight(30);
 
         jPanelGradient2.setColorend(new java.awt.Color(102, 255, 255));
-        jPanelGradient2.setColorstart(new java.awt.Color(0, 255, 204));
+        jPanelGradient2.setColorstart(new java.awt.Color(204, 204, 240));
 
         lb_pelanggan1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan1.setForeground(new java.awt.Color(153, 153, 153));
@@ -198,15 +198,15 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        CardPelanggan3.setBackground(new java.awt.Color(102, 255, 204));
+        CardPelanggan3.setBackground(new java.awt.Color(204, 204, 255));
         CardPelanggan3.setToolTipText("");
         CardPelanggan3.setRoundBottomRight(30);
         CardPelanggan3.setRoundBottomleft(30);
         CardPelanggan3.setRoundTopLeft(30);
         CardPelanggan3.setRoundTopRight(30);
 
-        jPanelGradient3.setColorend(new java.awt.Color(0, 204, 153));
-        jPanelGradient3.setColorstart(new java.awt.Color(0, 255, 204));
+        jPanelGradient3.setColorend(new java.awt.Color(102, 255, 255));
+        jPanelGradient3.setColorstart(new java.awt.Color(204, 204, 240));
 
         lb_pelanggan3.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan3.setForeground(new java.awt.Color(153, 153, 153));
@@ -263,15 +263,15 @@ public class MenuDashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        CardPelanggan4.setBackground(new java.awt.Color(102, 255, 204));
+        CardPelanggan4.setBackground(new java.awt.Color(204, 204, 255));
         CardPelanggan4.setToolTipText("");
         CardPelanggan4.setRoundBottomRight(30);
         CardPelanggan4.setRoundBottomleft(30);
         CardPelanggan4.setRoundTopLeft(30);
         CardPelanggan4.setRoundTopRight(30);
 
-        jPanelGradient4.setColorend(new java.awt.Color(0, 204, 153));
-        jPanelGradient4.setColorstart(new java.awt.Color(0, 255, 204));
+        jPanelGradient4.setColorend(new java.awt.Color(102, 255, 255));
+        jPanelGradient4.setColorstart(new java.awt.Color(204, 204, 240));
 
         lb_pelanggan4.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lb_pelanggan4.setForeground(new java.awt.Color(153, 153, 153));
@@ -418,7 +418,7 @@ public class MenuDashboard extends javax.swing.JPanel {
         int totalKonsol = 0;
 
         try {
-            String sql = "SELECT COUNT(*) AS total FROM tbl_konsol";
+            String sql = "SELECT SUM(Stock) AS total FROM tbl_konsol";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
